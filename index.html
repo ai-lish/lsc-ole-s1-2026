@@ -64,9 +64,9 @@
             margin-bottom: 20px;
             display: flex;
             align-items: center;
-            gap: 10px;
+           px;
         }
-        
+ gap: 10        
         .info-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -92,33 +92,80 @@
             color: var(--dark);
         }
         
-        .grade-list {
-            list-style: none;
+        .info-item.subjects {
+            border-left-color: var(--success);
         }
         
-        .grade-item {
+        .info-item.transport {
+            border-left-color: var(--secondary);
+        }
+        
+        .class-details {
+            margin-top: 20px;
+        }
+        
+        .class-card {
             background: #f8f9fa;
-            padding: 15px 20px;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .class-card h3 {
+            color: var(--primary);
             margin-bottom: 10px;
-            border-radius: 10px;
             display: flex;
             align-items: center;
-            gap: 15px;
+            gap: 10px;
         }
         
-        .grade-icon {
-            font-size: 1.5rem;
+        .class-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
         }
         
-        .coming-soon {
-            text-align: center;
-            padding: 40px;
+        .stat {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .stat strong {
+            color: var(--primary);
+        }
+        
+        .rules {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .rules h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .rules ul {
+            margin-left: 20px;
             color: #666;
         }
         
-        .coming-soon .icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+        .rules li {
+            margin-bottom: 5px;
+        }
+        
+        .subject-tag {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 3px;
         }
         
         footer {
@@ -127,16 +174,6 @@
             text-align: center;
             padding: 30px;
             margin-top: 50px;
-        }
-        
-        .update-note {
-            background: #fff3cd;
-            border: 1px solid #ffc107;
-            padding: 15px;
-            border-radius: 10px;
-            margin-bottom: 20px;
-            text-align: center;
-            color: #856404;
         }
     </style>
 </head>
@@ -147,63 +184,92 @@
     </div>
     
     <div class="container">
-        <div class="update-note">
-            📝 逐步更新中... 请继续补充细节！
-        </div>
-        
         <div class="section">
             <h2>📅 基本資料</h2>
             <div class="info-grid">
-                <div class="info-item">
-                    <h4>日期</h4>
-                    <p>待定</p>
+                <div class="info-item transport">
+                    <h4>出發時間</h4>
+                    <p>9:15</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>到達時間</h4>
+                    <p>10:00</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>交通安排</h4>
+                    <p>3架旅遊巴</p>
                 </div>
                 <div class="info-item">
-                    <h4>對象</h4>
-                    <p>中一至中六</p>
-                </div>
-                <div class="info-item">
-                    <h4>地點</h4>
-                    <p>待定</p>
+                    <h4>集合地點</h4>
+                    <p>禮堂</p>
                 </div>
             </div>
         </div>
         
         <div class="section">
-            <h2>📋 年級活動</h2>
-            <ul class="grade-list">
-                <li class="grade-item">
-                    <span class="grade-icon">📚</span>
-                    <span>中一：待定</span>
-                </li>
-                <li class="grade-item">
-                    <span class="grade-icon">🔬</span>
-                    <span>中二：待定</span>
-                </li>
-                <li class="grade-item">
-                    <span class="grade-icon">🏭</span>
-                    <span>中三：待定</span>
-                </li>
-                <li class="grade-item">
-                    <span class="grade-icon">🌿</span>
-                    <span>中四：待定</span>
-                </li>
-                <li class="grade-item">
-                    <span class="grade-icon">🏛️</span>
-                    <span>中五：待定</span>
-                </li>
-                <li class="grade-item">
-                    <span class="grade-icon">🎯</span>
-                    <span>中六：待定</span>
-                </li>
-            </ul>
+            <h2>📚 參與科目</h2>
+            <div>
+                <span class="subject-tag">中文</span>
+                <span class="subject-tag">數學</span>
+                <span class="subject-tag">科學</span>
+            </div>
         </div>
         
         <div class="section">
-            <h2>📝 備註</h2>
-            <p style="color: #666; line-height: 1.8;">
-                此網頁正在逐步更新中。<br>
-                請繼續補充活動細節！
+            <h2>👥 班級資料</h2>
+            <div class="class-details">
+                <div class="class-card">
+                    <h3>📖 中一 A 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>33人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>5-6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 B 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>32人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>5-6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 C 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>31人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>5-6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 D 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>32人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>5-6組</strong></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rules">
+                <h4>📋 分組規則</h4>
+                <ul>
+                    <li>每組 5-6 人</li>
+                    <li>每班 3 位老師，每位老師負責 2 組</li>
+                    <li>組長需於出發時將電話交給負責老師</li>
+                    <li>其餘電話會收起，放於校務處</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🏫 活動安排</h2>
+            <p style="color: #666; text-align: center; padding: 20px;">
+                活動內容正在更新中...
             </p>
         </div>
     </div>
