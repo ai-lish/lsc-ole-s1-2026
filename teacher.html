@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全方位學習日 - 老師版 | 靈風中學</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --dark: #2C3E50;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .login-box {
+            background: white;
+            padding: 40px;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
+            text-align: center;
+            width: 90%;
+            max-width: 400px;
+        }
+        
+        .login-box h1 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .login-box p {
+            color: #666;
+            margin-bottom: 30px;
+        }
+        
+        .login-box input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
+        }
+        
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        
+        .login-box button:hover {
+            background: #357ABD;
+        }
+        
+        .error {
+            color: red;
+            margin-top: 10px;
+            display: none;
+        }
+        
+        .content { display: none; }
+        
+        .answer-box {
+            background: #e8f5e9;
+            border: 2px solid #4CAF50;
+            border-radius: 10px;
+            padding: 15px;
+            margin: 10px 0;
+        }
+        
+        .answer-box h4 {
+            color: #2E7D32;
+            margin-bottom: 10px;
+        }
+    </style>
+</head>
+<body>
+    <!-- Login Page -->
+    <div class="login-box" id="loginPage">
+        <h1>🔐 老師登入</h1>
+        <p>全方位學習日 2026</p>
+        <input type="password" id="password" placeholder="請輸入密碼">
+        <button onclick="checkPassword()">登入</button>
+        <p class="error" id="errorMsg">密碼錯誤，請重試</p>
+    </div>
+    
+    <!-- Content Page -->
+    <div class="content" id="contentPage">
+        <!-- Copy of the main website content with answers -->
+    </div>
+
+<script>
+// Simple password check - 密碼: lsh2026
+const correctPassword = "lsh2026";
+
+function checkPassword() {
+    const input = document.getElementById('password').value;
+    if (input === correctPassword) {
+        document.getElementById('loginPage').style.display = 'none';
+        document.getElementById('contentPage').style.display = 'block';
+        loadContent();
+    } else {
+        document.getElementById('errorMsg').style.display = 'block';
+    }
+}
+
+function loadContent() {
+    // 呢度會load完整網站內容 + 答案
+    fetch('index.html')
+        .then(response => response.text())
+        .then(html => {
+            // 將內容插入並加入答案顯示
+            document.getElementById('contentPage').innerHTML = html;
+            
+            // 加入答案顯示功能
+            addAnswerBoxes();
+        });
+}
+
+function addAnswerBoxes() {
+    // 數學答案
+    const mathSection = document.querySelector('.section');
+    if (mathSection) {
+        const answerHTML = `
+            <div class="answer-box" style="margin: 20px; padding: 20px;">
+                <h4>📝 數學科建議答案</h4>
+                <p><strong>問題一 (蜻蜓池)：</strong></p>
+                <p>• 使用1米尺多次測量並相加</p>
+                <p>• 記錄每次測量結果並計算總和</p>
+                <br>
+                <p><strong>問題二 (魚館)：</strong></p>
+                <p>• 第一部分：按步驟抄寫統計圖資料</p>
+                <p>• 第二部分：分析數據特點（最大值、最小值、總和、分布情況）</p>
+                <p>• 第三部分：可轉換為柱狀圖、折線圖等</p>
+            </div>
+        `;
+        mathSection.insertAdjacentHTML('beforebegin', answerHTML);
+    }
+}
+</script>
+</body>
+</html>
