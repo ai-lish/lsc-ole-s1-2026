@@ -1,0 +1,559 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎓 全方位學習日 2026 - 靈風中學</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #F39C12;
+            --success: #2ECC71;
+            --danger: #E74C3C;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+        
+        .hero {
+            background: linear-gradient(135deg, var(--primary) 0%, #00D2FF 100%);
+            color: white;
+            padding: 60px 20px;
+            text-align: center;
+        }
+        
+        .hero h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        .hero .subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 30px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+           px;
+        }
+ gap: 10        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-item h4 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        .info-item.subjects {
+            border-left-color: var(--success);
+        }
+        
+        .info-item.transport {
+            border-left-color: var(--secondary);
+        }
+        
+        .class-details {
+            margin-top: 20px;
+        }
+        
+        .class-card {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        
+        .class-card h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .class-stats {
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            margin-bottom: 15px;
+        }
+        
+        .stat {
+            background: white;
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .stat strong {
+            color: var(--primary);
+        }
+        
+        .rules {
+            background: #fff3cd;
+            padding: 15px;
+            border-radius: 10px;
+            margin-top: 15px;
+        }
+        
+        .rules h4 {
+            color: #856404;
+            margin-bottom: 10px;
+        }
+        
+        .rules ul {
+            margin-left: 20px;
+            color: #666;
+        }
+        
+        .rules li {
+            margin-bottom: 5px;
+        }
+        
+        .subject-tag {
+            display: inline-block;
+            background: var(--success);
+            color: white;
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            margin: 3px;
+        }
+        
+        footer {
+            background: var(--dark);
+            color: white;
+            text-align: center;
+            padding: 30px;
+            margin-top: 50px;
+        }
+    </style>
+</head>
+<body>
+    <div class="hero">
+        <h1>🎓 全方位學習日 2026</h1>
+        <p class="subtitle">靈風中學 | 多元體驗 · 探索學習</p>
+    </div>
+    
+    <div class="container">
+        <div class="section">
+            <h2>📅 基本資料</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>老師返工時間</h4>
+                    <p>8:15</p>
+                </div>
+                <div class="info-item">
+                    <h4>學生返校時間</h4>
+                    <p>8:30</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>出發時間</h4>
+                    <p>9:00</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>預計到達</h4>
+                    <p>9:45</p>
+                </div>
+                <div class="info-item">
+                    <h4>分班拍照</h4>
+                    <p>到步後</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>回程集合</h4>
+                    <p>11:30</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>開車時間</h4>
+                    <p>11:45</p>
+                </div>
+                <div class="info-item">
+                    <h4>回校問卷</h4>
+                    <p>12:15 上課室派電話</p>
+                </div>
+                <div class="info-item transport">
+                    <h4>交通安排</h4>
+                    <p>3架旅遊巴</p>
+                </div>
+                <div class="info-item">
+                    <h4>集合地點</h4>
+                    <p>禮堂</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>⏱️ 時間安排</h2>
+            <div class="info-item">
+                <h4>每個活動點</h4>
+                <p>約 20 分鐘</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📣 Briefing 安排</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>老師 Briefing</h4>
+                    <p>活動前 1-2 日</p>
+                </div>
+                <div class="info-item">
+                    <h4>學生 Briefing</h4>
+                    <p>活動前 1 星期</p>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📚 參與科目</h2>
+            <div>
+                <span class="subject-tag">中文</span>
+                <span class="subject-tag">數學</span>
+                <span class="subject-tag">科學</span>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>👥 班級資料</h2>
+            <div class="class-details">
+                <div class="class-card">
+                    <h3>📖 中一 A 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>33人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 B 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>32人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 C 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>31人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>6組</strong></span>
+                    </div>
+                </div>
+                
+                <div class="class-card">
+                    <h3>📖 中一 D 班</h3>
+                    <div class="class-stats">
+                        <span class="stat">人數：<strong>32人</strong></span>
+                        <span class="stat">老師：<strong>3位</strong></span>
+                        <span class="stat">組數：<strong>6組</strong></span>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="rules">
+                <h4>📋 分組規則</h4>
+                <ul>
+                    <li>每班 <strong>6 組</strong>，每組 5-6 人</li>
+                    <li>每班 3 位老師，每位老師負責 2 組</li>
+                    <li>組長需於出發時將電話交給負責老師</li>
+                    <li>其餘電話會收起，放於校務處</li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📍 目的地</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>地點</h4>
+                    <p>獅子會自然教育中心</p>
+                </div>
+                <div class="info-item">
+                    <h4>地址</h4>
+                    <p>西貢巴士總站對面</p>
+                </div>
+                <div class="info-item">
+                    <h4>開放時間</h4>
+                    <p>09:30 - 16:30</p>
+                </div>
+                <div class="info-item">
+                    <h4>查詢電話</h4>
+                    <p>2792 2234</p>
+                </div>
+            </div>
+            <div style="margin-top: 20px; text-align: center;">
+                <img src="images/map.jpg" alt="獅子會自然教育中心地圖" style="max-width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>📚 學科活動 - 數學</h2>
+            
+            <div class="activity-item">
+                <h3>🐟 第一站：魚館</h3>
+                <p><strong>開始時間：</strong>最遲 10:00</p>
+                
+                <div class="task">
+                    <h4>📝 題目一：抄低統計圖像</h4>
+                    <p>觀察並抄低以下任何一個統計圖像：</p>
+                    <div class="chart-images">
+                        <img src="images/math/chart1.jpg" alt="統計圖1" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/chart2.jpg" alt="統計圖2" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/chart3.jpg" alt="統計圖3" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/chart4.jpg" alt="統計圖4" style="max-width: 45%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/chart5.jpg" alt="統計圖5" style="max-width: 80%; border-radius: 10px; margin: 5px;">
+                    </div>
+                </div>
+                
+                <div class="task">
+                    <h4>📝 題目二：改變統計圖像</h4>
+                    <p>將抄錄的統計圖像改為另外一種統計圖像顯示</p>
+                </div>
+            </div>
+            
+            <div class="activity-item">
+                <h3>🪰 第二站：蜻蜓池</h3>
+                
+                <div class="task">
+                    <h4>📐 題目：量度周界</h4>
+                    <p>使用 1米尺 量度蜻蜓池的周界</p>
+                    <p><strong>準備物品：</strong>每位同學會預先收到 1米尺</p>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <img src="images/math/dragonfly.jpg" alt="蜻蜓池" style="max-width: 80%; border-radius: 10px;">
+                    </div>
+                </div>
+                
+                <div class="task extension">
+                    <h4>💡 延伸題：估算方法</h4>
+                    <p>若果沒有 1米繩，可以用甚麼其他方法估算周界？</p>
+                </div>
+            </div>
+            
+            <!-- 數學後備課題：農館 -->
+            <div class="activity-item backup">
+                <h3>🏚️ 後備課題：農館 - 柱體的結構應用</h3>
+                <p><strong>地點：</strong>農館 (若魚館/蜻蜓池未能進行)</p>
+                
+                <div class="task">
+                    <h4>📐 題目：觀察柱體結構</h4>
+                    <p>觀察並記錄農館中柱體的結構應用：</p>
+                    <div class="chart-images">
+                        <img src="images/math/backup1.jpg" alt="柱體結構1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/backup2.jpg" alt="柱體結構2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/backup3.jpg" alt="柱體結構3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/backup4.jpg" alt="柱體結構4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/backup5.jpg" alt="柱體結構5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/backup6.jpg" alt="柱體結構6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 數學後備課題：地質公園遊客中心 -->
+            <div class="activity-item backup">
+                <h3>🏔️ 後備課題：地質公園遊客中心</h3>
+                <p><strong>地點：</strong>地質公園遊客中心</p>
+                
+                <div class="task">
+                    <h4>🪨 題目：觀察岩石結構</h4>
+                    <p>觀察並記錄地質公園遊客中心的岩石特徵：</p>
+                    <div class="chart-images">
+                        <img src="images/math/geopark1.jpg" alt="岩石結構1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/geopark2.jpg" alt="岩石結構2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/geopark3.jpg" alt="岩石結構3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/geopark4.jpg" alt="岩石結構4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/geopark5.jpg" alt="岩石結構5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/math/geopark6.jpg" alt="岩石結構6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 數學後備課題：貝殼館 -->
+            <div class="activity-item backup">
+                <h3>🐚 後備課題：貝殼館</h3>
+                <p><strong>地點：</strong>貝殼館 (雨天後備方案)</p>
+            </div>
+            
+            <!-- 數學後備課題：起點涼亭 -->
+            <div class="activity-item backup">
+                <h3>⛩️ 後備課題：起點涼亭 - 柱體填色</h3>
+                <p><strong>地點：</strong>起點涼亭</p>
+                
+                <div class="task">
+                    <h4>🎨 題目：柱體填色</h4>
+                    <p>將柱體部分填色：</p>
+                    <div style="text-align: center; margin-top: 15px;">
+                        <img src="images/math/pavilion.jpg" alt="起點涼亭" style="max-width: 80%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 教師後備路線 -->
+            <div class="activity-item backup">
+                <h3>👨‍🏫 教師後備路線</h3>
+                <p><strong>熟路同事專用</strong></p>
+                <div class="task">
+                    <h4>✅ 可行路線</h4>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>戶外美果園</li>
+                        <li>中藥園</li>
+                    </ul>
+                </div>
+                <div class="task" style="border-left-color: var(--danger); background: #ffebee;">
+                    <h4>❌ 禁止前往</h4>
+                    <p>不可帶學生到聰明茶座</p>
+                </div>
+            </div>
+        </div>
+        
+        <style>
+            .activity-item {
+                background: #f8f9fa;
+                padding: 20px;
+                border-radius: 15px;
+                margin-top: 15px;
+            }
+            .activity-item.backup {
+                background: #fff3e0;
+                border: 2px dashed #ff9800;
+            }
+            .activity-item h3 {
+                color: var(--primary);
+                margin-bottom: 10px;
+            }
+            .task {
+                background: white;
+                padding: 15px;
+                border-radius: 10px;
+                margin-top: 15px;
+                border-left: 4px solid var(--success);
+            }
+            .task.extension {
+                border-left-color: var(--secondary);
+                background: #fff8e1;
+            }
+            .task h4 {
+                color: var(--dark);
+                margin-bottom: 8px;
+            }
+            .chart-images {
+                display: flex;
+                flex-wrap: wrap;
+                justify-content: center;
+                gap: 10px;
+                margin-top: 10px;
+            }
+        </style>
+        
+        <div class="section">
+            <h2>🔬 學科活動 - 科學</h2>
+            
+            <div class="activity-item">
+                <h3>🪰 蜻蜓池</h3>
+                <p>與數學科共用地點</p>
+            </div>
+            
+            <div class="activity-item">
+                <h3>🐛 昆蟲館</h3>
+                <div class="task">
+                    <h4>📝 題目：繪畫檢索表</h4>
+                    <p>觀察昆蟲標本，繪畫一個檢索表</p>
+                    <div class="chart-images">
+                        <img src="images/science-insect1.jpg" alt="昆蟲標本1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/science-insect2.jpg" alt="昆蟲標本2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/science-insect3.jpg" alt="昆蟲標本3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/science-insect4.jpg" alt="昆蟲標本4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/science-insect5.jpg" alt="昆蟲標本5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                        <img src="images/science-insect6.jpg" alt="昆蟲標本6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
+                    </div>
+                    
+                    <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; margin-top: 15px;">
+                        <h4 style="color: #1565c0; margin-bottom: 10px;">📋 題目內容：</h4>
+                        <ol style="margin-left: 20px; line-height: 1.8;">
+                            <li>什麼是節肢動物？</li>
+                            <li>節肢動物有什麼特性？</li>
+                            <li>畫出節肢動物的檢索表</li>
+                            <li>舉出每個類別的一個例子</li>
+                        </ol>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 15px;">
+                        <img src="images/science-insect-answer.jpg" alt="檢索表答案" style="max-width: 90%; border-radius: 10px;">
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🏆 獎勵安排</h2>
+            <div class="info-item">
+                <h4>完成四個任務</h4>
+                <p>可獲得飲品或小食作為獎品</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">* 級團支出</p>
+            </div>
+        </div>
+        
+        <div class="section">
+            <h2>🏫 活動安排</h2>
+            <p style="color: #666; text-align: center; padding: 20px;">
+                活動內容正在更新中...
+            </p>
+        </div>
+    </div>
+    
+    <footer>
+        <p>🎓 靈風中學 全方位學習日 2026</p>
+        <p class="credit">Made with 💙 by AI Assistant</p>
+    </footer>
+</body>
+</html>

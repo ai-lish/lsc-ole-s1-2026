@@ -3,16 +3,14 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎮 靈風數學遊戲</title>
+    <title>全方位學習日 - 靈風中學</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
             --primary: #4A90E2;
             --secondary: #F39C12;
             --success: #2ECC71;
-            --danger: #E74C3C;
             --dark: #2C3E50;
-            --light: #ECF0F1;
         }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
@@ -21,261 +19,168 @@
             min-height: 100vh;
             color: var(--dark);
         }
-        
-        /* Header */
-        header {
+        .hero {
             background: linear-gradient(135deg, var(--primary) 0%, #00D2FF 100%);
             color: white;
-            padding: 30px 20px;
+            padding: 40px 20px;
             text-align: center;
         }
-        header h1 { font-size: 2rem; margin-bottom: 10px; }
-        header p { opacity: 0.9; }
+        .hero h1 { font-size: 2rem; margin-bottom: 10px; }
+        .hero .subtitle { font-size: 1rem; opacity: 0.9; }
+        .container { max-width: 900px; margin: 0 auto; padding: 30px 20px; }
+        .section {
+            background: white;
+            border-radius: 20px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+        }
+        .section h2 { color: var(--primary); margin-bottom: 15px; }
         
-        /* Tabs */
-        .tabs {
-            display: flex;
-            justify-content: center;
+        /* Time Table */
+        .time-table { border-collapse: collapse; width: 100%; }
+        .time-table th, .time-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        .time-table th { background: #f8f9fa; color: var(--primary); }
+        
+        /* Subjects */
+        .activity-item {
+            background: #f8f9fa;
+            padding: 20px;
+            border-radius: 15px;
+            margin-bottom: 15px;
+        }
+        .activity-item h3 { color: var(--primary); margin-bottom: 10px; }
+        .task {
             background: white;
             padding: 15px;
-            gap: 8px;
-            flex-wrap: wrap;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            position: sticky;
-            top: 0;
-            z-index: 100;
+            border-radius: 10px;
+            margin-top: 10px;
+            border-left: 4px solid var(--success);
         }
-        .tab-btn {
-            padding: 10px 20px;
-            border: none;
-            background: var(--light);
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: bold;
-            cursor: pointer;
-            transition: all 0.3s;
-            white-space: nowrap;
-        }
-        .tab-btn:hover { background: #ddd; }
-        .tab-btn.active {
-            background: var(--primary);
-            color: white;
-        }
+        .task h4 { margin-bottom: 8px; }
         
-        /* Content */
-        .container { max-width: 1000px; margin: 0 auto; padding: 30px 20px; }
+        /* Map */
+        .map-container { text-align: center; margin: 20px 0; }
         
-        .tab-content { display: none; }
-        .tab-content.active { display: block; }
-        
-        /* Games Grid */
-        .games-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
-            gap: 20px;
-        }
-        
-        .game-card {
-            background: white;
-            border-radius: 20px;
-            padding: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.15);
-            cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-        .game-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
-        }
-        .game-icon {
-            font-size: 2.5rem;
-            margin-bottom: 12px;
-        }
-        .game-card h3 {
-            color: var(--primary);
-            margin-bottom: 8px;
-            font-size: 1.1rem;
-        }
-        .game-card p {
-            color: #666;
-            font-size: 0.85rem;
-            line-height: 1.5;
-            margin-bottom: 12px;
-        }
-        .game-tags {
-            display: flex;
-            gap: 6px;
-            flex-wrap: wrap;
-        }
-        .game-tag {
-            padding: 4px 10px;
-            background: #f0f0f0;
-            border-radius: 12px;
-            font-size: 0.75rem;
-            color: #666;
-        }
-        
-        /* Footer */
         footer {
-            text-align: center;
-            padding: 30px;
+            background: var(--dark);
             color: white;
-            opacity: 0.8;
+            text-align: center;
+            padding: 20px;
         }
+        footer a { color: #ffd700; text-decoration: none; }
         
-        @media (max-width: 600px) {
-            .tabs { gap: 5px; padding: 10px; }
-            .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
-            header h1 { font-size: 1.5rem; }
+        .teacher-link {
+            display: inline-block;
+            margin-top: 15px;
+            padding: 10px 20px;
+            border: 2px solid #ffd700;
+            border-radius: 20px;
+            color: #ffd700;
+            text-decoration: none;
         }
     </style>
 </head>
 <body>
-    <header>
-        <h1>🎮 靈風數學遊戲</h1>
-        <p>中一數學 · 有趣啲 ✨</p>
-    </header>
+    <!-- 老師版連結 -->
+    <div style="text-align: right; padding: 10px 20px; background: rgba(0,0,0,0.2);">
+        <a href="teacher.html" style="color: white; text-decoration: none;">👨‍🏫 老師版</a>
+    </div>
     
-    <!-- Tab Navigation -->
-    <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('all')">🏠 全部</button>
-        <button class="tab-btn" onclick="showTab('ch1')">Ch1 正/負數</button>
-        <button class="tab-btn" onclick="showTab('ch2')">Ch2 數列</button>
-        <button class="tab-btn" onclick="showTab('ch3')">Ch3 代數式</button>
-        <button class="tab-btn" onclick="showTab('ch4')">Ch4 方程</button>
-        <button class="tab-btn" onclick="showTab('ch5')">Ch5 百分法</button>
-        <button class="tab-btn" onclick="showTab('ch6')">Ch6 角/平行</button>
-        <button class="tab-btn" onclick="showTab('ch7')">Ch7 面積/體積</button>
-        <button class="tab-btn" onclick="showTab('ch8')">Ch8 統計圖</button>
-        <button class="tab-btn" onclick="showTab('ch9')">Ch9 座標</button>
-        <button class="tab-btn" onclick="showTab('ch10')">Ch10 幾何</button>
+    <div class="hero">
+        <h1>🎓 全方位學習日</h1>
+        <p class="subtitle">靈風中學 | 中一級</p>
+        <p class="subtitle">獅子會自然教育中心</p>
     </div>
     
     <div class="container">
-        <!-- All Games -->
-        <div id="all" class="tab-content active">
-            <div class="games-grid">
-                <div class="game-card" onclick="openGame('ch7')">
-                    <div class="game-icon">📐</div>
-                    <h3>幾何高手挑戰賽</h3>
-                    <p>圓柱體同球體體積、表面積計算</p>
-                    <div class="game-tags">
-                        <span class="game-tag">Ch7 面積與體積</span>
-                    </div>
+        <!-- 地圖 -->
+        <div class="section">
+            <h2>📍 目的地地圖</h2>
+            <div class="map-container">
+                <img src="images/map.jpg" alt="地圖" style="max-width: 100%; border-radius: 15px;">
+            </div>
+            <p style="text-align: center; color: #666;">西貢巴士總站對面</p>
+        </div>
+        
+        <!-- 時間流程 -->
+        <div class="section">
+            <h2>⏰ 當日活動流程</h2>
+            <table class="time-table">
+                <tr>
+                    <th>時間</th>
+                    <th>活動</th>
+                </tr>
+                <tr>
+                    <td>09:45</td>
+                    <td>到達目的地</td>
+                </tr>
+                <tr>
+                    <td>10:00</td>
+                    <td>分班拍照</td>
+                </tr>
+                <tr>
+                    <td>10:15 - 11:30</td>
+                    <td>學科活動</td>
+                </tr>
+                <tr>
+                    <td>11:30</td>
+                    <td>集合</td>
+                </tr>
+                <tr>
+                    <td>11:45</td>
+                    <td>開車回校</td>
+                </tr>
+                <tr>
+                    <td>12:15</td>
+                    <td>回校問卷</td>
+                </tr>
+            </table>
+        </div>
+        
+        <!-- 學科活動 -->
+        <div class="section">
+            <h2>📚 學科活動</h2>
+            
+            <div class="activity-item">
+                <h3>🐟 數學 - 魚館</h3>
+                <div class="task">
+                    <h4>📝 任務：統計圖抄寫</h4>
+                    <p>觀察並抄寫魚館內的統計圖</p>
                 </div>
-                
-                <div class="game-card" onclick="openGame('質因數')">
-                    <div class="game-icon">🧮</div>
-                    <h3>質因數回收站</h3>
-                    <p>質因數分解遊戲</p>
-                    <div class="game-tags">
-                        <span class="game-tag">Ch1/Ch5</span>
-                    </div>
+            </div>
+            
+            <div class="activity-item">
+                <h3>🪰 數學 - 蜻蜓池</h3>
+                <div class="task">
+                    <h4>📐 任務：周界測量</h4>
+                    <p>使用1米尺量度蜻蜓池周界</p>
+                </div>
+            </div>
+            
+            <div class="activity-item">
+                <h3>🐛 科學 - 昆蟲館</h3>
+                <div class="task">
+                    <h4>🔬 任務：節肢動物觀察</h4>
+                    <p>觀察昆蟲標本，認識節肢動物特性</p>
                 </div>
             </div>
         </div>
         
-        <!-- Ch1 正數與負數 -->
-        <div id="ch1" class="tab-content">
-            <div class="games-grid">
-                <div class="game-card" onclick="openGame('質因數')">
-                    <div class="game-icon">🧮</div>
-                    <h3>質因數回收站</h3>
-                    <p>質因數分解遊戲</p>
-                    <div class="game-tags">
-                        <span class="game-tag">質因數</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Ch2 數列 -->
-        <div id="ch2" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch3 代數式 -->
-        <div id="ch3" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch4 一元一次方程式 -->
-        <div id="ch4" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch5 百分法 -->
-        <div id="ch5" class="tab-content">
-            <div class="games-grid">
-                <div class="game-card" onclick="openGame('質因數')">
-                    <div class="game-icon">🧮</div>
-                    <h3>質因數回收站</h3>
-                    <p>質因數分解遊戲</p>
-                    <div class="game-tags">
-                        <span class="game-tag">質因數</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Ch6 角與平行線 -->
-        <div id="ch6" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch7 面積與體積 -->
-        <div id="ch7" class="tab-content">
-            <div class="games-grid">
-                <div class="game-card" onclick="openGame('ch7')">
-                    <div class="game-icon">📐</div>
-                    <h3>幾何高手挑戰賽</h3>
-                    <p>圓柱體同球體體積、表面積計算</p>
-                    <div class="game-tags">
-                        <span class="game-tag">圓柱體</span>
-                        <span class="game-tag">球體</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- Ch8 統計圖 -->
-        <div id="ch8" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch9 座標 -->
-        <div id="ch9" class="tab-content">
-            <div class="games-grid"></div>
-        </div>
-        
-        <!-- Ch10 幾何作圖 -->
-        <div id="ch10" class="tab-content">
-            <div class="games-grid"></div>
+        <!-- 獎勵 -->
+        <div class="section">
+            <h2>🏆 獎勵安排</h2>
+            <p>完成所有任務可獲得小食獎勵</p>
         </div>
     </div>
     
     <footer>
-        <p>🎓 靈風中學 數學科</p>
+        <p>🎓 靈風中學 全方位學習日 2026</p>
+        <a href="teacher.html" class="teacher-link">👨‍🏫 老師版</a>
     </footer>
-    
-    <script>
-        function showTab(tabId) {
-            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
-            document.getElementById(tabId).classList.add('active');
-            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
-            event.target.classList.add('active');
-        }
-        
-        function openGame(game) {
-            const gameUrls = {
-                'ch7': './幾何高手.html',
-                '質因數': './質因數回收站.html'
-            };
-            
-            if (gameUrls[game]) {
-                window.location.href = gameUrls[game];
-            }
-        }
-    </script>
 </body>
 </html>
