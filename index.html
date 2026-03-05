@@ -38,19 +38,23 @@
             justify-content: center;
             background: white;
             padding: 15px;
-            gap: 10px;
+            gap: 8px;
             flex-wrap: wrap;
             box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
         .tab-btn {
-            padding: 12px 25px;
+            padding: 10px 20px;
             border: none;
             background: var(--light);
-            border-radius: 25px;
-            font-size: 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
             font-weight: bold;
             cursor: pointer;
             transition: all 0.3s;
+            white-space: nowrap;
         }
         .tab-btn:hover { background: #ddd; }
         .tab-btn.active {
@@ -67,14 +71,14 @@
         /* Games Grid */
         .games-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            grid-template-columns: repeat(auto-fill, minmax(260px, 1fr));
             gap: 20px;
         }
         
         .game-card {
             background: white;
             border-radius: 20px;
-            padding: 25px;
+            padding: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.15);
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
@@ -84,47 +88,31 @@
             box-shadow: 0 15px 40px rgba(0,0,0,0.2);
         }
         .game-icon {
-            font-size: 3rem;
-            margin-bottom: 15px;
+            font-size: 2.5rem;
+            margin-bottom: 12px;
         }
         .game-card h3 {
             color: var(--primary);
-            margin-bottom: 10px;
+            margin-bottom: 8px;
+            font-size: 1.1rem;
         }
         .game-card p {
             color: #666;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             line-height: 1.5;
-            margin-bottom: 15px;
+            margin-bottom: 12px;
         }
         .game-tags {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             flex-wrap: wrap;
         }
         .game-tag {
-            padding: 5px 12px;
+            padding: 4px 10px;
             background: #f0f0f0;
-            border-radius: 15px;
-            font-size: 0.8rem;
+            border-radius: 12px;
+            font-size: 0.75rem;
             color: #666;
-        }
-        .game-tag.important {
-            background: var(--primary);
-            color: white;
-        }
-        
-        /* Category Description */
-        .category-desc {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 25px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-        }
-        .category-desc h2 {
-            color: var(--primary);
-            margin-bottom: 10px;
         }
         
         /* Footer */
@@ -136,8 +124,8 @@
         }
         
         @media (max-width: 600px) {
-            .tabs { gap: 5px; }
-            .tab-btn { padding: 10px 15px; font-size: 0.9rem; }
+            .tabs { gap: 5px; padding: 10px; }
+            .tab-btn { padding: 8px 12px; font-size: 0.8rem; }
             header h1 { font-size: 1.5rem; }
         }
     </style>
@@ -145,212 +133,147 @@
 <body>
     <header>
         <h1>🎮 靈風數學遊戲</h1>
-        <p>中一數學有趣啲 ✨</p>
+        <p>中一數學 · 有趣啲 ✨</p>
     </header>
     
     <!-- Tab Navigation -->
     <div class="tabs">
-        <button class="tab-btn active" onclick="showTab('all')">🏠 全部遊戲</button>
-        <button class="tab-btn" onclick="showTab('number')">🔢 數與代數</button>
-        <button class="tab-btn" onclick="showTab('geometry')">📐 幾何</button>
-        <button class="tab-btn" onclick="showTab('games')">🎲 對戰遊戲</button>
+        <button class="tab-btn active" onclick="showTab('all')">🏠 全部</button>
+        <button class="tab-btn" onclick="showTab('ch1')">Ch1 正/負數</button>
+        <button class="tab-btn" onclick="showTab('ch2')">Ch2 數列</button>
+        <button class="tab-btn" onclick="showTab('ch3')">Ch3 代數式</button>
+        <button class="tab-btn" onclick="showTab('ch4')">Ch4 方程</button>
+        <button class="tab-btn" onclick="showTab('ch5')">Ch5 百分法</button>
+        <button class="tab-btn" onclick="showTab('ch6')">Ch6 角/平行</button>
+        <button class="tab-btn" onclick="showTab('ch7')">Ch7 面積/體積</button>
+        <button class="tab-btn" onclick="showTab('ch8')">Ch8 統計圖</button>
+        <button class="tab-btn" onclick="showTab('ch9')">Ch9 座標</button>
+        <button class="tab-btn" onclick="showTab('ch10')">Ch10 幾何</button>
     </div>
     
     <div class="container">
         <!-- All Games -->
         <div id="all" class="tab-content active">
             <div class="games-grid">
-                <!-- Number Games -->
-                <div class="game-card" onclick="openGame('質因數回收站')">
-                    <div class="game-icon">🧮</div>
-                    <h3>質因數回收站</h3>
-                    <p>質因數分解遊戲！回收正確既質因數，避開過期既質數！</p>
-                    <div class="game-tags">
-                        <span class="game-tag important">🔢 數</span>
-                        <span class="game-tag">質因數</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('乘法拔河')">
-                    <div class="game-icon">⚡</div>
-                    <h3>乘法拔河</h3>
-                    <p>5秒答啱乘法題目，將對手拉過黎！</p>
-                    <div class="game-tags">
-                        <span class="game-tag important">🔢 數</span>
-                        <span class="game-tag">乘法</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('比例金庫')">
-                    <div class="game-icon">🔐</div>
-                    <h3>比例金庫</h3>
-                    <p>破解銀行密碼！計啱比例，等式成立！</p>
-                    <div class="game-tags">
-                        <span class">="game-tag important🔢 代數</span>
-                        <span class="game-tag">比例</span>
-                    </div>
-                </div>
-                
-                <!-- Geometry Games -->
-                <div class="game-card" onclick="openGame('幾何高手')">
+                <div class="game-card" onclick="openGame('ch7')">
                     <div class="game-icon">📐</div>
                     <h3>幾何高手挑戰賽</h3>
-                    <p>圓柱體同球體體積、表面積計數挑戰！</p>
+                    <p>圓柱體同球體體積、表面積計算</p>
                     <div class="game-tags">
-                        <span class="game-tag important">📐 幾何</span>
-                        <span class="game-tag">體積</span>
+                        <span class="game-tag">Ch7 面積與體積</span>
                     </div>
                 </div>
                 
-                <div class="game-card" onclick="openGame('矩陣爭奪戰')">
-                    <div class="game-icon">🔢</div>
-                    <h3>矩陣爭奪戰</h3>
-                    <p>兩人對戰！揀最大公因數霸領土！</p>
+                <div class="game-card" onclick="openGame('質因數')">
+                    <div class="game-icon">🧮</div>
+                    <h3>質因數回收站</h3>
+                    <p>質因數分解遊戲</p>
                     <div class="game-tags">
-                        <span class="game-tag important">🎲 對戰</span>
-                        <span class="game-tag">HCF</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('12碼射門')">
-                    <div class="game-icon">⚽</div>
-                    <h3>12碼射門</h3>
-                    <p>輸入座標射門！例如(3,2)即係第三格第二行！</p>
-                    <div class="game-tags">
-                        <span class="game-tag important">📐 幾何</span>
-                        <span class="game-tag">座標</span>
+                        <span class="game-tag">Ch1/Ch5</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Number & Algebra -->
-        <div id="number" class="tab-content">
-            <div class="category-desc">
-                <h2>🔢 數與代數</h2>
-                <p>整數、乘法、質因數、比例等數論同代數遊戲</p>
-            </div>
+        <!-- Ch1 正數與負數 -->
+        <div id="ch1" class="tab-content">
             <div class="games-grid">
-                <div class="game-card" onclick="openGame('質因數回收站')">
+                <div class="game-card" onclick="openGame('質因數')">
                     <div class="game-icon">🧮</div>
                     <h3>質因數回收站</h3>
-                    <p>質因數分解遊戲！回收正確既質因數，避開過期既質數！</p>
+                    <p>質因數分解遊戲</p>
                     <div class="game-tags">
                         <span class="game-tag">質因數</span>
                     </div>
                 </div>
-                
-                <div class="game-card" onclick="openGame('乘法拔河')">
-                    <div class="game-icon">⚡</div>
-                    <h3>乘法拔河</h3>
-                    <p>5秒答啱乘法題目，將對手拉過黎！</p>
+            </div>
+        </div>
+        
+        <!-- Ch2 數列 -->
+        <div id="ch2" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch3 代數式 -->
+        <div id="ch3" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch4 一元一次方程式 -->
+        <div id="ch4" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch5 百分法 -->
+        <div id="ch5" class="tab-content">
+            <div class="games-grid">
+                <div class="game-card" onclick="openGame('質因數')">
+                    <div class="game-icon">🧮</div>
+                    <h3>質因數回收站</h3>
+                    <p>質因數分解遊戲</p>
                     <div class="game-tags">
-                        <span class="game-tag">乘法</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('比例金庫')">
-                    <div class="game-icon">🔐</div>
-                    <h3>比例金庫</h3>
-                    <p>破解銀行密碼！計啱比例，等式成立！</p>
-                    <div class="game-tags">
-                        <span class="game-tag">比例</span>
+                        <span class="game-tag">質因數</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Geometry -->
-        <div id="geometry" class="tab-content">
-            <div class="category-desc">
-                <h2>📐 幾何</h2>
-                <p>圖形、體積、表面積、座標等幾何遊戲</p>
-            </div>
+        <!-- Ch6 角與平行線 -->
+        <div id="ch6" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch7 面積與體積 -->
+        <div id="ch7" class="tab-content">
             <div class="games-grid">
-                <div class="game-card" onclick="openGame('幾何高手')">
+                <div class="game-card" onclick="openGame('ch7')">
                     <div class="game-icon">📐</div>
                     <h3>幾何高手挑戰賽</h3>
-                    <p>圓柱體同球體體積、表面積計數挑戰！</p>
+                    <p>圓柱體同球體體積、表面積計算</p>
                     <div class="game-tags">
-                        <span class="game-tag">體積</span>
-                        <span class="game-tag">表面積</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('12碼射門')">
-                    <div class="game-icon">⚽</div>
-                    <h3>12碼射門</h3>
-                    <p>輸入座標射門！例如(3,2)即係第三格第二行！</p>
-                    <div class="game-tags">
-                        <span class="game-tag">座標</span>
+                        <span class="game-tag">圓柱體</span>
+                        <span class="game-tag">球體</span>
                     </div>
                 </div>
             </div>
         </div>
         
-        <!-- Battle Games -->
-        <div id="games" class="tab-content">
-            <div class="category-desc">
-                <h2>🎲 對戰遊戲</h2>
-                <p>可以兩人一齊玩既對戰遊戲</p>
-            </div>
-            <div class="games-grid">
-                <div class="game-card" onclick="openGame('矩陣爭奪戰')">
-                    <div class="game-icon">🔢</div>
-                    <h3>矩陣爭奪戰</h3>
-                    <p>兩人對戰！揀最大公因數霸領土！</p>
-                    <div class="game-tags">
-                        <span class="game-tag">雙人</span>
-                        <span class="game-tag">HCF</span>
-                    </div>
-                </div>
-                
-                <div class="game-card" onclick="openGame('Rummikub')">
-                    <div class="game-icon">🎲</div>
-                    <h3>Rummikub 計時器</h3>
-                    <p>數學周Rummikub大賽專用計時器！</p>
-                    <div class="game-tags">
-                        <span class="game-tag">雙人</span>
-                        <span class="game-tag">計時</span>
-                    </div>
-                </div>
-            </div>
+        <!-- Ch8 統計圖 -->
+        <div id="ch8" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch9 座標 -->
+        <div id="ch9" class="tab-content">
+            <div class="games-grid"></div>
+        </div>
+        
+        <!-- Ch10 幾何作圖 -->
+        <div id="ch10" class="tab-content">
+            <div class="games-grid"></div>
         </div>
     </div>
     
     <footer>
-        <p>🎓 靈風中學 數學科 | <a href="https://math-lish.github.io/math-week-2026/" style="color:white;">返回數學周</a></p>
+        <p>🎓 靈風中學 數學科</p>
     </footer>
     
     <script>
         function showTab(tabId) {
-            // Hide all tabs
-            document.querySelectorAll('.tab-content').forEach(tab => {
-                tab.classList.remove('active');
-            });
-            // Show selected tab
+            document.querySelectorAll('.tab-content').forEach(tab => tab.classList.remove('active'));
             document.getElementById(tabId).classList.add('active');
-            
-            // Update button states
-            document.querySelectorAll('.tab-btn').forEach(btn => {
-                btn.classList.remove('active');
-            });
+            document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
             event.target.classList.add('active');
         }
         
-        function openGame(gameName) {
+        function openGame(game) {
             const gameUrls = {
-                '質因數回收站': './質因數回收站.html',
-                '乘法拔河': 'https://math-lish.github.io/math-week-2026/games.html',
-                '比例金庫': 'https://math-lish.github.io/math-week-2026/games.html',
-                '幾何高手': './幾何高手.html',
-                '矩陣爭奪戰': 'https://math-lish.github.io/math-week-2026/games.html',
-                '12碼射門': 'https://math-lish.github.io/math-week-2026/games.html',
-                'Rummikub': 'https://math-lish.github.io/math-week-2026/rummikub.html'
+                'ch7': './幾何高手.html',
+                '質因數': './質因數回收站.html'
             };
             
-            if (gameUrls[gameName]) {
-                window.location.href = gameUrls[gameName];
+            if (gameUrls[game]) {
+                window.location.href = gameUrls[game];
             }
         }
     </script>
