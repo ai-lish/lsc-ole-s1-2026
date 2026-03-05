@@ -3,61 +3,69 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全方位學習日 - 老師版 | 靈風中學</title>
-    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <title>全方位學習日 - 老師登入 | 靈風中學 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #4A90E2; --dark: #2C3E50; }
+        :root { --primary: #1E3A5F; --accent: #E63946; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
             font-family: 'Noto Sans TC', sans-serif;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
             min-height: 100vh;
             display: flex;
             align-items: center;
             justify-content: center;
+            padding: 20px;
         }
         .login-box {
             background: white;
-            padding: 40px;
+            padding: 40px 35px;
             border-radius: 20px;
             box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             text-align: center;
             width: 90%;
-            max-width: 400px;
+            max-width: 380px;
         }
-        .login-box h1 { color: var(--primary); margin-bottom: 10px; }
-        .login-box p { color: #666; margin-bottom: 30px; }
+        .login-box h1 { color: var(--primary); margin-bottom: 8px; font-size: 1.6rem; }
+        .login-box .subtitle { color: #666; margin-bottom: 30px; font-size: 1rem; }
         .login-box input {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             margin-bottom: 15px;
             border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 18px;
             text-align: center;
+            font-family: inherit;
         }
+        .login-box input:focus { outline: none; border-color: var(--primary); }
         .login-box button {
             width: 100%;
-            padding: 15px;
+            padding: 16px;
             background: var(--primary);
             color: white;
             border: none;
-            border-radius: 10px;
-            font-size: 16px;
+            border-radius: 12px;
+            font-size: 17px;
             font-weight: bold;
             cursor: pointer;
+            font-family: inherit;
         }
-        .error { color: red; margin-top: 10px; display: none; }
+        .login-box button:active { transform: scale(0.98); }
+        .error { color: var(--accent); margin-top: 12px; display: none; font-size: 0.95rem; }
+        .link { margin-top: 25px; }
+        .link a { color: #666; text-decoration: none; font-size: 0.95rem; }
+        .link a:hover { text-decoration: underline; }
     </style>
 </head>
 <body>
-    <div class="login-box" id="loginPage">
+    <div class="login-box">
         <h1>🔐 老師登入</h1>
-        <p>全方位學習日 2026</p>
-        <input type="password" id="password" placeholder="請輸入密碼">
-        <button onclick="checkPassword()">登入</button>
+        <p class="subtitle">全方位學習日 2026</p>
+        <input type="password" id="password" placeholder="請輸入密碼" onkeyup="if(event.key==='Enter')checkPassword()">
+        <button onclick="checkPassword()">登 入</button>
         <p class="error" id="errorMsg">密碼錯誤，請重試</p>
-        <p style="margin-top:20px;"><a href="index.html">👈 返回學生版</a></p>
+        <p class="link"><a href="index.html">👈 返回主頁</a></p>
     </div>
 
 <script>
@@ -69,6 +77,7 @@ function checkPassword() {
         window.location.href = 'teacher_full.html';
     } else {
         document.getElementById('errorMsg').style.display = 'block';
+        document.getElementById('password').value = '';
     }
 }
 </script>
