@@ -1,0 +1,299 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>全方位學習日 - 工作備忘 | 靈風中學 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: #f5f7fa;
+            min-height: 100vh;
+            color: #333;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+        }
+        
+        .header h1 { font-size: 1.6rem; margin-bottom: 5px; }
+        .header .subtitle { opacity: 0.9; }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .back-link {
+            display: inline-block;
+            padding: 10px 20px;
+            color: #1E3A5F;
+            text-decoration: none;
+            margin-bottom: 20px;
+        }
+        
+        .back-link:hover { text-decoration: underline; }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 10px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: #1E3A5F;
+        }
+        
+        .timeline-item {
+            position: relative;
+            margin-bottom: 30px;
+            padding: 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -25px;
+            top: 25px;
+            width: 15px;
+            height: 15px;
+            background: #1E3A5F;
+            border-radius: 50%;
+            border: 3px solid #f5f7fa;
+        }
+        
+        .timeline-item.urgent::before {
+            background: #E63946;
+        }
+        
+        .timeline-item.done::before {
+            background: #2ECC71;
+        }
+        
+        .date {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 8px;
+        }
+        
+        .timeline-item h3 {
+            color: #1E3A5F;
+            margin-bottom: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .timeline-item.urgent h3 {
+            color: #E63946;
+        }
+        
+        .tasks {
+            list-style: none;
+        }
+        
+        .tasks li {
+            padding: 8px 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .tasks li:last-child { border-bottom: none; }
+        
+        .task-status {
+            width: 20px;
+            height: 20px;
+            border-radius: 50%;
+            border: 2px solid #ddd;
+            flex-shrink: 0;
+        }
+        
+        .task-status.done {
+            background: #2ECC71;
+            border-color: #2ECC71;
+        }
+        
+        .task-status.pending {
+            border-color: #F39C12;
+        }
+        
+        .task-status.urgent {
+            border-color: #E63946;
+            background: #E63946;
+        }
+        
+        .subject-tag {
+            display: inline-block;
+            padding: 3px 10px;
+            background: #e8f4fd;
+            color: #4A90E2;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            margin-right: 5px;
+        }
+        
+        .subject-tag.math { background: #fff3e0; color: #f39c12; }
+        .subject-tag.chinese { background: #fce4ec; color: #e91e63; }
+        .subject-tag.english { background: #e3f2fd; color: #2196f3; }
+        .subject-tag.science { background: #e8f5e9; color: #4caf50; }
+        .subject-tag.history { background: #f3e5f5; color: #9c27b0; }
+        
+        /* Summary Box */
+        .summary-box {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+        }
+        
+        .summary-box h3 {
+            color: #1E3A5F;
+            margin-bottom: 15px;
+            font-size: 1.1rem;
+        }
+        
+        .summary-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .summary-item {
+            text-align: center;
+            padding: 15px;
+            background: #f8f9fa;
+            border-radius: 10px;
+        }
+        
+        .summary-item .number {
+            font-size: 2rem;
+            font-weight: bold;
+            color: #1E3A5F;
+        }
+        
+        .summary-item .label {
+            font-size: 0.85rem;
+            color: #666;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 30px;
+            color: #666;
+            font-size: 0.9rem;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <h1>📋 全方位學習日 工作備忘</h1>
+        <p class="subtitle">靈風中學 2026 | 統籌委員會</p>
+    </div>
+    
+    <div class="container">
+        <a href="index.html" class="back-link">← 返回主頁</a>
+        
+        <!-- Summary -->
+        <div class="summary-box">
+            <h3>📊 整體進度</h3>
+            <div class="summary-grid">
+                <div class="summary-item">
+                    <div class="number">3</div>
+                    <div class="label">已完成事項</div>
+                </div>
+                <div class="summary-item">
+                    <div class="number">5</div>
+                    <div class="label">有待完成</div>
+                </div>
+                <div class="summary-item">
+                    <div class="number">8</div>
+                    <div class="label">距活動日數</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- Timeline -->
+        <div class="timeline">
+            
+            <!-- 已完成 -->
+            <div class="timeline-item done">
+                <div class="date">✅ 已完成</div>
+                <h3>籌備會議</h3>
+                <ul class="tasks">
+                    <li><span class="task-status done"></span> 召開統籌會議</li>
+                    <li><span class="task-status done"></span> 確定活動主題</li>
+                    <li><span class="task-status done"></span> 分配各科工作</li>
+                </ul>
+            </div>
+            
+            <!-- 3月18日 - 交工作紙 -->
+            <div class="timeline-item urgent">
+                <div class="date">📅 2026年3月18日 (星期三) - 重要！</div>
+                <h3>📝 提交各科工作紙</h3>
+                <ul class="tasks">
+                    <li><span class="task-status urgent"></span> <span class="subject-tag math">數學</span> 工作紙</li>
+                    <li><span class="task-status pending"></span> <span class="subject-tag chinese">中文</span> 工作紙</li>
+                    <li><span class="task-status pending"></span> <span class="subject-tag english">英文</span> 工作紙</li>
+                    <li><span class="task-status pending"></span> <span class="subject-tag science">科學</span> 工作紙</li>
+                    <li><span class="task-status pending"></span> <span class="subject-tag history">歷史</span> 工作紙</li>
+                </ul>
+            </div>
+            
+            <!-- 3月25日 -->
+            <div class="timeline-item">
+                <div class="date">📅 2026年3月25日 (星期三)</div>
+                <h3>📋 工作紙審閱</h3>
+                <ul class="tasks">
+                    <li><span class="task-status pending"></span> 收集各科工作紙</li>
+                    <li><span class="task-status pending"></span> 統籌委員會審閱</li>
+                    <li><span class="task-status pending"></span> 發還修改意見</li>
+                </ul>
+            </div>
+            
+            <!-- 4月8日 -->
+            <div class="timeline-item">
+                <div class="date">📅 2026年4月8日 (星期三)</div>
+                <h3>🖨️ 最終定稿</h3>
+                <ul class="tasks">
+                    <li><span class="task-status pending"></span> 各科工作紙定稿</li>
+                    <li><span class="task-status pending"></span> 交印刷廠</li>
+                </ul>
+            </div>
+            
+            <!-- 4月22日 - 活動日 -->
+            <div class="timeline-item">
+                <div class="date">📅 2026年4月22日 (星期三) - 活動日！</div>
+                <h3>🌿 全方位學習日正式舉行</h3>
+                <ul class="tasks">
+                    <li><span class="task-status pending"></span> 場地布置</li>
+                    <li><span class="task-status pending"></span> 導師就位</li>
+                    <li><span class="task-status pending"></span> 學生分組</li>
+                </ul>
+            </div>
+            
+        </div>
+        
+        <footer>
+            <p>📅 更新日期：2026年3月6日</p>
+            <p>如有疑問，請聯絡統籌委員會</p>
+        </footer>
+    </div>
+</body>
+</html>
