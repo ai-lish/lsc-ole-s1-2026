@@ -155,6 +155,36 @@
             border-radius: 10px;
         }
         
+        /* Table Style */
+        .time-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .time-table th, .time-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .time-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .time-table tr:hover {
+            background: var(--light);
+        }
+        
+        .time-table .time {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        
         /* Task List */
         .task-list {
             list-style: none;
@@ -407,46 +437,45 @@
             </ul>
         </div>
         
-        <!-- 时间线 -->
+        <!-- 时间表 -->
         <div class="section">
-            <h2>📅 筹备时间线</h2>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-15</div>
-                    <div class="timeline-content">
-                        <strong>项目启动</strong><br>
-                        确认活动日期、地点、预算
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-20</div>
-                    <div class="timeline-content">
-                        <strong>分工安排</strong><br>
-                        确认各老师职责
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-25</div>
-                    <div class="timeline-content">
-                        <strong>家长通知</strong><br>
-                        发出家长通告及同意书
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-03-01</div>
-                    <div class="timeline-content">
-                        <strong>最后确认</strong><br>
-                        收集参加人数、特殊需要学生资料
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-03-07</div>
-                    <div class="timeline-content">
-                        <strong>行前会议</strong><br>
-                        全体老师 briefing
-                    </div>
-                </div>
-            </div>
+            <h2>📅 筹备时间表</h2>
+            <table class="time-table">
+                <thead>
+                    <tr>
+                        <th>日期</th>
+                        <th>工作项目</th>
+                        <th>详情</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time">2026-02-15</td>
+                        <td>項目啟動</td>
+                        <td>確認活動日期、地點、預算</td>
+                    </tr>
+                    <tr>
+                        <td class="time">2026-02-20</td>
+                        <td>分工安排</td>
+                        <td>確認各老師職責</td>
+                    </tr>
+                    <tr>
+                        <td class="time">2026-02-25</td>
+                        <td>家長通知</td>
+                        <td>發出家長通告及同意書</td>
+                    </tr>
+                    <tr>
+                        <td class="time">2026-03-01</td>
+                        <td>最後確認</td>
+                        <td>收集參加人數、特殊需要學生資料</td>
+                    </tr>
+                    <tr>
+                        <td class="time">2026-03-07</td>
+                        <td>行前會議</td>
+                        <td>全體老師 briefing</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         
         <!-- 紧急联络 -->

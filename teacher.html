@@ -193,6 +193,36 @@
             border-radius: 10px;
         }
         
+        /* Table Style */
+        .time-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .time-table th, .time-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .time-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .time-table tr:hover {
+            background: var(--light);
+        }
+        
+        .time-table .time {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+            min-width: 80px;
+        }
+        
         /* Notice Box */
         .notice-box {
             background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
@@ -306,25 +336,33 @@
             </div>
             
             <div class="section">
-                <h2>📅 筹备时间线</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-time">活动前 2 周</div>
-                        <div class="timeline-content">发出家长通告</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">活动前 1 周</div>
-                        <div class="timeline-content">确认参加人数、分组</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">活动前 3 日</div>
-                        <div class="timeline-content">备课、准备物资</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">活动前 1 日</div>
-                        <div class="timeline-content">确认交通、天气</div>
-                    </div>
-                </div>
+                <h2>📅 筹备时间表</h2>
+                <table class="time-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>工作</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">活動前 2 週</td>
+                            <td>發出家長通告</td>
+                        </tr>
+                        <tr>
+                            <td class="time">活動前 1 週</td>
+                            <td>確認參加人數、分組</td>
+                        </tr>
+                        <tr>
+                            <td class="time">活動前 3 日</td>
+                            <td>備課、準備物資</td>
+                        </tr>
+                        <tr>
+                            <td class="time">活動前 1 日</td>
+                            <td>確認交通、天氣</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
         </div>
         
@@ -362,32 +400,40 @@
             
             <div class="section">
                 <h2>⏱️ 时间表</h2>
-                <div class="timeline">
-                    <div class="timeline-item">
-                        <div class="timeline-time">08:15</div>
-                        <div class="timeline-content">老师返校报到</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">08:45</div>
-                        <div class="timeline-content">学生返校点名</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">09:00</div>
-                        <div class="timeline-content">出发</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">09:30-11:15</div>
-                        <div class="timeline-content">活动进行</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">11:30</div>
-                        <div class="timeline-content">回程集合</div>
-                    </div>
-                    <div class="timeline-item">
-                        <div class="timeline-time">12:30</div>
-                        <div class="timeline-content">返校解散</div>
-                    </div>
-                </div>
+                <table class="time-table">
+                    <thead>
+                        <tr>
+                            <th>时间</th>
+                            <th>活动</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td class="time">08:15</td>
+                            <td>老師返校報到</td>
+                        </tr>
+                        <tr>
+                            <td class="time">08:45</td>
+                            <td>學生返校點名</td>
+                        </tr>
+                        <tr>
+                            <td class="time">09:00</td>
+                            <td>出發</td>
+                        </tr>
+                        <tr>
+                            <td class="time">09:30-11:15</td>
+                            <td>活動進行</td>
+                        </tr>
+                        <tr>
+                            <td class="time">11:30</td>
+                            <td>回程集合</td>
+                        </tr>
+                        <tr>
+                            <td class="time">12:30</td>
+                            <td>返校解散</td>
+                        </tr>
+                    </tbody>
+                </table>
             </div>
             
             <div class="section">

@@ -1,48 +1,48 @@
 {
-  "timestamp": "2026-03-08T03:33:45.977Z",
+  "timestamp": "2026-03-08T04:20:50.416Z",
   "url": "https://math-lish.github.io/lsc-ole-s1-2026/",
   "summary": {
     "total": 23,
-    "passed": 23,
-    "failed": 0,
-    "rate": 100
+    "passed": 10,
+    "failed": 13,
+    "rate": 43
   },
   "results": [
     {
       "name": "1.1",
       "test": "页面标题",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.2",
       "test": "活动Logo显示",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.3",
       "test": "活动时间表",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.4",
       "test": "活动路线下载",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.5",
       "test": "注意事项",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.6",
       "test": "下载专区",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "1.7",
@@ -59,44 +59,44 @@
     {
       "name": "2.1",
       "test": "页面标题",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.2",
       "test": "活动前 section",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.3",
       "test": "活动中 section",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.4",
       "test": "活动后 section",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.5",
       "test": "分工安排",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.6",
       "test": "紧急联络",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.7",
       "test": "下载专区",
-      "passed": true,
-      "status": "✅"
+      "passed": false,
+      "status": "❌"
     },
     {
       "name": "2.8",
