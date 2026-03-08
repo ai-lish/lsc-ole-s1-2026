@@ -3,7 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全方位學習日 2026 - 靈風中學</title>
+    <title>全方位学习日 2026 - 灵风中学</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -14,6 +16,7 @@
             --dark: #2C3E50;
             --light: #ECF0F1;
             --teacher-primary: #1E3A5F;
+            --teacher-secondary: #2C5282;
         }
         
         * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -23,707 +26,434 @@
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: var(--dark);
+            padding-bottom: 40px;
         }
         
+        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, #00D2FF 100%);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.2);
         }
         
-        .header.teacher {
-            background: linear-gradient(135deg, var(--teacher-primary) 0%, #2C5282 100%);
+        .logo {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            margin: 0 auto 10px;
+            background: white;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
         }
         
-        .header h1 { font-size: 1.8rem; margin-bottom: 5px; }
-        .header .subtitle { opacity: 0.9; font-size: 1rem; }
+        .logo img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
         
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .header .subtitle {
+            opacity: 0.95;
+            font-size: 1rem;
+        }
+        
+        /* Mode Toggle */
         .mode-toggle {
             position: absolute;
             top: 15px;
             right: 15px;
+            display: flex;
+            gap: 8px;
         }
         
-        .toggle-btn {
-            padding: 8px 16px;
-            border: ;
-            background:2px solid white transparent;
+        .mode-btn {
+            padding: 8px 15px;
+            border: 2px solid rgba(255,255,255,0.5);
+            background: rgba(255,255,255,0.1);
             color: white;
             border-radius: 20px;
             cursor: pointer;
-            font-size: 0.9rem;
-            font-family: inherit;
+            font-size: 0.85rem;
+            text-decoration: none;
             transition: all 0.3s;
         }
         
-        .toggle-btn.active {
+        .mode-btn:hover, .mode-btn.active {
             background: white;
             color: var(--primary);
+            border-color: white;
         }
         
-        .header.teacher .toggle-btn.active {
-            color: var(--teacher-primary);
-        }
-        
+        /* Container */
         .container {
             max-width: 900px;
-            margin: 0 auto;
-            padding: 30px 20px 100px;
+            margin: 30px auto;
+            padding: 0 15px;
         }
         
-        .section {
+        /* Cards */
+        .card {
             background: white;
-            border-radius: 20px;
+            border-radius: 15px;
             padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
         }
         
-        .section h2 {
+        .card h2 {
             color: var(--primary);
-            margin-bottom: 18px;
+            font-size: 1.3rem;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
-        .teacher-section {
-            display: none;
+        .card h3 {
+            color: var(--dark);
+            font-size: 1.1rem;
+            margin: 15px 0 10px;
         }
         
-        body.teacher-mode .teacher-section {
-            display: block;
-        }
-        
-        body.teacher-mode .student-content {
-            /* Student content always visible */
-        }
-        
-        /* Answer key styling */
-        .answer-key {
-            display: none;
-            background: #e8f5e9;
-            border: 2px solid #4caf50;
-            border-radius: 12px;
-            padding: 15px;
-            margin-top: 12px;
-        }
-        
-        body.teacher-mode .answer-key {
-            display: block;
-        }
-        
-        .answer-key h4 {
-            color: #2e7d32;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 8px;
-        }
-        
-        .answer-key ul {
-            margin-left: 20px;
-            color: #333;
+        .card p {
             line-height: 1.8;
+            color: #555;
         }
         
-        .info-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
-            gap: 15px;
-        }
-        
-        .info-item {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .info-item.transport { border-left-color: var(--secondary); }
-        .info-item h4 { color: #666; font-size: 0.85rem; margin-bottom: 5px; }
-        .info-item p { font-size: 1.1rem; font-weight: bold; }
-        
-        .class-card {
-            background: #f8f9fa;
-            padding: 18px;
-            border-radius: 15px;
-            margin-bottom: 12px;
-        }
-        
-        .class-card h3 { color: var(--primary); margin-bottom: 10px; }
-        .class-stats { display: flex; gap: 15px; flex-wrap: wrap; }
-        .stat { background: white; padding: 6px 12px; border-radius: 15px; font-size: 0.85rem; }
-        .stat strong { color: var(--primary); }
-        
-        .rules {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 15px;
-        }
-        
-        .rules h4 { color: #856404; margin-bottom: 10px; }
-        .rules ul { margin-left: 20px; color: #666; }
-        .rules li { margin-bottom: 5px; }
-        
-        .subject-tag {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 5px 12px;
-            border-radius: 15px;
-            font-size: 0.85rem;
-            margin: 3px;
-        }
-        
-        .activity-item {
-            background: #f8f9fa;
-            padding: 18px;
-            border-radius: 15px;
-            margin-top: 15px;
-        }
-        
-        .activity-item.backup {
-            background: #fff3e0;
-            border: 2px dashed #ff9800;
-            display: none;
-        }
-        
-        body.teacher-mode .activity-item.backup {
-            display: block;
-        }
-        
-        .activity-item h3 { color: var(--primary); margin-bottom: 10px; }
-        
-        .task {
-            background: white;
-            padding: 15px;
-            border-radius: 10px;
-            margin-top: 12px;
-            border-left: 4px solid var(--success);
-        }
-        
-        .task.extension {
-            border-left-color: var(--secondary);
-            background: #fff8e1;
-        }
-        
-        .task h4 { margin-bottom: 8px; }
-        
-        .chart-images {
-            display: flex;
-            flex-wrap: wrap;
-            justify-content: center;
-            gap: 8px;
-            margin-top: 10px;
-        }
-        
-        .teacher-section-styled {
-            background: linear-gradient(135deg, #1E3A5F 0%, #2C5282 100%);
-            color: white;
-        }
-        
-        .teacher-section-styled h2 { color: white; }
-        
-        .teacher-section-styled .info-item {
-            background: rgba(255,255,255,0.15);
-            border-left-color: #ffd700;
-        }
-        
-        .teacher-section-styled .info-item h4 { color: rgba(255,255,255,0.8); }
-        .teacher-section-styled .info-item p { color: white; }
-        
+        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
             left: 8px;
-            top: 5px;
-            bottom: 5px;
+            top: 0;
+            bottom: 0;
             width: 3px;
-            background: rgba(255,255,255,0.3);
+            background: linear-gradient(to bottom, var(--primary), var(--secondary));
             border-radius: 3px;
         }
         
         .timeline-item {
             position: relative;
-            margin-bottom: 20px;
-            padding-left: 20px;
+            padding-bottom: 20px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -21px;
-            top: 6px;
-            width: 12px;
-            height: 12px;
-            background: #ffd700;
+            left: -26px;
+            top: 5px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
-            border: 3px solid var(--teacher-primary);
+            background: var(--primary);
+            border: 3px solid white;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
         }
         
-        .time { font-weight: 700; color: #ffd700; font-size: 1rem; }
-        .timeline-item h3 { font-size: 1rem; margin: 5px 0; color: white; }
-        .timeline-item p { color: rgba(255,255,255,0.8); font-size: 0.9rem; }
-        
-        .checklist {
-            list-style: none;
+        .timeline-date {
+            font-weight: 700;
+            color: var(--primary);
+            margin-bottom: 5px;
         }
         
-        .checklist li {
-            padding: 10px 0;
-            border-bottom: 1px solid rgba(255,255,255,0.2);
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-        }
-        
-        .checklist li:last-child { border-bottom: none; }
-        .checklist .icon { font-size: 1.2rem; }
-        
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-            gap: 12px;
-        }
-        
-        .contact-card {
-            background: rgba(255,255,255,0.15);
-            border-radius: 12px;
-            padding: 15px;
-            text-align: center;
-        }
-        
-        .contact-card .icon { font-size: 1.8rem; margin-bottom: 5px; }
-        .contact-card h4 { color: #ffd700; margin-bottom: 5px; font-size: 0.9rem; }
-        .contact-card p { color: rgba(255,255,255,0.9); font-size: 0.85rem; }
-        
-        .note {
-            background: rgba(255,215,0,0.2);
-            border: 1px solid #ffd700;
+        .timeline-content {
+            background: var(--light);
+            padding: 12px 15px;
             border-radius: 10px;
-            padding: 15px;
-            margin-top: 15px;
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            color: white;
+            border-left: 4px solid var(--secondary);
         }
         
-        .note .icon { font-size: 1.2rem; }
+        /* Download Section */
+        .download-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
         
-        footer {
-            background: var(--dark);
+        .download-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.3s;
+            border: 2px solid transparent;
+        }
+        
+        .download-item:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 5px 20px rgba(74, 144, 226, 0.3);
+        }
+        
+        .download-icon {
+            font-size: 2rem;
+        }
+        
+        .download-info {
+            flex: 1;
+        }
+        
+        .download-title {
+            font-weight: 700;
+            font-size: 0.95rem;
+        }
+        
+        .download-size {
+            font-size: 0.8rem;
+            color: #888;
+        }
+        
+        /* Info Box */
+        .info-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+            border-left: 5px solid var(--secondary);
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+        
+        .info-box.warning {
+            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
+            border-color: var(--danger);
+        }
+        
+        .info-box.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-color: var(--success);
+        }
+        
+        /* Schedule Table */
+        .schedule-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 15px 0;
+        }
+        
+        .schedule-table th, .schedule-table td {
+            padding: 12px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .schedule-table th {
+            background: var(--primary);
             color: white;
+            font-weight: 700;
+        }
+        
+        .schedule-table tr:hover {
+            background: #f8f9fa;
+        }
+        
+        .schedule-table .time {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        
+        /* Footer */
+        .footer {
             text-align: center;
             padding: 20px;
+            color: rgba(255,255,255,0.8);
+            font-size: 0.9rem;
         }
         
-        .login-modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(0,0,0,0.8);
-            z-index: 1000;
-            align-items: center;
-            justify-content: center;
-        }
-        
-        .login-modal.show { display: flex; }
-        
-        .login-box {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            text-align: center;
-            width: 90%;
-            max-width: 350px;
-        }
-        
-        .login-box h2 { color: var(--teacher-primary); margin-bottom: 8px; }
-        
-        .login-box input {
-            width: 100%;
-            padding: 14px;
-            margin: 15px 0;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            text-align: center;
-            font-family: inherit;
-        }
-        
-        .login-box button {
-            width: 100%;
-            padding: 14px;
-            background: var(--teacher-primary);
-            color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
-            font-family: inherit;
-        }
-        
-        .login-error {
-            color: var(--danger);
-            margin-top: 10px;
-            display: none;
-        }
-        
-        .login-close {
-            margin-top: 15px;
-            background: #ddd !important;
-            color: #333 !important;
-        }
-        
-        @media print {
-            .header, .mode-toggle { display: none; }
-            .teacher-section { display: block !important; }
-            .section { box-shadow: none; border: 1px solid #ddd; }
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .header h1 {
+                font-size: 1.4rem;
+            }
+            
+            .mode-toggle {
+                position: static;
+                justify-content: center;
+                margin-top: 10px;
+            }
+            
+            .container {
+                margin: 15px auto;
+            }
+            
+            .card {
+                padding: 15px;
+            }
+            
+            .download-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="header" id="header">
-        <h1>全方位學習日 2026</h1>
-        <p class="subtitle">靈風中學 | 多元體驗 · 探索學習</p>
+    <!-- Header -->
+    <div class="header">
+        <div class="logo">
+            <img src="images/logo.jpg" alt="活动Logo" onerror="this.style.display='none'">
+        </div>
+        <h1>全方位学习日 2026</h1>
+        <p class="subtitle">灵风中学 S1 全方位学习日</p>
+        
         <div class="mode-toggle">
-            <button class="toggle-btn active" id="studentBtn" onclick="setMode('student')">👦 學生版</button>
-            <button class="toggle-btn" id="teacherBtn" onclick="openTeacherLogin()">👨‍🏫 老師版</button>
+            <a href="index.html" class="mode-btn active">👨‍🎓 首页</a>
+            <a href="teacher.html" class="mode-btn">👩‍🏫 老师版</a>
+            <a href="leader.html" class="mode-btn">🎒 带队版</a>
         </div>
     </div>
     
     <div class="container">
-        <!-- 基本資料 -->
-        <div class="section">
-            <h2>📅 基本資料</h2>
-            <div class="info-grid">
-                <div class="info-item"><h4>老師返工時間</h4><p>8:15</p></div>
-                <div class="info-item"><h4>學生返校時間</h4><p>8:30</p></div>
-                <div class="info-item transport"><h4>出發時間</h4><p>9:00</p></div>
-                <div class="info-item transport"><h4>預計到達</h4><p>9:45</p></div>
-                <div class="info-item"><h4>分班拍照</h4><p>到步後</p></div>
-                <div class="info-item transport"><h4>回程集合</h4><p>11:30</p></div>
-                <div class="info-item transport"><h4>開車時間</h4><p>11:45</p></div>
-                <div class="info-item"><h4>回校問卷</h4><p>12:15 上課室派電話</p></div>
-                <div class="info-item transport"><h4>交通安排</h4><p>3架旅遊巴</p></div>
-                <div class="info-item"><h4>集合地點</h4><p>禮堂</p></div>
+        <!-- 活动简介 -->
+        <div class="card">
+            <h2>📚 活动简介</h2>
+            <p>全方位学习日是一项让学生走出课室，通过实地考察和体验活动学习知识、培养技能的活动。本年度活动将带领同学们探索本地文化与自然环境。</p>
+            
+            <div class="info-box">
+                <strong>📅 日期：</strong>2026年3月 (待定)<br>
+                <strong>👥 对象：</strong>中一全级学生<br>
+                <strong>📍 地点：</strong>香港历史博物馆 + 维多利亚公园
             </div>
         </div>
         
-        <!-- 時間安排 -->
-        <div class="section">
-            <h2>⏱️ 時間安排</h2>
-            <div class="info-item"><h4>每個活動點</h4><p>約 20 分鐘</p></div>
+        <!-- 活动时间表 -->
+        <div class="card">
+            <h2>📅 活动时间表</h2>
+            <table class="schedule-table">
+                <thead>
+                    <tr>
+                        <th>时间</th>
+                        <th>活动内容</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time">08:30</td>
+                        <td>回校集合点名</td>
+                    </tr>
+                    <tr>
+                        <td class="time">09:00</td>
+                        <td>出发前往博物馆</td>
+                    </tr>
+                    <tr>
+                        <td class="time">09:45 - 11:15</td>
+                        <td>香港历史博物馆参观</td>
+                    </tr>
+                    <tr>
+                        <td class="time">11:30</td>
+                        <td>前往维多利亚公园</td>
+                    </tr>
+                    <tr>
+                        <td class="time">12:00 - 13:00</td>
+                        <td>午膳及休息</td>
+                    </tr>
+                    <tr>
+                        <td class="time">13:00 - 15:00</td>
+                        <td>维多利亚公园探索活动</td>
+                    </tr>
+                    <tr>
+                        <td class="time">15:30</td>
+                        <td>返校</td>
+                    </tr>
+                    <tr>
+                        <td class="time">16:00</td>
+                        <td>解散</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         
-        <!-- 參與科目 -->
-        <div class="section">
-            <h2>📚 參與科目</h2>
-            <div><span class="subject-tag">中文</span><span class="subject-tag">數學</span><span class="subject-tag">科學</span></div>
-        </div>
-        
-        <!-- 班級資料 -->
-        <div class="section">
-            <h2>👥 班級資料</h2>
-            <div class="class-card"><h3>📖 中一 A 班</h3><div class="class-stats"><span class="stat">人數：<strong>33人</strong></span><span class="stat">老師：<strong>3位</strong></span><span class="stat">組數：<strong>6組</strong></span></div></div>
-            <div class="class-card"><h3>📖 中一 B 班</h3><div class="class-stats"><span class="stat">人數：<strong>32人</strong></span><span class="stat">老師：<strong>3位</strong></span><span class="stat">組數：<strong>6組</strong></span></div></div>
-            <div class="class-card"><h3>📖 中一 C 班</h3><div class="class-stats"><span class="stat">人數：<strong>31人</strong></span><span class="stat">老師：<strong>3位</strong></span><span class="stat">組數：<strong>6組</strong></span></div></div>
-            <div class="class-card"><h3>📖 中一 D 班</h3><div class="class-stats"><span class="stat">人數：<strong>32人</strong></span><span class="stat">老師：<strong>3位</strong></span><span class="stat">組數：<strong>6組</strong></span></div></div>
-            <div class="rules">
-                <h4>📋 分組規則</h4>
-                <ul><li>每班 <strong>6 組</strong>，每組 5-6 人</li><li>每班 3 位老師，每位老師負責 2 組</li><li>組長需於出發時將電話交給負責老師</li><li>其餘電話會收起，放於校務處</li></ul>
-            </div>
-        </div>
-        
-        <!-- 目的地 -->
-        <div class="section">
-            <h2>📍 目的地</h2>
-            <div class="info-grid">
-                <div class="info-item"><h4>地點</h4><p>獅子會自然教育中心</p></div>
-                <div class="info-item"><h4>地址</h4><p>西貢巴士總站對面</p></div>
-                <div class="info-item"><h4>開放時間</h4><p>09:30 - 16:30</p></div>
-                <div class="info-item"><h4>查詢電話</h4><p>2792 2234</p></div>
-            </div>
-            <div style="margin-top: 20px; text-align: center;">
-                <img src="images/map.jpg" alt="地圖" style="max-width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
-            </div>
-        </div>
-        
-        <!-- 數學活動 -->
-        <div class="section">
-            <h2>📚 學科活動 - 數學</h2>
-            <div class="activity-item">
-                <h3>🐟 第一站：魚館</h3>
-                <p><strong>開始時間：</strong>最遲 10:00</p>
-                <div class="task">
-                    <h4>📝 題目一：抄低統計圖像</h4>
-                    <p>觀察並抄低任何一個統計圖像</p>
-                    <div class="chart-images">
-                        <img src="images/math/chart1.jpg" alt="統計圖1" style="max-width: 45%; border-radius: 10px; margin: 5px;">
-                        <img src="images/math/chart2.jpg" alt="統計圖2" style="max-width: 45%; border-radius: 10px; margin: 5px;">
-                        <img src="images/math/chart3.jpg" alt="統計圖3" style="max-width: 45%; border-radius: 10px; margin: 5px;">
-                        <img src="images/math/chart4.jpg" alt="統計圖4" style="max-width: 45%; border-radius: 10px; margin: 5px;">
-                        <img src="images/math/chart5.jpg" alt="統計圖5" style="max-width: 80%; border-radius: 10px; margin: 5px;">
+        <!-- 活动路线 -->
+        <div class="card">
+            <h2>🗺️ 活动路线</h2>
+            <div class="download-grid">
+                <a href="map---5212f042-e75e-4977-9998-333fdd27e9ef.docx" class="download-item" download>
+                    <span class="download-icon">🗺️</span>
+                    <div class="download-info">
+                        <div class="download-title">活动地图</div>
+                        <div class="download-size">DOCX | 1.3MB</div>
                     </div>
-                </div>
-                <div class="task"><h4>📝 題目二：改變統計圖像</h4><p>將抄錄的統計圖像改為另外一種顯示</p></div>
-            </div>
-            <div class="activity-item">
-                <h3>🪰 第二站：蜻蜓池</h3>
-                <div class="task">
-                    <h4>📐 題目：量度周界</h4>
-                    <p>使用 1米尺 量度蜻蜓池的周界</p>
-                    <div style="text-align: center; margin-top: 10px;">
-                        <img src="images/math/dragonfly.jpg" alt="蜻蜓池" style="max-width: 80%; border-radius: 10px;">
+                </a>
+                <a href="1A1B1C1D路線圖---41cca334-b36a-4930-ae8b-3754bcb5f279.docx" class="download-item" download>
+                    <span class="download-icon">📍</span>
+                    <div class="download-info">
+                        <div class="download-title">路线图参考</div>
+                        <div class="download-size">DOCX | 2.0MB</div>
                     </div>
-                </div>
-                <div class="task extension"><h4>💡 延伸題：估算方法</h4><p>若果沒有 1米繩，可以用咩其他方法估算周界？</p></div>
-                
-                <!-- 老師答案 -->
-                <div class="answer-key">
-                    <h4>🔑 老師參考答案</h4>
-                    <ul>
-                        <li><strong>方法一：</strong>用腳步測量（每步約0.5米）</li>
-                        <li><strong>方法二：</strong>用手臂長度估算</li>
-                        <li><strong>方法三：</strong>用繩或帶仔去測量再量度繩既長度</li>
-                    </ul>
-                </div>
-            </div>
-            <div class="activity-item backup"><h3>🏚️ 後備課題：農館 - 柱體的結構應用</h3><p><strong>地點：</strong>農館 (若魚館/蜻蜓池未能進行)</p>
-                <div class="chart-images">
-                    <img src="images/math/backup1.jpg" alt="柱體結構1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/backup2.jpg" alt="柱體結構2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/backup3.jpg" alt="柱體結構3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/backup4.jpg" alt="柱體結構4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/backup5.jpg" alt="柱體結構5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/backup6.jpg" alt="柱體結構6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                </div>
-            </div>
-            <div class="activity-item backup"><h3>🏔️ 後備課題：地質公園遊客中心</h3><p><strong>地點：</strong>地質公園遊客中心</p>
-                <div class="chart-images">
-                    <img src="images/math/geopark1.jpg" alt="岩石1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/geopark2.jpg" alt="岩石2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/geopark3.jpg" alt="岩石3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/geopark4.jpg" alt="岩石4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/geopark5.jpg" alt="岩石5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    <img src="images/math/geopark6.jpg" alt="岩石6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                </div>
-            </div>
-            <div class="activity-item backup"><h3>⛩️ 後備課題：起點涼亭 - 柱體填色</h3><p><strong>地點：</strong>起點涼亭</p>
-                <div style="text-align: center; margin-top: 10px;">
-                    <img src="images/math/pavilion.jpg" alt="起點涼亭" style="max-width: 80%; border-radius: 10px;">
-                </div>
-            </div>
-            <div class="activity-item backup">
-                <h3>👨‍🏫 教師後備路線</h3>
-                <div class="task"><h4>✅ 可行路線</h4><ul style="margin-left: 20px;"><li>戶外美果園</li><li>中藥園</li></ul></div>
-                <div class="task" style="border-left-color: var(--danger); background: #ffebee;"><h4>❌ 禁止前往</h4><p>不可帶學生到聰明茶座</p></div>
+                </a>
             </div>
         </div>
         
-        <!-- 科學活動 -->
-        <div class="section">
-            <h2>🔬 學科活動 - 科學</h2>
-            <div class="activity-item"><h3>🪰 蜻蜓池</h3><p>與數學科共用地點</p></div>
-            <div class="activity-item">
-                <h3>🐛 昆蟲館</h3>
-                <div class="task">
-                    <h4>📝 題目：繪畫檢索表</h4><p>觀察昆蟲標本，繪畫一個檢索表</p>
-                    <div class="chart-images">
-                        <img src="images/science-insect1.jpg" alt="昆蟲標本1" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                        <img src="images/science-insect2.jpg" alt="昆蟲標本2" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                        <img src="images/science-insect3.jpg" alt="昆蟲標本3" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                        <img src="images/science-insect4.jpg" alt="昆蟲標本4" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                        <img src="images/science-insect5.jpg" alt="昆蟲標本5" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                        <img src="images/science-insect6.jpg" alt="昆蟲標本6" style="max-width: 30%; border-radius: 10px; margin: 5px;">
-                    </div>
-                    <div style="background: #e3f2fd; padding: 15px; border-radius: 10px; margin-top: 12px;">
-                        <h4 style="color: #1565c0;">📋 題目內容：</h4>
-                        <ol style="margin-left: 20px; line-height: 1.8;"><li>什麼是節肢動物？</li><li>節肢動物有什麼特性？</li><li>畫出節肢動物的檢索表</li><li>舉出每個類別的一個例子</li></ol>
-                    </div>
-                    <!-- 老師答案 -->
-                    <div class="answer-key">
-                        <h4>🔑 老師參考答案</h4>
-                        <ul>
-                            <li><strong>節肢動物：</strong>身體由體節組成，附屬肢分節，體外有幾丁質外骨骼</li>
-                            <li><strong>特性：</strong>身體分節、有外骨骼、附屬肢分節、會脫皮</li>
-                            <li><strong>檢索表分類：</strong>
-                                <ul>
-                                    <li>有6隻腳 → 昆蟲（蝴蝶、甲蟲、螞蟻）</li>
-                                    <li>有8隻腳 → 蜘蛛（蜘蛛、蝎子）</li>
-                                    <li>有多隻腳 → 多足類（蜈蚣、馬陸）</li>
-                                </ul>
-                            </li>
-                        </ul>
-                        <div style="text-align: center; margin-top: 15px;">
-                            <img src="images/science-insect-answer.jpg" alt="檢索表答案" style="max-width: 90%; border-radius: 10px;">
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 獎勵安排 -->
-        <div class="section">
-            <h2>🏆 獎勵安排</h2>
-            <div class="info-item"><h4>完成四個任務</h4><p>可獲得飲品或小食作為獎品</p><p style="font-size: 0.85rem; color: #666; margin-top: 5px;">* 級團支出</p></div>
-        </div>
-        
-        <!-- ===== 老師專用 ===== -->
-        <div class="section teacher-section" id="teacherImportant">
-            <h2>⚠️ 重要須知</h2>
-            <ul class="checklist">
-                <li><span class="icon">📱</span> 老師需保持電話暢通，以便聯絡</li>
-                <li><span class="icon">📋</span> 記錄校服儀容違規學生，回校後處理</li>
-                <li><span class="icon">🌧️</span> 攜帶雨具，以防天氣不穩</li>
-                <li><span class="icon">📷</span> 拍攝活動花絮相片/影片</li>
+        <!-- 注意事项 -->
+        <div class="card">
+            <h2>⚠️ 注意事项</h2>
+            
+            <h3>📦 需要带备</h3>
+            <ul style="margin-left: 20px; line-height: 2;">
+                <li>轻便背囊</li>
+                <li>充足饮用水</li>
+                <li>雨具（如有需要）</li>
+                <li>笔记本及笔</li>
+                <li>个人药物（如有需要）</li>
             </ul>
-        </div>
-        
-        <div class="section teacher-section" id="teacherTimeline">
-            <h2>📅 老師當日流程</h2>
-            <div class="timeline">
-                <div class="timeline-item"><div class="time">08:30</div><h3>抵達課室，點名</h3><p>班主任點名，收電話，記錄校服儀容違規學生</p></div>
-                <div class="timeline-item"><div class="time">08:45</div><h3>出發</h3><p>按分組名單分組（3-5人），帶隊上旅遊巴</p></div>
-                <div class="timeline-item"><div class="time">09:30</div><h3>到達目的地</h3><p>拍攝全級大合照</p></div>
-                <div class="timeline-item"><div class="time">09:45 - 11:15</div><h3>活動進行</h3><p>分組進行每組2個室內 + 1個戶外景點，每個約20分鐘</p></div>
-                <div class="timeline-item"><div class="time">11:15</div><h3>集合離開</h3><p>全級集合，預備離開返回學校</p></div>
-                <div class="timeline-item"><div class="time">回校後</div><h3>總結</h3><p>派發電話，確保學生完成問卷，12:30放學</p></div>
+            
+            <div class="info-box warning">
+                <strong>❌ 严禁携带：</strong>贵重物品、电子游戏、零食
             </div>
+            
+            <h3>👕 服装</h3>
+                <p>穿著整齐校服，佩戴学生证</p>
         </div>
         
-        <div class="section teacher-section" id="teacherRules">
-            <h2>🎯 活動運作</h2>
-            <ul class="checklist">
-                <li><span class="icon">✅</span> 全程分組進行</li>
-                <li><span class="icon">⏰</span> 每個景點約20分鐘，老師控制時間</li>
-                <li><span class="icon">💡</span> 可給予提示，但不宜直接指出答案</li>
-                <li><span class="icon">📝</span> 學生完成任務後，老師確認</li>
-                <li><span class="icon">🔒</span> 學生只可使用指定裝置（如有）</li>
-            </ul>
-            <div class="note"><span class="icon">ℹ️</span><span>分組名單由班主任派發</span></div>
-        </div>
-        
-        <div class="section teacher-section" id="teacherBehavior">
-            <h2>👀 學生注意事項</h2>
-            <ul class="checklist">
-                <li><span class="icon">👔</span> 留意學生儀表及言行</li>
-                <li><span class="icon">📝</span> 記錄問題學生資料，回校後處理</li>
-                <li><span class="icon">🏥</span> 如有不適，聯絡定點老師</li>
-                <li><span class="icon">⚠️</span> 如有頑劣學生，聯絡定點老師處理</li>
-            </ul>
-            <div class="note"><span class="icon">📞</span><span>定點老師聯絡方式另行通知</span></div>
-        </div>
-        
-        <div class="section teacher-section" id="teacherEmergency">
-            <h2>🆘 緊急聯絡</h2>
-            <div class="contact-grid">
-                <div class="contact-card"><div class="icon">🏥</div><h4>學生不適</h4><p>聯絡定點老師</p></div>
-                <div class="contact-card"><div class="icon">⚠️</div><h4>行為問題</h4><p>聯絡定點老師</p></div>
-                <div class="contact-card"><div class="icon">🚑</div><h4>緊急事故</h4><p>致電校務處</p></div>
+        <!-- 下载专区 -->
+        <div class="card">
+            <h2>📥 下载专区</h2>
+            <div class="download-grid">
+                <a href="全方位學習日_統籌工作指引---7ddb3284-6f7e-4ca6-90a4-f8088d21fadf.docx" class="download-item" download>
+                    <span class="download-icon">📋</span>
+                    <div class="download-info">
+                        <div class="download-title">统筹工作指引</div>
+                        <div class="download-size">DOCX | 21KB</div>
+                    </div>
+                </a>
+                <a href="全方位學習日工作指引.docx" class="download-item" download>
+                    <span class="download-icon">📖</span>
+                    <div class="download-info">
+                        <div class="download-title">工作指引(旧)</div>
+                        <div class="download-size">DOCX | 12KB</div>
+                    </div>
+                </a>
             </div>
-        </div>
-        
-        <div class="section teacher-section" id="teacherChecklist">
-            <h2>✅ 出發前檢查清單</h2>
-            <ul class="checklist">
-                <li><span class="icon">☔</span> 雨具</li>
-                <li><span class="icon">📱</span> 充滿電的手提電話</li>
-                <li><span class="icon">📋</span> 學生分組名單</li>
-                <li><span class="icon">✏️</span> 記事簿/筆（記錄違規）</li>
-                <li><span class="icon">📷</span> 拍攝工具（相機/手機）</li>
-            </ul>
         </div>
     </div>
     
-    <footer><p>靈風中學 全方位學習日 2026</p></footer>
-    
-    <!-- Login Modal -->
-    <div class="login-modal" id="loginModal">
-        <div class="login-box">
-            <h2>🔐 老師登入</h2>
-            <p style="color: #666; font-size: 0.9rem;">請輸入密碼</p>
-            <input type="password" id="teacherPassword" placeholder="密碼" onkeyup="if(event.key==='Enter')checkPassword()">
-            <button onclick="checkPassword()">登 入</button>
-            <p class="login-error" id="loginError">密碼錯誤，請重試</p>
-            <button class="login-close" onclick="closeLogin()">取消</button>
-        </div>
+    <div class="footer">
+        <p>© 2026 灵风中学 全方位学习日筹委会</p>
+        <p>如有查询，请联络班主任</p>
     </div>
-
-<script>
-const correctPassword = "lsc2026";
-let isTeacherMode = false;
-
-function setMode(mode) {
-    const header = document.getElementById('header');
-    const body = document.body;
-    const studentBtn = document.getElementById('studentBtn');
-    const teacherBtn = document.getElementById('teacherBtn');
-    
-    if (mode === 'teacher' && !isTeacherMode) {
-        openTeacherLogin();
-        return;
-    }
-    
-    if (mode === 'student') {
-        isTeacherMode = false;
-        body.classList.remove('teacher-mode');
-        header.classList.remove('teacher');
-        studentBtn.classList.add('active');
-        teacherBtn.classList.remove('active');
-    } else if (mode === 'teacher' && isTeacherMode) {
-        body.classList.add('teacher-mode');
-        header.classList.add('teacher');
-        studentBtn.classList.remove('active');
-        teacherBtn.classList.add('active');
-    }
-}
-
-function openTeacherLogin() {
-    if (isTeacherMode) { setMode('teacher'); return; }
-    document.getElementById('loginModal').classList.add('show');
-    document.getElementById('teacherPassword').value = '';
-    document.getElementById('teacherPassword').focus();
-}
-
-function closeLogin() {
-    document.getElementById('loginModal').classList.remove('show');
-}
-
-function checkPassword() {
-    const input = document.getElementById('teacherPassword').value;
-    if (input === correctPassword) {
-        isTeacherMode = true;
-        closeLogin();
-        setMode('teacher');
-        localStorage.setItem('teacherLoggedIn', 'true');
-    } else {
-        document.getElementById('loginError').style.display = 'block';
-        document.getElementById('teacherPassword').value = '';
-    }
-}
-
-// Check saved login
-if (localStorage.getItem('teacherLoggedIn') === 'true') {
-    isTeacherMode = true;
-    document.body.classList.add('teacher-mode');
-}
-</script>
 </body>
 </html>
