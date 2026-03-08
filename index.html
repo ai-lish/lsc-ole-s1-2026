@@ -62,14 +62,15 @@
         .section h2 {
             color: var(--primary);
             margin-bottom: 20px;
+            font-size: 1.4rem;
             display: flex;
             align-items: center;
-           px;
+            gap: 10px;
         }
- gap: 10        
+        
         .info-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
             gap: 15px;
         }
         
@@ -92,88 +93,155 @@
             color: var(--dark);
         }
         
-        .info-item.subjects {
-            border-left-color: var(--success);
-        }
-        
-        .info-item.transport {
-            border-left-color: var(--secondary);
-        }
-        
-        .class-details {
-            margin-top: 20px;
-        }
-        
-        .class-card {
-            background: #f8f9fa;
-            padding: 20px;
-            border-radius: 15px;
-            margin-bottom: 15px;
-        }
-        
-        .class-card h3 {
-            color: var(--primary);
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .class-stats {
-            display: flex;
-            gap: 20px;
-            flex-wrap: wrap;
-            margin-bottom: 15px;
-        }
-        
-        .stat {
-            background: white;
-            padding: 8px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-        }
-        
-        .stat strong {
-            color: var(--primary);
-        }
-        
-        .rules {
-            background: #fff3cd;
-            padding: 15px;
-            border-radius: 10px;
+        /* Table Style */
+        .time-table {
+            width: 100%;
+            border-collapse: collapse;
             margin-top: 15px;
         }
         
-        .rules h4 {
-            color: #856404;
-            margin-bottom: 10px;
+        .time-table th, .time-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
         }
         
-        .rules ul {
-            margin-left: 20px;
+        .time-table th {
+            background: var(--primary);
+            color: white;
+            font-weight: 600;
+        }
+        
+        .time-table tr:hover {
+            background: var(--light);
+        }
+        
+        .time-table .time {
+            font-weight: 700;
+            color: var(--primary);
+            white-space: nowrap;
+        }
+        
+        /* Subject Sections */
+        .subject-section {
+            margin-bottom: 25px;
+            padding: 20px;
+            background: var(--light);
+            border-radius: 15px;
+        }
+        
+        .subject-title {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            font-size: 1.2rem;
+            color: var(--primary);
+            margin-bottom: 15px;
+        }
+        
+        .subject-content {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .subject-item {
+            background: white;
+            padding: 15px;
+            border-radius: 10px;
+        }
+        
+        .subject-item h4 {
             color: #666;
-        }
-        
-        .rules li {
+            font-size: 0.85rem;
             margin-bottom: 5px;
         }
         
-        .subject-tag {
-            display: inline-block;
-            background: var(--success);
-            color: white;
-            padding: 5px 15px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            margin: 3px;
+        .subject-item p {
+            font-size: 1rem;
+            font-weight: 600;
         }
         
-        footer {
-            background: var(--dark);
+        /* Location Info */
+        .location-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .location-card {
+            background: #f8f9fa;
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--secondary);
+        }
+        
+        .location-card h4 {
+            color: #666;
+            font-size: 0.9rem;
+            margin-bottom: 5px;
+        }
+        
+        .location-card p {
+            font-size: 1.1rem;
+            font-weight: bold;
+        }
+        
+        /* Image */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            border-radius: 10px;
+            overflow: hidden;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 120px;
+            object-fit: cover;
+        }
+        
+        /* Teacher Link */
+        .teacher-link {
+            display: inline-block;
+            padding: 12px 24px;
+            background: var(--primary);
             color: white;
-            text-align: center;
-            padding: 30px;
-            margin-top: 50px;
+            text-decoration: none;
+            border-radius: 25px;
+            font-weight: bold;
+            margin-top: 20px;
+        }
+        
+        .teacher-link:hover {
+            background: #357ABD;
+        }
+        
+        /* Mode Toggle */
+        .mode-toggle {
+            margin-top: 20px;
+        }
+        
+        .mode-toggle a {
+            display: inline-block;
+            padding: 10px 20px;
+            background: white;
+            color: var(--primary);
+            border-radius: 25px;
+            text-decoration: none;
+            font-weight: bold;
+            margin: 5px;
+        }
+        
+        .mode-toggle a.teacher {
+            background: rgba(255,255,255,0.2);
+            color: white;
         }
     </style>
 </head>
@@ -182,178 +250,220 @@
         <h1>🎓 全方位學習日 2026</h1>
         <p class="subtitle">靈風中學 | 多元體驗 · 探索學習</p>
         
-        <!-- Mode Toggle -->
-        <div style="margin-top: 20px;">
-            <a href="index.html" style="display: inline-block; padding: 10px 20px; background: white; color: #4A90E2; border-radius: 25px; text-decoration: none; font-weight: bold; margin: 5px;">👨‍🎓 首页</a>
-            <a href="teacher-login.html" style="display: inline-block; padding: 10px 20px; background: rgba(255,255,255,0.2); color: white; border-radius: 25px; text-decoration: none; margin: 5px;">👩‍🏫 老师版</a>
+        <div class="mode-toggle">
+            <a href="index.html">👨‍🎓 首頁</a>
+            <a href="teacher-login.html" class="teacher">👩‍🏫 老師版</a>
         </div>
     </div>
     
     <div class="container">
+        <!-- 基本資料 -->
         <div class="section">
             <h2>📅 基本資料</h2>
             <div class="info-grid">
-                <div class="info-item">
-                    <h4>老師返工時間</h4>
-                    <p>8:15</p>
-                </div>
                 <div class="info-item">
                     <h4>學生返校時間</h4>
                     <p>8:45</p>
                 </div>
                 <div class="info-item">
-                    <h4>學生集合時間</h4>
-                    <p>9:00</p>
-                </div>
-                <div class="info-item transport">
                     <h4>出發時間</h4>
                     <p>9:00</p>
                 </div>
-                <div class="info-item transport">
+                <div class="info-item">
                     <h4>到達時間</h4>
                     <p>9:30 - 9:45</p>
                 </div>
                 <div class="info-item">
-                    <h4>分班拍照</h4>
-                    <p>到步後</p>
-                </div>
-                <div class="info-item transport">
                     <h4>回程集合</h4>
                     <p>11:30</p>
                 </div>
-                <div class="info-item transport">
-                    <h4>開車時間</h4>
+                <div class="info-item">
+                    <h4>開車返校</h4>
                     <p>11:45</p>
                 </div>
-                <div class="info-item transport">
-                    <h4>交通安排</h4>
-                    <p>3架旅遊巴</p>
-                </div>
                 <div class="info-item">
-                    <h4>集合地點</h4>
-                    <p>禮堂</p>
+                    <h4>解散時間</h4>
+                    <p>12:30</p>
                 </div>
             </div>
         </div>
         
+        <!-- 時間安排表格 -->
         <div class="section">
             <h2>⏱️ 時間安排</h2>
-            <div class="info-item">
-                <h4>每個活動點</h4>
-                <p>約 20 分鐘</p>
-            </div>
+            <table class="time-table">
+                <thead>
+                    <tr>
+                        <th>時間</th>
+                        <th>活動</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="time">08:45</td>
+                        <td>學生返校，課室集合</td>
+                    </tr>
+                    <tr>
+                        <td class="time">09:00</td>
+                        <td>出發</td>
+                    </tr>
+                    <tr>
+                        <td class="time">09:30 - 09:45</td>
+                        <td>到達獅子會自然教育中心</td>
+                    </tr>
+                    <tr>
+                        <td class="time">09:45 - 11:15</td>
+                        <td>三科活動進行 (每科約20分鐘)</td>
+                    </tr>
+                    <tr>
+                        <td class="time">11:30</td>
+                        <td>回程集合</td>
+                    </tr>
+                    <tr>
+                        <td class="time">11:45</td>
+                        <td>開車返校</td>
+                    </tr>
+                    <tr>
+                        <td class="time">12:30</td>
+                        <td>抵達學校，解散</td>
+                    </tr>
+                </tbody>
+            </table>
         </div>
         
+        <!-- 活動內容 -->
         <div class="section">
-            <h2>📣 Briefing 安排</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h4>老師 Briefing</h4>
-                    <p>活動前 1-2 日</p>
+            <h2>📚 活動內容</h2>
+            
+            <!-- 中文科 -->
+            <div class="subject-section">
+                <div class="subject-title">
+                    <span>📝</span>
+                    <span>中文科</span>
                 </div>
-                <div class="info-item">
-                    <h4>學生 Briefing</h4>
-                    <p>活動前 1 星期</p>
-                </div>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>📚 參與科目</h2>
-            <div>
-                <span class="subject-tag">中文</span>
-                <span class="subject-tag">數學</span>
-                <span class="subject-tag">科學</span>
-            </div>
-        </div>
-        
-        <div class="section">
-            <h2>👥 班級資料</h2>
-            <div class="class-details">
-                <div class="class-card">
-                    <h3>📖 中一 A 班</h3>
-                    <div class="class-stats">
-                        <span class="stat">人數：<strong>33人</strong></span>
-                        <span class="stat">老師：<strong>3位</strong></span>
-                        <span class="stat">組數：<strong>6組</strong></span>
+                <div class="subject-content">
+                    <div class="subject-item">
+                        <h4>地點</h4>
+                        <p>涼亭</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>活動</h4>
+                        <p>景物描寫工作紙</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>額外</h4>
+                        <p>果園觀察記錄</p>
                     </div>
                 </div>
-                
-                <div class="class-card">
-                    <h3>📖 中一 B 班</h3>
-                    <div class="class-stats">
-                        <span class="stat">人數：<strong>32人</strong></span>
-                        <span class="stat">老師：<strong>3位</strong></span>
-                        <span class="stat">組數：<strong>6組</strong></span>
-                    </div>
-                </div>
-                
-                <div class="class-card">
-                    <h3>📖 中一 C 班</h3>
-                    <div class="class-stats">
-                        <span class="stat">人數：<strong>31人</strong></span>
-                        <span class="stat">老師：<strong>3位</strong></span>
-                        <span class="stat">組數：<strong>6組</strong></span>
-                    </div>
-                </div>
-                
-                <div class="class-card">
-                    <h3>📖 中一 D 班</h3>
-                    <div class="class-stats">
-                        <span class="stat">人數：<strong>32人</strong></span>
-                        <span class="stat">老師：<strong>3位</strong></span>
-                        <span class="stat">組數：<strong>6組</strong></span>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="images/pavilion-bw.jpg" alt="涼亭">
                     </div>
                 </div>
             </div>
             
-            <div class="rules">
-                <h4>📋 分組規則</h4>
-                <ul>
-                    <li>每班 <strong>6 組</strong>，每組 5-6 人</li>
-                    <li>每班 3 位老師，每位老師負責 2 組</li>
-                    <li>組長需於出發時將電話交給負責老師</li>
-                    <li>其餘電話會收起，放於校務處</li>
-                </ul>
+            <!-- 數學科 -->
+            <div class="subject-section">
+                <div class="subject-title">
+                    <span>🔢</span>
+                    <span>數學科</span>
+                </div>
+                <div class="subject-content">
+                    <div class="subject-item">
+                        <h4>地點</h4>
+                        <p>蜻蜓池 + 館</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>活動</h4>
+                        <p>實地量度</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>活動</h4>
+                        <p>統計圖像閱讀</p>
+                    </div>
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="images/math/dragonfly.jpg" alt="蜻蜓池">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/math/pavilion.jpg" alt="數學活動">
+                    </div>
+                </div>
+            </div>
+            
+            <!-- 科學科 -->
+            <div class="subject-section">
+                <div class="subject-title">
+                    <span>🔬</span>
+                    <span>科學科</span>
+                </div>
+                <div class="subject-content">
+                    <div class="subject-item">
+                        <h4>地點</h4>
+                        <p>昆蟲館 + 果園</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>活動</h4>
+                        <p>昆蟲分類工作紙</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>活動</h4>
+                        <p>手機記錄植物與蝴蝶</p>
+                    </div>
+                </div>
+                <div class="photo-grid">
+                    <div class="photo-item">
+                        <img src="images/science-insect1.jpg" alt="昆蟲館">
+                    </div>
+                    <div class="photo-item">
+                        <img src="images/science-insect2.jpg" alt="昆蟲標本">
+                    </div>
+                </div>
             </div>
         </div>
         
+        <!-- 集合地點 -->
         <div class="section">
-            <h2>📍 目的地</h2>
-            <div class="info-grid">
-                <div class="info-item">
-                    <h4>地點</h4>
+            <h2>📍 集合地點</h2>
+            <div class="location-grid">
+                <div class="location-card">
+                    <h4>學校集合</h4>
+                    <p>課室</p>
+                </div>
+                <div class="location-card">
+                    <h4>中心集合</h4>
+                    <p>涼亭</p>
+                </div>
+                <div class="location-card">
+                    <h4>活動地點</h4>
                     <p>獅子會自然教育中心</p>
                 </div>
-                <div class="info-item">
+                <div class="location-card">
                     <h4>地址</h4>
                     <p>西貢巴士總站對面</p>
                 </div>
-                <div class="info-item">
-                    <h4>開放時間</h4>
-                    <p>09:30 - 16:30</p>
-                </div>
-                <div class="info-item">
-                    <h4>查詢電話</h4>
-                    <p>2792 2234</p>
-                </div>
-            </div>
-            <div style="margin-top: 20px; text-align: center;">
-                <img src="images/map.jpg" alt="獅子會自然教育中心地圖" style="max-width: 100%; border-radius: 15px; box-shadow: 0 5px 20px rgba(0,0,0,0.1);">
             </div>
         </div>
         
+        <!-- 路線圖 -->
         <div class="section">
-            <h2>🏫 活動安排</h2>
-            <p style="color: #666; text-align: center; padding: 20px;">
-                活動內容正在更新中...
-            </p>
+            <h2>🗺️ 路線圖</h2>
+            <p style="margin-bottom: 15px;">各班路線安排</p>
+            <div class="info-item" style="text-align: center;">
+                <p><a href="1A1B1C1D路線圖---924627c1-6802-4ee4-8f16-7dba911365ab.docx" download style="color: var(--primary); font-weight: bold;">📥 下載路線圖 (DOCX)</a></p>
+            </div>
+        </div>
+        
+        <!-- 老師版連結 -->
+        <div style="text-align: center;">
+            <a href="teacher-login.html" class="teacher-link">👩‍🏫 老師版</a>
         </div>
     </div>
     
-    <footer>
+    <div style="text-align: center; padding: 20px; color: white;">
         <p>🎓 靈風中學 全方位學習日 2026</p>
-        <p class="credit">Made with 💙 by AI Assistant</p>
-    </footer>
+        <p style="font-size: 0.9rem; opacity: 0.8;">Made with 💙 by AI Assistant</p>
+    </div>
 </body>
 </html>
