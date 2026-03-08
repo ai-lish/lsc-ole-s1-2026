@@ -314,43 +314,118 @@
         <!-- 活動前 -->
         <div class="tab-content active" id="pre">
             <div class="section">
-                <h2>📋 活動前准备</h2>
+                <h2>📅 統籌委員會</h2>
+                <p style="background: white; padding: 15px; border-radius: 10px; margin-bottom: 15px;">Kennis 老師、Winsome Sir、少康老師、慧敏老師</p>
                 
-                <h3 style="color: var(--dark); margin-bottom: 15px;">备课要点</h3>
-                <ul class="task-list">
-                    <li>
-                        <span class="task-icon">✅</span>
-                        <div>確認學生參加名单，包括特殊需要學生</div>
-                    </li>
-                    <li>
-                        <span class="task-icon">✅</span>
-                        <div>分组安排 (每组8-10人)</div>
-                    </li>
-                    <li>
-                        <span class="task-icon">✅</span>
-                        <div>准备课堂 briefing 内容</div>
-                    </li>
-                    <li>
-                        <span class="task-icon">✅</span>
-                        <div>向學生讲解活動流程及注意事项</div>
-                    </li>
-                    <li>
-                        <span class="task-icon">✅</span>
-                        <div>收集家长同意书</div>
-                    </li>
-                </ul>
-            </div>
-            
-            <div class="section">
-                <h2>📅 筹备时间表</h2>
+                <h2>📅 籌備時間表</h2>
                 <table class="time-table">
                     <thead>
                         <tr>
-                            <th>时间</th>
-                            <th>工作</th>
+                            <th>工作項目</th>
+                            <th>完成日期</th>
+                            <th>負責人</th>
+                            <th>備註</th>
                         </tr>
                     </thead>
                     <tbody>
+                        <tr>
+                            <td>場地視察</td>
+                            <td>3月5日（四）</td>
+                            <td>Kennis 老師、Winsome Sir</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>各科工作紙製作</td>
+                            <td>3月18日（三）</td>
+                            <td>數學科：少康老師<br>中文科：伴珠老師<br>科學科：慧敏老師</td>
+                            <td><button onclick="showAppendix('app1')" style="background: var(--primary); color: white; border: none; padding: 5px 12px; border-radius: 15px; cursor: pointer;">附錄一</button></td>
+                        </tr>
+                        <tr>
+                            <td>工作紙印刷</td>
+                            <td>3月20日（五）</td>
+                            <td>Kennis 老師</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>學生分組</td>
+                            <td>3月18日（三）</td>
+                            <td>Kennis 老師</td>
+                            <td><button onclick="showAppendix('app2')" style="background: var(--primary); color: white; border: none; padding: 5px 12px; border-radius: 15px; cursor: pointer;">附錄二</button></td>
+                        </tr>
+                        <tr>
+                            <td>同工分組及跟車名單</td>
+                            <td>3月20日（五）</td>
+                            <td>Kennis 老師</td>
+                            <td></td>
+                        </tr>
+                        <tr>
+                            <td>老師簡介會</td>
+                            <td>3月23日（一）</td>
+                            <td>有關帶隊老師</td>
+                            <td><button onclick="showAppendix('app3')" style="background: var(--primary); color: white; border: none; padding: 5px 12px; border-radius: 15px; cursor: pointer;">附錄三</button></td>
+                        </tr>
+                        <tr>
+                            <td>禮物</td>
+                            <td>3月25日（三）</td>
+                            <td>少康老師</td>
+                            <td></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+            
+            <div id="app1" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;">
+                <div style="background:white;max-width:500px;margin:50px auto;padding:30px;border-radius:15px;max-height:80vh;overflow-y:auto;">
+                    <h2 style="color:var(--primary);margin-bottom:15px;">附錄一：各科活動地點</h2>
+                    <h3 style="margin:15px 0 10px;">數學科</h3>
+                    <ul style="line-height:2;margin-left:20px;">
+                        <li>蜻蜓池（測量、估算）</li>
+                        <li>漁館（統計）</li>
+                    </ul>
+                    <h3 style="margin:15px 0 10px;">中文科</h3>
+                    <ul style="line-height:2;margin-left:20px;">
+                        <li>景物描寫</li>
+                    </ul>
+                    <h3 style="margin:15px 0 10px;">科學科</h3>
+                    <ul style="line-height:2;margin-left:20px;">
+                        <li>美果園（有花植物及蝴蝶）</li>
+                        <li>昆蟲館（昆蟲分類）</li>
+                    </ul>
+                    <h3 style="margin:15px 0 10px;">其他互動區</h3>
+                    <ul style="line-height:2;margin-left:20px;">
+                        <li>農館、香港地質公園館</li>
+                    </ul>
+                    <button onclick="document.getElementById('app1').style.display='none'" style="margin-top:20px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:20px;cursor:pointer;">關閉</button>
+                </div>
+            </div>
+            
+            <div id="app2" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;">
+                <div style="background:white;max-width:500px;margin:50px auto;padding:30px;border-radius:15px;">
+                    <h2 style="color:var(--primary);margin-bottom:15px;">附錄二：學生分組</h2>
+                    <ul style="line-height:2;margin-left:20px;">
+                        <li>每班6組，每組5-6位學生</li>
+                        <li>每組1位學生負責利用自己的手提電話完成工作</li>
+                        <li>班主任負責分組工作</li>
+                    </ul>
+                    <button onclick="document.getElementById('app2').style.display='none'" style="margin-top:20px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:20px;cursor:pointer;">關閉</button>
+                </div>
+            </div>
+            
+            <div id="app3" style="display:none;position:fixed;top:0;left:0;width:100%;height:100%;background:rgba(0,0,0,0.5);z-index:1000;">
+                <div style="background:white;max-width:500px;margin:50px auto;padding:30px;border-radius:15px;max-height:80vh;overflow-y:auto;">
+                    <h2 style="color:var(--primary);margin-bottom:15px;">附錄三：帶隊老師須知</h2>
+                    <ol style="line-height:2;margin-left:20px;">
+                        <li>時間控制：每個活動地點約15分鐘</li>
+                        <li>學生安全：留意天氣、場地安全</li>
+                        <li>物資管理：分發及收回工作紙</li>
+                        <li>拍照記錄：拍攝活動花絮</li>
+                        <li>中央支援或集合地點：貝殼館外的涼亭</li>
+                        <li>總負責老師：佩雯老師</li>
+                    </ol>
+                    <p style="margin-top:15px;padding:10px;background:#fff3cd;border-radius:8px;"><strong>注意：</strong>如遇上天雨關係而未能進行戶外活動，此活動地點的工作可取消，屆時將另行通知。</p>
+                    <button onclick="document.getElementById('app3').style.display='none'" style="margin-top:20px;padding:10px 20px;background:var(--primary);color:white;border:none;border-radius:20px;cursor:pointer;">關閉</button>
+                </div>
+            </div>
                         <tr>
                             <td class="time">活動前 2 週</td>
                             <td>發出家長通告</td>
