@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>🎓 全方位學習日 2026 - 靈風中學</title>
+    <title>🎓 大自然之旅 2026 - 靈風中學</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -162,33 +162,7 @@
             font-weight: 600;
         }
         
-        /* Location Info */
-        .location-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .location-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--secondary);
-        }
-        
-        .location-card h4 {
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 5px;
-        }
-        
-        .location-card p {
-            font-size: 1.1rem;
-            font-weight: bold;
-        }
-        
-        /* Image */
+        /* Photo */
         .photo-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
@@ -205,6 +179,7 @@
             width: 100%;
             height: 120px;
             object-fit: cover;
+            cursor: pointer;
         }
         
         /* Teacher Link */
@@ -243,11 +218,25 @@
             background: rgba(255,255,255,0.2);
             color: white;
         }
+        
+        /* Notice Box */
+        .notice-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+            border-left: 5px solid var(--secondary);
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+        
+        .notice-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+        }
     </style>
 </head>
 <body>
     <div class="hero">
-        <h1>🎓 全方位學習日 2026</h1>
+        <h1>🌿 大自然之旅 2026</h1>
         <p class="subtitle">靈風中學 | 多元體驗 · 探索學習</p>
         
         <div class="mode-toggle">
@@ -259,36 +248,46 @@
     <div class="container">
         <!-- 基本資料 -->
         <div class="section">
-            <h2>📅 基本資料</h2>
+            <h2>📋 基本資料</h2>
             <div class="info-grid">
                 <div class="info-item">
-                    <h4>學生返校時間</h4>
-                    <p>8:45</p>
+                    <h4>活動名稱</h4>
+                    <p>大自然之旅</p>
                 </div>
                 <div class="info-item">
-                    <h4>出發時間</h4>
-                    <p>9:00</p>
+                    <h4>活動地點</h4>
+                    <p>西貢蕉坑獅子會自然教育中心</p>
                 </div>
                 <div class="info-item">
-                    <h4>到達時間</h4>
-                    <p>9:30 - 9:45</p>
+                    <h4>對象</h4>
+                    <p>中一級學生</p>
                 </div>
                 <div class="info-item">
-                    <h4>回程集合</h4>
-                    <p>11:30</p>
+                    <h4>日期</h4>
+                    <p>2026年3月26日（星期四）</p>
                 </div>
                 <div class="info-item">
-                    <h4>開車返校</h4>
-                    <p>11:45</p>
+                    <h4>學生上學時間</h4>
+                    <p>08:30-12:30</p>
                 </div>
                 <div class="info-item">
-                    <h4>解散時間</h4>
-                    <p>12:30</p>
+                    <h4>預期活動時間</h4>
+                    <p>09:45-11:15</p>
                 </div>
+            </div>
+            
+            <div class="notice-box">
+                <div class="notice-title">📝 活動目標</div>
+                <p>透過體驗式學習，從課堂外的環境及經歷學習更多生活化的書本知識</p>
+            </div>
+            
+            <div class="notice-box">
+                <div class="notice-title">⚠️ 注意</div>
+                <p>穿整齊運動服。帶文具、背囊、水。</p>
             </div>
         </div>
         
-        <!-- 時間安排表格 -->
+        <!-- 時間安排 -->
         <div class="section">
             <h2>⏱️ 時間安排</h2>
             <table class="time-table">
@@ -300,28 +299,24 @@
                 </thead>
                 <tbody>
                     <tr>
-                        <td class="time">08:45</td>
-                        <td>學生返校，課室集合</td>
+                        <td class="time">08:30</td>
+                        <td>學生回校，課室集合</td>
                     </tr>
                     <tr>
                         <td class="time">09:00</td>
                         <td>出發</td>
                     </tr>
                     <tr>
-                        <td class="time">09:30 - 09:45</td>
-                        <td>到達獅子會自然教育中心</td>
+                        <td class="time">09:45</td>
+                        <td>到達中心</td>
                     </tr>
                     <tr>
-                        <td class="time">09:45 - 11:15</td>
-                        <td>三科活動進行 (每科約20分鐘)</td>
+                        <td class="time">09:45-11:15</td>
+                        <td>4班按特定路線完成中文、數學、科學任務<br><a href="images/map.jpg" target="_blank" style="color: var(--primary); font-weight: bold;">🗺️ 點擊查看路線</a></td>
                     </tr>
                     <tr>
                         <td class="time">11:30</td>
                         <td>回程集合</td>
-                    </tr>
-                    <tr>
-                        <td class="time">11:45</td>
-                        <td>開車返校</td>
                     </tr>
                     <tr>
                         <td class="time">12:30</td>
@@ -344,20 +339,16 @@
                 <div class="subject-content">
                     <div class="subject-item">
                         <h4>地點</h4>
-                        <p>涼亭</p>
+                        <p>任何地點</p>
                     </div>
                     <div class="subject-item">
                         <h4>活動</h4>
                         <p>景物描寫工作紙</p>
                     </div>
-                    <div class="subject-item">
-                        <h4>額外</h4>
-                        <p>果園觀察記錄</p>
-                    </div>
                 </div>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/pavilion-bw.jpg" onclick="window.open(this.src, '_blank')" style="cursor: pointer;"" alt="涼亭">
+                        <img src="images/pavilion-bw.jpg" onclick="window.open(this.src, '_blank')" alt="涼亭">
                     </div>
                 </div>
             </div>
@@ -371,11 +362,15 @@
                 <div class="subject-content">
                     <div class="subject-item">
                         <h4>地點</h4>
-                        <p>蜻蜓池 + 館</p>
+                        <p>蜻蜓池</p>
                     </div>
                     <div class="subject-item">
                         <h4>活動</h4>
                         <p>實地量度</p>
+                    </div>
+                    <div class="subject-item">
+                        <h4>地點</h4>
+                        <p>博物館</p>
                     </div>
                     <div class="subject-item">
                         <h4>活動</h4>
@@ -384,10 +379,10 @@
                 </div>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/math/dragonfly.jpg" alt="蜻蜓池" onclick="window.open(this.src, '_blank')" style="cursor: pointer;">
+                        <img src="images/math/dragonfly.jpg" onclick="window.open(this.src, '_blank')" alt="蜻蜓池">
                     </div>
                     <div class="photo-item">
-                        <img src="images/math/pavilion.jpg" onclick="window.open(this.src, '_blank')" style="cursor: pointer;" alt="數學活動">
+                        <img src="images/math/chart1.jpg" onclick="window.open(this.src, '_blank')" alt="統計圖">
                     </div>
                 </div>
             </div>
@@ -401,58 +396,20 @@
                 <div class="subject-content">
                     <div class="subject-item">
                         <h4>地點</h4>
-                        <p>昆蟲館 + 果園</p>
+                        <p>昆蟲館</p>
                     </div>
                     <div class="subject-item">
                         <h4>活動</h4>
                         <p>昆蟲分類工作紙</p>
                     </div>
-                    <div class="subject-item">
-                        <h4>活動</h4>
-                        <p>手機記錄植物與蝴蝶</p>
-                    </div>
                 </div>
                 <div class="photo-grid">
                     <div class="photo-item">
-                        <img src="images/science-insect1.jpg" alt="昆蟲館" onclick="window.open(this.src, '_blank')" style="cursor: pointer;">
+                        <img src="images/science-insect1.jpg" onclick="window.open(this.src, '_blank')" alt="昆蟲館">
                     </div>
                     <div class="photo-item">
-                        <img src="images/science-insect2.jpg" alt="昆蟲標本" onclick="window.open(this.src, '_blank')" style="cursor: pointer;">
+                        <img src="images/science-insect2.jpg" onclick="window.open(this.src, '_blank')" alt="昆蟲標本">
                     </div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 集合地點 -->
-        <div class="section">
-            <h2>📍 集合地點</h2>
-            <div class="location-grid">
-                <div class="location-card">
-                    <h4>學校集合</h4>
-                    <p>課室</p>
-                </div>
-                <div class="location-card">
-                    <h4>中心集合</h4>
-                    <p>涼亭</p>
-                </div>
-                <div class="location-card">
-                    <h4>活動地點</h4>
-                    <p>獅子會自然教育中心</p>
-                </div>
-                <div class="location-card">
-                    <h4>地址</h4>
-                    <p>西貢巴士總站對面</p>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 路線圖 -->
-        <div class="section">
-            <h2>🗺️ 路線圖</h2>
-            <p style="margin-bottom: 15px;">點擊查看各班路線</p>
-            <div class="photo-grid">
-                <div class="photo-item" style="cursor: pointer;" onclick="window.open('images/map.jpg', '_blank')">
-                    <img src="images/map.jpg" alt="路線圖" style="height: 150px;">
                 </div>
             </div>
         </div>
@@ -464,7 +421,7 @@
     </div>
     
     <div style="text-align: center; padding: 20px; color: white;">
-        <p>🎓 靈風中學 全方位學習日 2026</p>
+        <p>🌿 靈風中學 大自然之旅 2026</p>
         <p style="font-size: 0.9rem; opacity: 0.8;">Made with 💙 by AI Assistant</p>
     </div>
 </body>
