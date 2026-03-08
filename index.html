@@ -184,6 +184,226 @@
             cursor: pointer;
         }
         
+        /* 互動路線圖 */
+        .route-map {
+            position: relative;
+            padding: 20px;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+            border-radius: 15px;
+            margin-top: 20px;
+        }
+        
+        .route-map h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .route-stops {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .route-stop {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .route-stop:hover {
+            transform: translateY(-3px);
+            border-color: var(--primary);
+            box-shadow: 0 4px 15px rgba(74, 144, 226, 0.3);
+        }
+        
+        .route-stop.active {
+            border-color: var(--success);
+            background: #e8f8f0;
+        }
+        
+        .route-stop-header {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-bottom: 8px;
+        }
+        
+        .stop-number {
+            width: 28px;
+            height: 28px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: bold;
+            font-size: 0.9rem;
+        }
+        
+        .stop-name {
+            font-weight: 600;
+            color: var(--dark);
+        }
+        
+        .route-stop-details {
+            display: none;
+            padding-top: 10px;
+            margin-top: 10px;
+            border-top: 1px solid #eee;
+        }
+        
+        .route-stop.active .route-stop-details {
+            display: block;
+        }
+        
+        .route-stop-details p {
+            font-size: 0.9rem;
+            color: #666;
+            margin-bottom: 5px;
+        }
+        
+        /* 家長下載區 */
+        .parent-downloads {
+            background: #fff3e0;
+            border-radius: 15px;
+            padding: 20px;
+            margin-top: 20px;
+        }
+        
+        .parent-downloads h3 {
+            color: var(--secondary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .download-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 12px;
+        }
+        
+        .download-item {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            padding: 12px 15px;
+            background: white;
+            border-radius: 10px;
+            text-decoration: none;
+            color: var(--dark);
+            transition: all 0.2s ease;
+        }
+        
+        .download-item:hover {
+            background: var(--primary);
+            color: white;
+            transform: translateX(5px);
+        }
+        
+        .download-icon {
+            font-size: 1.5rem;
+        }
+        
+        .download-info h4 {
+            font-size: 0.95rem;
+        }
+        
+        .download-info span {
+            font-size: 0.8rem;
+            opacity: 0.7;
+        }
+        
+        /* 老師帶隊名單 */
+        .teacher-team {
+            margin-top: 20px;
+        }
+        
+        .teacher-team h3 {
+            color: var(--primary);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        .teacher-search {
+            width: 100%;
+            padding: 12px 20px;
+            border: 2px solid #ddd;
+            border-radius: 25px;
+            font-size: 1rem;
+            margin-bottom: 15px;
+            transition: border-color 0.3s;
+        }
+        
+        .teacher-search:focus {
+            outline: none;
+            border-color: var(--primary);
+        }
+        
+        .teacher-list {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 15px;
+        }
+        
+        .teacher-card {
+            background: white;
+            border-radius: 12px;
+            padding: 15px;
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+        }
+        
+        .teacher-card-header {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            margin-bottom: 10px;
+        }
+        
+        .teacher-avatar {
+            width: 45px;
+            height: 45px;
+            background: var(--primary);
+            color: white;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+        
+        .teacher-name {
+            font-weight: 600;
+            font-size: 1.1rem;
+        }
+        
+        .teacher-group {
+            font-size: 0.85rem;
+            color: var(--secondary);
+            font-weight: 500;
+        }
+        
+        .teacher-details {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        .teacher-details p {
+            margin-bottom: 4px;
+        }
+        
         /* Teacher Link */
         .teacher-link {
             display: inline-block;
@@ -520,6 +740,185 @@
         <div style="text-align: center;">
             <a href="teacher.html" class="teacher-link">👩‍🏫 教師版</a>
         </div>
+        
+        <!-- 互動路線圖 -->
+        <div class="section">
+            <h2>🗺️ 互動路線圖</h2>
+            <p style="margin-bottom: 15px; color: #666;">點擊任何站點查看詳細資料</p>
+            <div class="route-map">
+                <div class="route-stops">
+                    <div class="route-stop" onclick="toggleStop(this)">
+                        <div class="route-stop-header">
+                            <span class="stop-number">1</span>
+                            <span class="stop-name">🌸 蝴蝶谷自然教育徑</span>
+                        </div>
+                        <div class="route-stop-details">
+                            <p><strong>時間：</strong>09:00 - 10:30</p>
+                            <p><strong>地點：</strong>西貢蝴蝶谷</p>
+                            <p><strong>活動：</strong>生態導賞、蝴蝶認識</p>
+                            <p><strong>注意事項：</strong>帶備防蚊液</p>
+                        </div>
+                    </div>
+                    <div class="route-stop" onclick="toggleStop(this)">
+                        <div class="route-stop-header">
+                            <span class="stop-number">2</span>
+                            <span class="stop-name">🏰 西貢海傍廣場</span>
+                        </div>
+                        <div class="route-stop-details">
+                            <p><strong>時間：</strong>11:00 - 12:00</p>
+                            <p><strong>地點：</strong>西貢市中心</p>
+                            <p><strong>活動：</strong>自由參觀、午餐</p>
+                            <p><strong>注意事項：</strong>自理午膳</p>
+                        </div>
+                    </div>
+                    <div class="route-stop" onclick="toggleStop(this)">
+                        <div class="route-stop-header">
+                            <span class="stop-number">3</span>
+                            <span class="stop-name">🦀 鯉魚門三家村</span>
+                        </div>
+                        <div class="route-stop-details">
+                            <p><strong>時間：</strong>13:30 - 15:00</p>
+                            <p><strong>地點：</strong>鯉魚門三家村</p>
+                            <p><strong>活動：</strong>本土文化導賞</p>
+                            <p><strong>注意事項：</strong>注意階梯</p>
+                        </div>
+                    </div>
+                    <div class="route-stop" onclick="toggleStop(this)">
+                        <div class="route-stop-header">
+                            <span class="stop-number">4</span>
+                            <span class="stop-name">🌊 調景嶺海濱長廊</span>
+                        </div>
+                        <div class="route-stop-details">
+                            <p><strong>時間：</strong>15:30 - 16:30</p>
+                            <p><strong>地點：</strong>調景嶺海濱</p>
+                            <p><strong>活動：</strong>團體遊戲、自由活動</p>
+                            <p><strong>注意事項：</strong>注意安全</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 家長下載區 -->
+        <div class="section">
+            <div class="parent-downloads">
+                <h3>📥 家長注意事項</h3>
+                <div class="download-list">
+                    <a href="全方位學習日_統籌工作指引---41cca334-b36a-4930-ae8b-3754bcb5f279.docx" class="download-item" download>
+                        <span class="download-icon">📄</span>
+                        <div class="download-info">
+                            <h4>統籌工作指引</h4>
+                            <span>DOCX • 最新版</span>
+                        </div>
+                    </a>
+                    <a href="math_worksheet.docx" class="download-item" download>
+                        <span class="download-icon">📊</span>
+                        <div class="download-info">
+                            <h4>數學工作紙</h4>
+                            <span>DOCX • 2026版</span>
+                        </div>
+                    </a>
+                    <a href="1A1B1B1D路線圖---41cca334-b36a-4930-ae8b-3754bcb5f279.docx" class="download-item" download>
+                        <span class="download-icon">🗺️</span>
+                        <div class="download-info">
+                            <h4>路線圖</h4>
+                            <span>DOCX • 1A1B1C1D</span>
+                        </div>
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 老師帶隊名單 -->
+        <div class="section">
+            <div class="teacher-team">
+                <h3>👥 老師帶隊名單</h3>
+                <input type="text" class="teacher-search" placeholder="🔍 搜尋老師姓名..." oninput="searchTeachers(this.value)">
+                <div class="teacher-list" id="teacherList">
+                    <div class="teacher-card" data-name="陳大明">
+                        <div class="teacher-card-header">
+                            <div class="teacher-avatar">陳</div>
+                            <div>
+                                <div class="teacher-name">陳大明老師</div>
+                                <div class="teacher-group">1A 带队</div>
+                            </div>
+                        </div>
+                        <div class="teacher-details">
+                            <p>📱 1234 5678</p>
+                            <p>🚗 負責交通安排</p>
+                        </div>
+                    </div>
+                    <div class="teacher-card" data-name="李美華">
+                        <div class="teacher-card-header">
+                            <div class="teacher-avatar">李</div>
+                            <div>
+                                <div class="teacher-name">李美華老師</div>
+                                <div class="teacher-group">1B 带队</div>
+                            </div>
+                        </div>
+                        <div class="teacher-details">
+                            <p>📱 2345 6789</p>
+                            <p>🏥 負責急救</p>
+                        </div>
+                    </div>
+                    <div class="teacher-card" data-name="張志偉">
+                        <div class="teacher-card-header">
+                            <div class="teacher-avatar">張</div>
+                            <div>
+                                <div class="teacher-name">張志偉老師</div>
+                                <div class="teacher-group">1C 带队</div>
+                            </div>
+                        </div>
+                        <div class="teacher-details">
+                            <p>📱 3456 7890</p>
+                            <p>📸 負責拍攝</p>
+                        </div>
+                    </div>
+                    <div class="teacher-card" data-name="王曉彤">
+                        <div class="teacher-card-header">
+                            <div class="teacher-avatar">王</div>
+                            <div>
+                                <div class="teacher-name">王曉彤老師</div>
+                                <div class="teacher-group">1D 带队</div>
+                            </div>
+                        </div>
+                        <div class="teacher-details">
+                            <p>📱 4567 8901</p>
+                            <p>🍱 負責膳食</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <script>
+        // 互動路線圖功能
+        function toggleStop(element) {
+            // 關閉其他打開的項目
+            document.querySelectorAll('.route-stop').forEach(stop => {
+                if (stop !== element) {
+                    stop.classList.remove('active');
+                }
+            });
+            // 切換當前項目
+            element.classList.toggle('active');
+        }
+        
+        // 老師搜尋功能
+        function searchTeachers(query) {
+            const cards = document.querySelectorAll('.teacher-card');
+            const lowerQuery = query.toLowerCase();
+            
+            cards.forEach(card => {
+                const name = card.getAttribute('data-name').toLowerCase();
+                if (name.includes(lowerQuery) || query === '') {
+                    card.style.display = 'block';
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+        }
+        </script>
     </div>
     
     <div style="text-align: center; padding: 20px; color: white;">
