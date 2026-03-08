@@ -248,7 +248,17 @@
         
         <div class="mode-toggle">
             <a href="index.html">👨‍🎓 首頁</a>
-            <a href="teacher.html" class="teacher">👩‍🏫 老師版</a>
+            <a href="javascript:void(0)" onclick="checkTeacherPassword()" class="teacher">👩‍🏫 老師版</a>
+    <script>
+    function checkTeacherPassword() {
+        var pwd = prompt("請輸入老師版密碼:");
+        if (pwd === "lsc2026") {
+            window.location.href = "teacher.html";
+        } else if (pwd) {
+            alert("密碼錯誤！");
+        }
+    }
+    </script>
         </div>
     </div>
     
