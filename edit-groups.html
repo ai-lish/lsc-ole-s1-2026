@@ -53,7 +53,7 @@
         }
         
         .container {
-            max-width: 800px;
+            max-width: 900px;
             margin: 0 auto;
             padding: 40px 20px;
         }
@@ -70,10 +70,10 @@
             display: flex;
             justify-content: space-between;
             align-items: center;
-            cursor: pointer;
-            padding: 10px;
+            padding: 15px;
             background: var(--light);
             border-radius: 10px;
+            margin-bottom: 15px;
         }
         
         .class-header h3 {
@@ -149,19 +149,13 @@
         
         .edit-col textarea {
             width: 100%;
-            height: 200px;
+            height: 180px;
             padding: 10px;
             border: 1px solid #ddd;
             border-radius: 8px;
             font-family: inherit;
             font-size: 0.85rem;
             resize: vertical;
-        }
-        
-        .placeholder {
-            color: #999;
-            font-size: 0.8rem;
-            white-space: pre-line;
         }
     </style>
 </head>
@@ -174,206 +168,206 @@
     <div class="container">
         <!-- 1A -->
         <div class="class-section">
-            <details>
-                <summary class="class-header">
-                    <h3>📖 1A (33人)</h3>
-                </summary>
-                <div style="text-align:right;margin-bottom:10px;">
-                    <button class="edit-btn" onclick="toggleEdit('1A')">🖊️ 編輯</button>
-                </div>
-                
-                <div class="view-mode" id="view-1A">
-                    <table class="class-table">
-                        <tr>
-                            <th style="width:60px;">組別</th>
-                            <th>同學名單</th>
-                            <th style="width:100px;">負責老師</th>
-                        </tr>
-                        <tr><td>1</td><td class="student-cell" data-group="1A-1">待更新</td><td class="teacher-cell" data-group="1A-1-2" rowspan="2">待更新</td></tr>
-                        <tr><td>2</td><td class="student-cell" data-group="1A-2"></td></tr>
-                        <tr><td>3</td><td class="student-cell" data-group="1A-3"></td><td class="teacher-cell" data-group="1A-3-4" rowspan="2">待更新</td></tr>
-                        <tr><td>4</td><td class="student-cell" data-group="1A-4"></td></tr>
-                        <tr><td>5</td><td class="student-cell" data-group="1A-5"></td><td class="teacher-cell" data-group="1A-5-6" rowspan="2">待更新</td></tr>
-                        <tr><td>6</td><td class="student-cell" data-group="1A-6"></td></tr>
-                    </table>
-                </div>
-                
-                <div class="edit-mode" id="edit-1A">
-                    <div class="edit-container">
-                        <div class="edit-col">
-                            <h4>👨‍🎓 學生名單 (每行一組)</h4>
-                            <textarea id="students-1A" placeholder="組1: 同學1, 同學2, 同學3
-組2: 同學4, 同學5
-組3: 同學6, 同學7
-組4: 
-組5: 
-組6: "></textarea>
-                        </div>
-                        <div class="edit-col">
-                            <h4>👩‍🏫 負責老師 (每2組一位)</h4>
-                            <textarea id="teachers-1A" placeholder="組1-2: 老師A
-組3-4: 老師B
-組5-6: 老師C"></textarea>
-                        </div>
+            <div class="class-header">
+                <h3>📖 1A (33人)</h3>
+                <button class="edit-btn" onclick="toggleEdit('1A')">🖊️ 編輯</button>
+            </div>
+            
+            <div class="view-mode" id="view-1A">
+                <table class="class-table">
+                    <tr>
+                        <th style="width:60px;">組別</th>
+                        <th>同學名單</th>
+                        <th style="width:100px;">負責老師</th>
+                    </tr>
+                    <tr><td>1</td><td class="student-cell" data-group="1A-1">待更新</td><td class="teacher-cell" data-group="1A-1-2" rowspan="2">待更新</td></tr>
+                    <tr><td>2</td><td class="student-cell" data-group="1A-2"></td></tr>
+                    <tr><td>3</td><td class="student-cell" data-group="1A-3"></td><td class="teacher-cell" data-group="1A-3-4" rowspan="2">></tr>
+                    <tr><td待更新</td>4</td><td class="student-cell" data-group="1A-4"></td></tr>
+                    <tr><td>5</td><td class="student-cell" data-group="1A-5"></td><td class="teacher-cell" data-group="1A-5-6" rowspan="2">待更新</td></tr>
+                    <tr><td>6</td><td class="student-cell"A-6"> data-group="1</td></tr>
+                </table>
+            </div>
+            
+            <div class="edit-mode" id="edit-1A">
+                <div class="edit-container">
+                    <div class="edit-col">
+                        <h4>👨‍🎓 學生名單</h4>
+                        <textarea id="students-1A" placeholder="可由Excel貼上
+
+第1行: 第1組同學
+第2行: 第2組同學
+第3行: 第3組同學
+第4行: 第4組同學
+第5行: 第5組同學
+第6行: 第6組同學"></textarea>
                     </div>
-                    <div style="text-align:center;margin-top:15px;">
-                        <button class="save-btn" onclick="saveEdit('1A')">💾 儲存</button>
+                    <div class="edit-col">
+                        <h4>👩‍🏫 負責老師</h4>
+                        <textarea id="teachers-1A" placeholder="可由Excel貼上
+
+第1行: 1-2組老師
+第2行: 3-4組老師
+第3行: 5-6組老師"></textarea>
                     </div>
                 </div>
-            </details>
+                <div style="text-align:center;margin-top:15px;">
+                    <button class="save-btn" onclick="saveEdit('1A')">💾 儲存</button>
+                </div>
+            </div>
         </div>
         
         <!-- 1B -->
         <div class="class-section">
-            <details>
-                <summary class="class-header">
-                    <h3>📖 1B (32人)</h3>
-                </summary>
-                <div style="text-align:right;margin-bottom:10px;">
-                    <button class="edit-btn" onclick="toggleEdit('1B')">🖊️ 編輯</button>
-                </div>
-                
-                <div class="view-mode" id="view-1B">
-                    <table class="class-table">
-                        <tr>
-                            <th style="width:60px;">組別</th>
-                            <th>同學名單</th>
-                            <th style="width:100px;">負責老師</th>
-                        </tr>
-                        <tr><td>1</td><td class="student-cell" data-group="1B-1">待更新</td><td class="teacher-cell" data-group="1B-1-2" rowspan="2">待更新</td></tr>
-                        <tr><td>2</td><td class="student-cell" data-group="1B-2"></td></tr>
-                        <tr><td>3</td><td class="student-cell" data-group="1B-3"></td><td class="teacher-cell" data-group="1B-3-4" rowspan="2">待更新</td></tr>
-                        <tr><td>4</td><td class="student-cell" data-group="1B-4"></td></tr>
-                        <tr><td>5</td><td class="student-cell" data-group="1B-5"></td><td class="teacher-cell" data-group="1B-5-6" rowspan="2">待更新</td></tr>
-                        <tr><td>6</td><td class="student-cell" data-group="1B-6"></td></tr>
-                    </table>
-                </div>
-                
-                <div class="edit-mode" id="edit-1B">
-                    <div class="edit-container">
-                        <div class="edit-col">
-                            <h4>👨‍🎓 學生名單 (每行一組)</h4>
-                            <textarea id="students-1B" placeholder="組1: 同學1, 同學2
-組2: 同學3, 同學4
-組3: 同學5, 同學6
-組4: 
-組5: 
-組6: "></textarea>
-                        </div>
-                        <div class="edit-col">
-                            <h4>👩‍🏫 負責老師 (每2組一位)</h4>
-                            <textarea id="teachers-1B" placeholder="組1-2: 老師A
-組3-4: 老師B
-組5-6: 老師C"></textarea>
-                        </div>
+            <div class="class-header">
+                <h3>📖 1B (32人)</h3>
+                <button class="edit-btn" onclick="toggleEdit('1B')">🖊️ 編輯</button>
+            </div>
+            
+            <div class="view-mode" id="view-1B">
+                <table class="class-table">
+                    <tr>
+                        <th style="width:60px;">組別</th>
+                        <th>同學名單</th>
+                        <th style="width:100px;">負責老師</th>
+                    </tr>
+                    <tr><td>1</td><td class="student-cell" data-group="1B-1">待更新</td><td class="teacher-cell" data-group="1B-1-2" rowspan="2">待更新</td></tr>
+                    <tr><td>2</td><td class="student-cell" data-group="1B-2"></td></tr>
+                    <tr><td>3</td><td class="student-cell" data-group="1B-3"></td><td class="teacher-cell" data-group="1B-3-4" rowspan="2">待更新</td></tr>
+                    <tr><td>4</td><td class="student-cell" data-group="1B-4"></td></tr>
+                    <tr><td>5</td><td class="student-cell" data-group="1B-5"></td><td class="teacher-cell" data-group="1B-5-6" rowspan="2">待更新</td></tr>
+                    <tr><td>6</td><td class="student-cell" data-group="1B-6"></td></tr>
+                </table>
+            </div>
+            
+            <div class="edit-mode" id="edit-1B">
+                <div class="edit-container">
+                    <div class="edit-col">
+                        <h4>👨‍🎓 學生名單</h4>
+                        <textarea id="students-1B" placeholder="可由Excel貼上
+
+第1行: 第1組同學
+第2行: 第2組同學
+第3行: 第3組同學
+第4行: 第4組同學
+第5行: 第5組同學
+第6行: 第6組同學"></textarea>
                     </div>
-                    <div style="text-align:center;margin-top:15px;">
-                        <button class="save-btn" onclick="saveEdit('1B')">💾 儲存</button>
+                    <div class="edit-col">
+                        <h4>👩‍🏫 負責老師</h4>
+                        <textarea id="teachers-1B" placeholder="可由Excel貼上
+
+第1行: 1-2組老師
+第2行: 3-4組老師
+第3行: 5-6組老師"></textarea>
                     </div>
                 </div>
-            </details>
+                <div style="text-align:center;margin-top:15px;">
+                    <button class="save-btn" onclick="saveEdit('1B')">💾 儲存</button>
+                </div>
+            </div>
         </div>
         
         <!-- 1C -->
         <div class="class-section">
-            <details>
-                <summary class="class-header">
-                    <h3>📖 1C (31人)</h3>
-                </summary>
-                <div style="text-align:right;margin-bottom:10px;">
-                    <button class="edit-btn" onclick="toggleEdit('1C')">🖊️ 編輯</button>
-                </div>
-                
-                <div class="view-mode" id="view-1C">
-                    <table class="class-table">
-                        <tr>
-                            <th style="width:60px;">組別</th>
-                            <th>同學名單</th>
-                            <th style="width:100px;">負責老師</th>
-                        </tr>
-                        <tr><td>1</td><td class="student-cell" data-group="1C-1">待更新</td><td class="teacher-cell" data-group="1C-1-2" rowspan="2">待更新</td></tr>
-                        <tr><td>2</td><td class="student-cell" data-group="1C-2"></td></tr>
-                        <tr><td>3</td><td class="student-cell" data-group="1C-3"></td><td class="teacher-cell" data-group="1C-3-4" rowspan="2">待更新</td></tr>
-                        <tr><td>4</td><td class="student-cell" data-group="1C-4"></td></tr>
-                        <tr><td>5</td><td class="student-cell" data-group="1C-5"></td><td class="teacher-cell" data-group="1C-5-6" rowspan="2">待更新</td></tr>
-                        <tr><td>6</td><td class="student-cell" data-group="1C-6"></td></tr>
-                    </table>
-                </div>
-                
-                <div class="edit-mode" id="edit-1C">
-                    <div class="edit-container">
-                        <div class="edit-col">
-                            <h4>👨‍🎓 學生名單 (每行一組)</h4>
-                            <textarea id="students-1C" placeholder="組1: 同學1, 同學2
-組2: 同學3, 同學4
-組3: 同學5, 同學6
-組4: 
-組5: 
-組6: "></textarea>
-                        </div>
-                        <div class="edit-col">
-                            <h4>👩‍🏫 負責老師 (每2組一位)</h4>
-                            <textarea id="teachers-1C" placeholder="組1-2: 老師A
-組3-4: 老師B
-組5-6: 老師C"></textarea>
-                        </div>
+            <div class="class-header">
+                <h3>📖 1C (31人)</h3>
+                <button class="edit-btn" onclick="toggleEdit('1C')">🖊️ 編輯</button>
+            </div>
+            
+            <div class="view-mode" id="view-1C">
+                <table class="class-table">
+                    <tr>
+                        <th style="width:60px;">組別</th>
+                        <th>同學名單</th>
+                        <th style="width:100px;">負責老師</th>
+                    </tr>
+                    <tr><td>1</td><td class="student-cell" data-group="1C-1">待更新</td><td class="teacher-cell" data-group="1C-1-2" rowspan="2">待更新</td></tr>
+                    <tr><td>2</td><td class="student-cell" data-group="1C-2"></td></tr>
+                    <tr><td>3</td><td class="student-cell" data-group="1C-3"></td><td class="teacher-cell" data-group="1C-3-4" rowspan="2">待更新</td></tr>
+                    <tr><td>4</td><td class="student-cell" data-group="1C-4"></td></tr>
+                    <tr><td>5</td><td class="student-cell" data-group="1C-5"></td><td class="teacher-cell" data-group="1C-5-6" rowspan="2">待更新</td></tr>
+                    <tr><td>6</td><td class="student-cell" data-group="1C-6"></td></tr>
+                </table>
+            </div>
+            
+            <div class="edit-mode" id="edit-1C">
+                <div class="edit-container">
+                    <div class="edit-col">
+                        <h4>👨‍🎓 學生名單</h4>
+                        <textarea id="students-1C" placeholder="可由Excel貼上
+
+第1行: 第1組同學
+第2行: 第2組同學
+第3行: 第3組同學
+第4行: 第4組同學
+第5行: 第5組同學
+第6行: 第6組同學"></textarea>
                     </div>
-                    <div style="text-align:center;margin-top:15px;">
-                        <button class="save-btn" onclick="saveEdit('1C')">💾 儲存</button>
+                    <div class="edit-col">
+                        <h4>👩‍🏫 負責老師</h4>
+                        <textarea id="teachers-1C" placeholder="可由Excel貼上
+
+第1行: 1-2組老師
+第2行: 3-4組老師
+第3行: 5-6組老師"></textarea>
                     </div>
                 </div>
-            </details>
+                <div style="text-align:center;margin-top:15px;">
+                    <button class="save-btn" onclick="saveEdit('1C')">💾 儲存</button>
+                </div>
+            </div>
         </div>
         
         <!-- 1D -->
         <div class="class-section">
-            <details>
-                <summary class="class-header">
-                    <h3>📖 1D (32人)</h3>
-                </summary>
-                <div style="text-align:right;margin-bottom:10px;">
-                    <button class="edit-btn" onclick="toggleEdit('1D')">🖊️ 編輯</button>
-                </div>
-                
-                <div class="view-mode" id="view-1D">
-                    <table class="class-table">
-                        <tr>
-                            <th style="width:60px;">組別</th>
-                            <th>同學名單</th>
-                            <th style="width:100px;">負責老師</th>
-                        </tr>
-                        <tr><td>1</td><td class="student-cell" data-group="1D-1">待更新</td><td class="teacher-cell" data-group="1D-1-2" rowspan="2">待更新</td></tr>
-                        <tr><td>2</td><td class="student-cell" data-group="1D-2"></td></tr>
-                        <tr><td>3</td><td class="student-cell" data-group="1D-3"></td><td class="teacher-cell" data-group="1D-3-4" rowspan="2">待更新</td></tr>
-                        <tr><td>4</td><td class="student-cell" data-group="1D-4"></td></tr>
-                        <tr><td>5</td><td class="student-cell" data-group="1D-5"></td><td class="teacher-cell" data-group="1D-5-6" rowspan="2">待更新</td></tr>
-                        <tr><td>6</td><td class="student-cell" data-group="1D-6"></td></tr>
-                    </table>
-                </div>
-                
-                <div class="edit-mode" id="edit-1D">
-                    <div class="edit-container">
-                        <div class="edit-col">
-                            <h4>👨‍🎓 學生名單 (每行一組)</h4>
-                            <textarea id="students-1D" placeholder="組1: 同學1, 同學2
-組2: 同學3, 同學4
-組3: 同學5, 同學6
-組4: 
-組5: 
-組6: "></textarea>
-                        </div>
-                        <div class="edit-col">
-                            <h4>👩‍🏫 負責老師 (每2組一位)</h4>
-                            <textarea id="teachers-1D" placeholder="組1-2: 老師A
-組3-4: 老師B
-組5-6: 老師C"></textarea>
-                        </div>
+            <div class="class-header">
+                <h3>📖 1D (32人)</h3>
+                <button class="edit-btn" onclick="toggleEdit('1D')">🖊️ 編輯</button>
+            </div>
+            
+            <div class="view-mode" id="view-1D">
+                <table class="class-table">
+                    <tr>
+                        <th style="width:60px;">組別</th>
+                        <th>同學名單</th>
+                        <th style="width:100px;">負責老師</th>
+                    </tr>
+                    <tr><td>1</td><td class="student-cell" data-group="1D-1">待更新</td><td class="teacher-cell" data-group="1D-1-2" rowspan="2">待更新</td></tr>
+                    <tr><td>2</td><td class="student-cell" data-group="1D-2"></td></tr>
+                    <tr><td>3</td><td class="student-cell" data-group="1D-3"></td><td class="teacher-cell" data-group="1D-3-4" rowspan="2">待更新</td></tr>
+                    <tr><td>4</td><td class="student-cell" data-group="1D-4"></td></tr>
+                    <tr><td>5</td><td class="student-cell" data-group="1D-5"></td><td class="teacher-cell" data-group="1D-5-6" rowspan="2">待更新</td></tr>
+                    <tr><td>6</td><td class="student-cell" data-group="1D-6"></td></tr>
+                </table>
+            </div>
+            
+            <div class="edit-mode" id="edit-1D">
+                <div class="edit-container">
+                    <div class="edit-col">
+                        <h4>👨‍🎓 學生名單</h4>
+                        <textarea id="students-1D" placeholder="可由Excel貼上
+
+第1行: 第1組同學
+第2行: 第2組同學
+第3行: 第3組同學
+第4行: 第4組同學
+第5行: 第5組同學
+第6行: 第6組同學"></textarea>
                     </div>
-                    <div style="text-align:center;margin-top:15px;">
-                        <button class="save-btn" onclick="saveEdit('1D')">💾 儲存</button>
+                    <div class="edit-col">
+                        <h4>👩‍🏫 負責老師</h4>
+                        <textarea id="teachers-1D" placeholder="可由Excel貼上
+
+第1行: 1-2組老師
+第2行: 3-4組老師
+第3行: 5-6組老師"></textarea>
                     </div>
                 </div>
-            </details>
+                <div style="text-align:center;margin-top:15px;">
+                    <button class="save-btn" onclick="saveEdit('1D')">💾 儲存</button>
+                </div>
+            </div>
         </div>
     </div>
     
@@ -391,44 +385,26 @@
             });
         }
         
-        // Parse input and display in table
+        // Parse input and display in table (simplified - each line = one group)
         function parseAndDisplay(cls, studentText, teacherText) {
-            // Parse students
+            // Parse students - each line is one group
             const lines = studentText.split('\n');
-            const students = {};
-            lines.forEach(line => {
-                const match = line.match(/組?(\d+):?\s*(.+)/);
-                if (match) {
-                    students[match[1]] = match[2].trim();
-                }
-            });
-            
-            // Parse teachers
-            const teacherLines = teacherText ? teacherText.split('\n') : [];
-            const teachers = {};
-            teacherLines.forEach(line => {
-                const match = line.match(/組?(\d+)[-–](\d+):?\s*(.+)/);
-                if (match) {
-                    teachers[match[1] + '-' + match[2]] = match[3].trim();
-                }
-            });
-            
-            // Display students
-            for (let i = 1; i <= 6; i++) {
-                const cell = document.querySelector('.student-cell[data-group="' + cls + '-' + i + '"]');
-                if (cell && students[i]) {
-                    cell.textContent = students[i];
+            for (let i = 0; i < 6 && i < lines.length; i++) {
+                const cell = document.querySelector('.student-cell[data-group="' + cls + '-' + (i+1) + '"]');
+                if (cell && lines[i].trim()) {
+                    cell.textContent = lines[i].trim();
                 }
             }
             
-            // Display teachers (rowspan)
+            // Parse teachers - each line is 2 groups
+            const teacherLines = teacherText ? teacherText.split('\n') : [];
             const teacherPairs = ['1-2', '3-4', '5-6'];
-            teacherPairs.forEach(pair => {
-                const cell = document.querySelector('.teacher-cell[data-group="' + cls + '-' + pair + '"]');
-                if (cell && teachers[pair]) {
-                    cell.textContent = teachers[pair];
+            for (let i = 0; i < 3 && i < teacherLines.length; i++) {
+                const cell = document.querySelector('.teacher-cell[data-group="' + cls + '-' + teacherPairs[i] + '"]');
+                if (cell && teacherLines[i].trim()) {
+                    cell.textContent = teacherLines[i].trim();
                 }
-            });
+            }
         }
         
         // Toggle edit mode
@@ -437,11 +413,9 @@
             const editMode = document.getElementById('edit-' + cls);
             
             if (editMode.classList.contains('active')) {
-                // Switch to view mode
                 editMode.classList.remove('active');
                 viewMode.classList.remove('hidden');
             } else {
-                // Switch to edit mode
                 editMode.classList.add('active');
                 viewMode.classList.add('hidden');
             }
@@ -452,20 +426,15 @@
             const students = document.getElementById('students-' + cls).value;
             const teachers = document.getElementById('teachers-' + cls).value;
             
-            // Save to localStorage
             localStorage.setItem('students-' + cls, students);
             localStorage.setItem('teachers-' + cls, teachers);
             
-            // Parse and display
             parseAndDisplay(cls, students, teachers);
-            
-            // Switch back to view mode
             toggleEdit(cls);
             
             alert('✅ 已儲存 ' + cls + ' 班的分組資料！');
         }
         
-        // Load data on page load
         window.onload = loadData;
     </script>
 </body>
