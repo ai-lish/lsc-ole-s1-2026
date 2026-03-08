@@ -259,10 +259,10 @@
                 <div class="info-item">
                     <h4>對象</h4>
                     <details>
-                        <summary style="cursor:pointer;color:var(--primary);font-weight:bold;display:flex;align-items:center;gap:10px;">
-                            中一級學生 (點擊查看分組)
-                            <span style="font-size:0.8rem;cursor:pointer;" onclick="event.preventDefault();var pwd=prompt(\'請輸入密碼:\');if(pwd===\'lsc2026\'){window.location.href=\'edit-groups.html\';}else{if(pwd)alert(\'密碼錯誤！\');}">🖊️</span>
-                        </summary>
+                        <summary style="cursor:pointer;color:var(--primary);font-weight:bold;">中一級學生 (點擊查看分組)</summary>
+                        <div style="margin-top:10px;text-align:right;">
+                            <button onclick="var pwd=prompt(\'請輸入密碼:\');if(pwd===\'lsc2026\'){window.location.href=\'edit-groups.html\';}else{if(pwd)alert(\'密碼錯誤！\');}" style="background:var(--primary);color:white;border:none;padding:8px 16px;border-radius:20px;cursor:pointer;font-size:0.85rem;">🖊️ 編輯分組</button>
+                        </div>
                         <div style="margin-top:15px;">
                             <!-- 1A -->
                             <div style="background:#f8f9fa;padding:10px;border-radius:8px;margin-bottom:10px;">
