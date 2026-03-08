@@ -3,639 +3,74 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>老师版 - 全方位学习日 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <title>全方位學習日 - 老師版 | 靈風中學</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root {
-            --primary: #1E3A5F;
-            --secondary: #2C5282;
-            --accent: #F39C12;
-            --success: #2ECC71;
-            --danger: #E74C3C;
-            --warning: #F39C12;
-            --dark: #2C3E50;
-            --light: #ECF0F1;
-        }
-        
+        :root { --primary: #4A90E2; --dark: #2C3E50; }
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        
         body {
-            font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
-            color: var(--dark);
-            padding-bottom: 40px;
-        }
-        
-        /* Header */
-        .header {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
-            color: white;
-            padding: 25px 20px;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
-        }
-        
-        .header h1 {
-            font-size: 1.6rem;
-            margin-bottom: 5px;
-        }
-        
-        .header .subtitle {
-            opacity: 0.9;
-            font-size: 0.95rem;
-        }
-        
-        /* Mode Toggle */
-        .mode-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
             display: flex;
-            gap: 8px;
+            align-items: center;
+            justify-content: center;
         }
-        
-        .mode-btn {
-            padding: 8px 15px;
-            border: 2px solid rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.1);
-            color: white;
+        .login-box {
+            background: white;
+            padding: 40px;
             border-radius: 20px;
-            cursor: pointer;
-            font-size: 0.85rem;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .mode-btn:hover, .mode-btn.active {
-            background: white;
-            color: var(--primary);
-            border-color: white;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 900px;
-            margin: 30px auto;
-            padding: 0 15px;
-        }
-        
-        /* Section Navigation */
-        .section-nav {
-            display: flex;
-            gap: 10px;
-            margin-bottom: 20px;
-            flex-wrap: wrap;
-        }
-        
-        .section-btn {
-            padding: 12px 20px;
-            background: rgba(255,255,255,0.15);
-            border: 2px solid rgba(255,255,255,0.3);
-            color: white;
-            border-radius: 25px;
-            cursor: pointer;
-            font-size: 0.95rem;
-            transition: all 0.3s;
-            text-decoration: none;
-        }
-        
-        .section-btn:hover, .section-btn.active {
-            background: white;
-            color: var(--primary);
-            border-color: white;
-        }
-        
-        /* Cards */
-        .card {
-            background: white;
-            border-radius: 15px;
-            padding: 25px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        
-        .card h2 {
-            color: var(--primary);
-            font-size: 1.3rem;
-            margin-bottom: 15px;
-            padding-bottom: 10px;
-            border-bottom: 3px solid var(--primary);
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .card h3 {
-            color: var(--secondary);
-            font-size: 1.1rem;
-            margin: 20px 0 10px;
-            padding-left: 10px;
-            border-left: 4px solid var(--accent);
-        }
-        
-        .card p, .card li {
-            line-height: 1.8;
-            color: #555;
-        }
-        
-        /* Timeline */
-        .timeline {
-            position: relative;
-            padding-left: 30px;
-        }
-        
-        .timeline::before {
-            content: '';
-            position: absolute;
-            left: 8px;
-            top: 0;
-            bottom: 0;
-            width: 3px;
-            background: linear-gradient(to bottom, var(--primary), var(--accent));
-            border-radius: 3px;
-        }
-        
-        .timeline-item {
-            position: relative;
-            padding-bottom: 20px;
-        }
-        
-        .timeline-item::before {
-            content: '';
-            position: absolute;
-            left: -26px;
-            top: 5px;
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--primary);
-            border: 3px solid white;
-            box-shadow: 0 2px 8px rgba(0,0,0,0.2);
-        }
-        
-        .timeline-date {
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .timeline-content {
-            background: #f8f9fa;
-            padding: 12px 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--accent);
-        }
-        
-        /* Task List */
-        .task-list {
-            list-style: none;
-            margin: 15px 0;
-        }
-        
-        .task-list li {
-            display: flex;
-            align-items: flex-start;
-            gap: 10px;
-            padding: 12px;
-            margin-bottom: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            border-left: 4px solid var(--success);
-        }
-        
-        .task-list li.pending {
-            border-left-color: var(--warning);
-        }
-        
-        .task-list li.important {
-            border-left-color: var(--danger);
-        }
-        
-        .task-icon {
-            font-size: 1.2rem;
-        }
-        
-        .task-content {
-            flex: 1;
-        }
-        
-        .task-title {
-            font-weight: 700;
-            color: var(--dark);
-        }
-        
-        .task-detail {
-            font-size: 0.9rem;
-            color: #666;
-            margin-top: 3px;
-        }
-        
-        /* Contact Grid */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .contact-card {
-            background: #f8f9fa;
-            padding: 15px;
-            border-radius: 10px;
-            border-left: 4px solid var(--primary);
-        }
-        
-        .contact-name {
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 5px;
-        }
-        
-        .contact-role {
-            font-size: 0.9rem;
-            color: #666;
-        }
-        
-        /* Emergency Box */
-        .emergency-box {
-            background: linear-gradient(135deg, #f8d7da 0%, #f5c6cb 100%);
-            border: 2px solid var(--danger);
-            border-radius: 15px;
-            padding: 20px;
-            margin: 20px 0;
-        }
-        
-        .emergency-title {
-            color: var(--danger);
-            font-weight: 700;
-            font-size: 1.1rem;
-            margin-bottom: 10px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        /* Download */
-        .download-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 15px;
-            margin-top: 15px;
-        }
-        
-        .download-item {
-            display: flex;
-            align-items: center;
-            gap: 12px;
-            padding: 15px;
-            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
-            border-radius: 10px;
-            text-decoration: none;
-            color: var(--dark);
-            transition: all 0.3s;
-            border: 2px solid transparent;
-        }
-        
-        .download-item:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-            box-shadow: 0 5px 20px rgba(30, 58, 95, 0.3);
-        }
-        
-        .download-icon {
-            font-size: 2rem;
-        }
-        
-        .download-title {
-            font-weight: 700;
-            font-size: 0.95rem;
-        }
-        
-        .download-size {
-            font-size: 0.8rem;
-            color: #888;
-        }
-        
-        /* Footer */
-        .footer {
+            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
             text-align: center;
-            padding: 20px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.9rem;
+            width: 90%;
+            max-width: 400px;
         }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            .header h1 {
-                font-size: 1.3rem;
-            }
-            
-            .mode-toggle {
-                position: static;
-                justify-content: center;
-                margin-top: 10px;
-            }
-            
-            .section-nav {
-                justify-content: center;
-            }
-            
-            .container {
-                margin: 15px auto;
-            }
+        .login-box h1 { color: var(--primary); margin-bottom: 10px; }
+        .login-box p { color: #666; margin-bottom: 30px; }
+        .login-box input {
+            width: 100%;
+            padding: 15px;
+            margin-bottom: 15px;
+            border: 2px solid #ddd;
+            border-radius: 10px;
+            font-size: 16px;
+            text-align: center;
         }
+        .login-box button {
+            width: 100%;
+            padding: 15px;
+            background: var(--primary);
+            color: white;
+            border: none;
+            border-radius: 10px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+        }
+        .error { color: red; margin-top: 10px; display: none; }
     </style>
 </head>
 <body>
-    <!-- Header -->
-    <div class="header">
-        <h1>👩‍🏫 老师版</h1>
-        <p class="subtitle">全方位学习日 2026 - 灵风中学</p>
-        
-        <div class="mode-toggle">
-            <a href="index.html" class="mode-btn">👨‍🎓 首页</a>
-            <a href="teacher.html" class="mode-btn active">👩‍🏫 老师版</a>
-            <a href="leader.html" class="mode-btn">🎒 带队版</a>
-        </div>
+    <div class="login-box" id="loginPage">
+        <h1>🔐 老師登入</h1>
+        <p>全方位學習日 2026</p>
+        <input type="password" id="password" placeholder="請輸入密碼">
+        <button onclick="checkPassword()">登入</button>
+        <p class="error" id="errorMsg">密碼錯誤，請重試</p>
+        <p style="margin-top:20px;"><a href="index.html">👈 返回學生版</a></p>
     </div>
-    
-    <div class="container">
-        <!-- Section Navigation -->
-        <div class="section-nav">
-            <a href="#pre" class="section-btn active">📋 活动前</a>
-            <a href="#during" class="section-btn">⚡ 活动中</a>
-            <a href="#post" class="section-btn">📊 活动后</a>
-        </div>
-        
-        <!-- 活动前 -->
-        <div class="card" id="pre">
-            <h2>📋 活动前准备</h2>
-            
-            <h3>📅 筹备时间线</h3>
-            <div class="timeline">
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-15</div>
-                    <div class="timeline-content">
-                        <strong>项目启动</strong><br>
-                        确认活动日期、地点、预算
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-20</div>
-                    <div class="timeline-content">
-                        <strong>分工安排</strong><br>
-                        确认各科任老师及带队老师职责
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-02-25</div>
-                    <div class="timeline-content">
-                        <strong>家长通知</strong><br>
-                        发出家长通告及同意书
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-03-01</div>
-                    <div class="timeline-content">
-                        <strong>最后确认</strong><br>
-                        收集参加人数、特殊需要学生资料
-                    </div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-date">2026-03-07</div>
-                    <div class="timeline-content">
-                        <strong>行前会议</strong><br>
-                        全体老师 briefing
-                    </div>
-                </div>
-            </div>
-            
-            <h3>👥 分工安排</h3>
-            <ul class="task-list">
-                <li class="important">
-                    <span class="task-icon">🎯</span>
-                    <div class="task-content">
-                        <div class="task-title">统筹老师</div>
-                        <div class="task-detail">整体协调、联络、紧急应变</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">📋</span>
-                    <div class="task-content">
-                        <div class="task-title">科任老师</div>
-                        <div class="task-detail">课堂 briefing、学生点名、活动带领</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">👥</span>
-                    <div class="task-content">
-                        <div class="task-title">带队老师</div>
-                        <div class="task-detail">每组8-10人，负责学生安全</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">🏥</span>
-                    <div class="task-content">
-                        <div class="task-title">支援老师</div>
-                        <div class="task-detail">紧急支援、伤病处理</div>
-                    </div>
-                </li>
-            </ul>
-            
-            <h3>📦 行前 checklist</h3>
-            <ul class="task-list">
-                <li>
-                    <span class="task-icon">✅</span>
-                    <div class="task-content">
-                        <div class="task-title">确认学生名单</div>
-                        <div class="task-detail">包括参加/不参加名单、特殊需要</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">✅</span>
-                    <div class="task-content">
-                        <div class="task-title">分组名单</div>
-                        <div class="task-detail">每组老师和负责区域</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">✅</span>
-                    <div class="task-content">
-                        <div class="task-title">紧急联络名单</div>
-                        <div class="task-detail">校方、家长、医疗机构</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">✅</span>
-                    <div class="task-content">
-                        <div class="task-title">物资准备</div>
-                        <div class="task-detail">急救包、点名册、指示牌</div>
-                    </div>
-                </li>
-            </ul>
-        </div>
-        
-        <!-- 活动中 -->
-        <div class="card" id="during">
-            <h2>⚡ 活动中流程</h2>
-            
-            <h3>🚩 当日集合安排</h3>
-            <table style="width:100%; border-collapse: collapse; margin: 15px 0;">
-                <tr style="background: var(--primary); color: white;">
-                    <th style="padding: 12px; text-align: left;">时间</th>
-                    <th style="padding: 12px; text-align: left;">事项</th>
-                    <th style="padding: 12px; text-align: left;">负责人</th>
-                </tr>
-                <tr style="background: #f8f9fa;">
-                    <td style="padding: 12px;">08:30</td>
-                    <td style="padding: 12px;">回校集合</td>
-                    <td style="padding: 12px;">全体老师</td>
-                </tr>
-                <tr>
-                    <td style="padding: 12px;">08:45</td>
-                    <td style="padding: 12px;">点名及分组</td>
-                    <td style="padding: 12px;">科任老师</td>
-                </tr>
-                <tr style="background: #f8f9fa;">
-                    <td style="padding: 12px;">09:00</td>
-                    <td style="padding: 12px;">出发</td>
-                    <td style="padding: 12px;">统筹老师</td>
-                </tr>
-                <tr>
-                    <td style="padding: 12px;">09:45</td>
-                    <td style="padding: 12px;">抵达博物馆</td>
-                    <td style="padding: 12px;">点名</td>
-                </tr>
-                <tr style="background: #f8f9fa;">
-                    <td style="padding: 12px;">09:45-11:15</td>
-                    <td style="padding: 12px;">博物馆参观</td>
-                    <td style="padding: 12px;">带队老师</td>
-                </tr>
-                <tr>
-                    <td style="padding: 12px;">11:30</td>
-                    <td style="padding: 12px;">集合出发</td>
-                    <td style="padding: 12px;">点名</td>
-                </tr>
-            </table>
-            
-            <h3>🎯 带队老师职责</h3>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li>负责指定学生组别 (8-10人)</li>
-                <li>全程跟进学生安全</li>
-                <li>定时点名 (每15分钟)</li>
-                <li>处理组内突发情况</li>
-                <li>定时向统筹老师汇报</li>
-            </ul>
-            
-            <div class="emergency-box">
-                <div class="emergency-title">
-                    🚨 紧急联络
-                </div>
-                <p><strong>统筹老师：</strong>XXXX-XXXX</p>
-                <p><strong>校务处：</strong>XXXX-XXXX</p>
-                <p><strong>紧急热线：</strong>XXXX-XXXX</p>
-            </div>
-            
-            <h3>📍 集合点</h3>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li><strong>博物馆：</strong>正门入口处集合</li>
-                <li><strong>维多利亚公园：</strong>大草坪入口处集合</li>
-                <li><strong>返校：</strong>停车场集合</li>
-            </ul>
-        </div>
-        
-        <!-- 活动后 -->
-        <div class="card" id="post">
-            <h2>📊 活动后跟进</h2>
-            
-            <h3>📝 当日总结</h3>
-            <ul class="task-list">
-                <li>
-                    <span class="task-icon">📋</span>
-                    <div class="task-content">
-                        <div class="task-title">学生安全确认</div>
-                        <div class="task-detail">确认所有学生安全到家</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">📋</span>
-                    <div class="task-content">
-                        <div class="task-title">活动记录</div>
-                        <div class="task-detail">填写活动日志、突发事件报告</div>
-                    </div>
-                </li>
-                <li>
-                    <span class="task-icon">📋</span>
-                    <div class="task-content">
-                        <div class="task-title">物资归还</div>
-                        <div class="task-detail">检查及归还借用物资</div>
-                    </div>
-                </li>
-            </ul>
-            
-            <h3>📮 后续工作</h3>
-            <ul style="margin-left: 20px; line-height: 2;">
-                <li>相片整理及分享</li>
-                <li>学生学习成果收集</li>
-                <li>问卷分析</li>
-                <li>活动报告撰写</li>
-                <li>下年度建议</li>
-            </ul>
-            
-            <h3>👥 筹委会联络</h3>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-name">统筹老师</div>
-                    <div class="contact-role">负责整体协调</div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-name">科任老师</div>
-                    <div class="contact-role">负责课堂 briefing</div>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-name">带队老师</div>
-                    <div class="contact-role">负责当日带队</div>
-                </div>
-            </div>
-        </div>
-        
-        <!-- 下载专区 -->
-        <div class="card">
-            <h2>📥 下载专区</h2>
-            <div class="download-grid">
-                <a href="全方位學習日_統籌工作指引---7ddb3284-6f7e-4ca6-90a4-f8088d21fadf.docx" class="download-item" download>
-                    <span class="download-icon">📋</span>
-                    <div>
-                        <div class="download-title">统筹工作指引</div>
-                        <div class="download-size">DOCX | 21KB</div>
-                    </div>
-                </a>
-                <a href="map---5212f042-e75e-4977-9998-333fdd27e9ef.docx" class="download-item" download>
-                    <span class="download-icon">🗺️</span>
-                    <div>
-                        <div class="download-title">活动地图</div>
-                        <div class="download-size">DOCX | 1.3MB</div>
-                    </div>
-                </a>
-                <a href="1A1B1C1D路線圖---41cca334-b36a-4930-ae8b-3754bcb5f279.docx" class="download-item" download>
-                    <span class="download-icon">📍</span>
-                    <div>
-                        <div class="download-title">路线图参考</div>
-                        <div class="download-size">DOCX | 2.0MB</div>
-                    </div>
-                </a>
-            </div>
-        </div>
-    </div>
-    
-    <div class="footer">
-        <p>© 2026 灵风中学 全方位学习日筹委会</p>
-    </div>
+
+<script>
+const correctPassword = "lsc2026";
+
+function checkPassword() {
+    const input = document.getElementById('password').value;
+    if (input === correctPassword) {
+        window.location.href = 'teacher_full.html';
+    } else {
+        document.getElementById('errorMsg').style.display = 'block';
+    }
+}
+</script>
 </body>
 </html>
