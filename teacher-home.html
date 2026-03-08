@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>老师版 - 全方位学习日 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #F39C12;
+            --success: #2ECC71;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            color: var(--dark);
+            padding: 20px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #00D2FF 100%);
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+            border-radius: 20px 20px 0 0;
+            margin: -20px -20px 20px -20px;
+        }
+        
+        .header h1 {
+            font-size: 1.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .header p {
+            opacity: 0.9;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .back-link {
+            display: inline-block;
+            color: white;
+            text-decoration: none;
+            margin-bottom: 20px;
+            padding: 10px 20px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 20px;
+        }
+        
+        .back-link:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+            text-decoration: none;
+            color: var(--dark);
+            display: block;
+            transition: all 0.3s;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .card-icon {
+            font-size: 3rem;
+            margin-bottom: 15px;
+        }
+        
+        .card h2 {
+            color: var(--primary);
+            margin-bottom: 10px;
+            font-size: 1.4rem;
+        }
+        
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+        
+        .card.committee {
+            border-left: 5px solid var(--secondary);
+        }
+        
+        .card.teacher {
+            border-left: 5px solid var(--primary);
+        }
+        
+        .card.leader {
+            border-left: 5px solid var(--success);
+        }
+        
+        .tag {
+            display: inline-block;
+            padding: 5px 12px;
+            background: var(--light);
+            border-radius: 15px;
+            font-size: 0.8rem;
+            color: #666;
+            margin-top: 10px;
+        }
+        
+        @media (max-width: 600px) {
+            .card {
+                padding: 20px;
+            }
+            
+            .card-icon {
+                font-size: 2.5rem;
+            }
+            
+            .card h2 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="teacher-login.html" class="back-link">← 返回登入</a>
+        
+        <div class="header">
+            <h1>👩‍🏫 老师版</h1>
+            <p>全方位学习日 2026 - 灵风中学</p>
+        </div>
+        
+        <p style="color: white; text-align: center; margin-bottom: 20px;">请选择你的版本：</p>
+        
+        <!-- 筹委版 -->
+        <a href="committee.html" class="card committee">
+            <div class="card-icon">🎯</div>
+            <h2>🎯 筹委版</h2>
+            <p>活动整体规划、分工安排、紧急联络、资源管理</p>
+            <span class="tag">筹委会专用</span>
+        </a>
+        
+        <!-- 老师版 -->
+        <a href="teacher.html" class="card teacher">
+            <div class="card-icon">👩‍🏫</div>
+            <h2>👩‍🏫 老师版</h2>
+            <p>活动资讯、活动前准备、活动后跟进</p>
+            <span class="tag">科任老师</span>
+        </a>
+        
+        <!-- 带队版 -->
+        <a href="leader.html" class="card leader">
+            <div class="card-icon">🎒</div>
+            <h2>🎒 带队版</h2>
+            <p>活动资讯、时间表、地点路线、注意事项</p>
+            <span class="tag">带队老师</span>
+        </a>
+        
+        <a href="index.html" class="back-link" style="display: block; text-align: center; margin-top: 20px;">🏠 返回首页</a>
+    </div>
+</body>
+</html>

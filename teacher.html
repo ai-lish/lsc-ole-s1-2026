@@ -3,74 +3,504 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>全方位學習日 - 老師版 | 靈風中學</title>
+    <title>老师版 - 全方位学习日 2026</title>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
-        :root { --primary: #4A90E2; --dark: #2C3E50; }
+        :root {
+            --primary: #4A90E2;
+            --secondary: #F39C12;
+            --success: #2ECC71;
+            --danger: #E74C3C;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+        }
+        
         * { margin: 0; padding: 0; box-sizing: border-box; }
+        
         body {
             font-family: 'Noto Sans TC', sans-serif;
             background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
+            color: var(--dark);
+            padding-bottom: 40px;
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--primary) 0%, #00D2FF 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links {
             display: flex;
-            align-items: center;
             justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
-        .login-box {
-            background: white;
-            padding: 40px;
+        
+        .nav-links a {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
             border-radius: 20px;
-            box-shadow: 0 20px 60px rgba(0,0,0,0.3);
-            text-align: center;
-            width: 90%;
-            max-width: 400px;
+            font-size: 0.9rem;
         }
-        .login-box h1 { color: var(--primary); margin-bottom: 10px; }
-        .login-box p { color: #666; margin-bottom: 30px; }
-        .login-box input {
-            width: 100%;
-            padding: 15px;
-            margin-bottom: 15px;
-            border: 2px solid #ddd;
-            border-radius: 10px;
-            font-size: 16px;
-            text-align: center;
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
         }
-        .login-box button {
-            width: 100%;
+        
+        /* Section Tabs */
+        .tabs {
+            display: flex;
+            background: white;
+            margin: 20px;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+        
+        .tab {
+            flex: 1;
             padding: 15px;
+            text-align: center;
+            cursor: pointer;
+            background: white;
+            border: none;
+            font-size: 1rem;
+            font-weight: bold;
+            color: #666;
+            transition: all 0.3s;
+        }
+        
+        .tab.active {
             background: var(--primary);
             color: white;
-            border: none;
-            border-radius: 10px;
-            font-size: 16px;
-            font-weight: bold;
-            cursor: pointer;
         }
-        .error { color: red; margin-top: 10px; display: none; }
+        
+        .tab-content {
+            display: none;
+            padding: 0 20px;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding-bottom: 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-item h4 {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+        }
+        
+        .timeline-time {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            background: var(--light);
+            padding: 12px 15px;
+            border-radius: 10px;
+        }
+        
+        /* Notice Box */
+        .notice-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+            border-left: 5px solid #F39C12;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
+        }
+        
+        .notice-box.warning {
+            background: linear-gradient(135deg, #fce4e4 0%, #fadbd8 100%);
+            border-left-color: var(--danger);
+        }
+        
+        .notice-box.success {
+            background: linear-gradient(135deg, #d4edda 0%, #c3e6cb 100%);
+            border-left-color: var(--success);
+        }
+        
+        .notice-title {
+            font-weight: bold;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        
+        /* Task List */
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 12px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-radius: 10px;
+        }
+        
+        .task-icon {
+            font-size: 1.2rem;
+        }
+        
+        @media (max-width: 600px) {
+            .tabs {
+                flex-direction: column;
+            }
+            
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
+            }
+        }
     </style>
 </head>
 <body>
-    <div class="login-box" id="loginPage">
-        <h1>🔐 老師登入</h1>
-        <p>全方位學習日 2026</p>
-        <input type="password" id="password" placeholder="請輸入密碼">
-        <button onclick="checkPassword()">登入</button>
-        <p class="error" id="errorMsg">密碼錯誤，請重試</p>
-        <p style="margin-top:20px;"><a href="index.html">👈 返回學生版</a></p>
+    <!-- Header -->
+    <div class="header">
+        <h1>👩‍🏫 老师版</h1>
+        <p>全方位学习日 2026 - 灵风中学</p>
+        
+        <div class="nav-links">
+            <a href="teacher-home.html">← 返回选择</a>
+            <a href="index.html">🏠 首页</a>
+        </div>
     </div>
-
-<script>
-const correctPassword = "lsc2026";
-
-function checkPassword() {
-    const input = document.getElementById('password').value;
-    if (input === correctPassword) {
-        window.location.href = 'teacher_full.html';
-    } else {
-        document.getElementById('errorMsg').style.display = 'block';
-    }
-}
-</script>
+    
+    <!-- Tab Navigation -->
+    <div class="tabs">
+        <button class="tab active" onclick="switchTab('pre')">📋 活动前</button>
+        <button class="tab" onclick="switchTab('during')">⚡ 活动当天</button>
+        <button class="tab" onclick="switchTab('post')">📊 活动后</button>
+    </div>
+    
+    <!-- Tab Contents -->
+    <div class="container">
+        <!-- 活动前 -->
+        <div class="tab-content active" id="pre">
+            <div class="section">
+                <h2>📋 活动前准备</h2>
+                
+                <h3 style="color: var(--dark); margin-bottom: 15px;">备课要点</h3>
+                <ul class="task-list">
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>确认学生参加名单，包括特殊需要学生</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>分组安排 (每组8-10人)</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>准备课堂 briefing 内容</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>向学生讲解活动流程及注意事项</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>收集家长同意书</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>📅 筹备时间线</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">活动前 2 周</div>
+                        <div class="timeline-content">发出家长通告</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">活动前 1 周</div>
+                        <div class="timeline-content">确认参加人数、分组</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">活动前 3 日</div>
+                        <div class="timeline-content">备课、准备物资</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">活动前 1 日</div>
+                        <div class="timeline-content">确认交通、天气</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动当天 -->
+        <div class="tab-content" id="during">
+            <div class="section">
+                <h2>⚡ 活动当天 - 基本资料</h2>
+                <div class="info-grid">
+                    <div class="info-item">
+                        <h4>老师返工</h4>
+                        <p>8:15</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>学生返校</h4>
+                        <p>8:45</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>出发</h4>
+                        <p>9:00</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>到达</h4>
+                        <p>9:30-9:45</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>回程集合</h4>
+                        <p>11:30</p>
+                    </div>
+                    <div class="info-item">
+                        <h4>返校</h4>
+                        <p>12:30</p>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>⏱️ 时间表</h2>
+                <div class="timeline">
+                    <div class="timeline-item">
+                        <div class="timeline-time">08:15</div>
+                        <div class="timeline-content">老师返校报到</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">08:45</div>
+                        <div class="timeline-content">学生返校点名</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">09:00</div>
+                        <div class="timeline-content">出发</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">09:30-11:15</div>
+                        <div class="timeline-content">活动进行</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">11:30</div>
+                        <div class="timeline-content">回程集合</div>
+                    </div>
+                    <div class="timeline-item">
+                        <div class="timeline-time">12:30</div>
+                        <div class="timeline-content">返校解散</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>📍 地点资讯</h2>
+                <div class="info-item">
+                    <h4>活动地点</h4>
+                    <p>狮子会自然教育中心</p>
+                    <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">西贡巴士总站对面</p>
+                </div>
+                <div style="margin-top: 15px;">
+                    <a href="images/map.jpg" target="_blank" style="color: var(--primary); font-weight: bold;">🗺️ 查看地图 →</a>
+                </div>
+            </div>
+            
+            <div class="section">
+                <h2>⚠️ 注意事项</h2>
+                <div class="notice-box">
+                    <div class="notice-title">📦 学生需要带备</div>
+                    <ul style="margin-left: 20px; line-height: 1.8;">
+                        <li>轻便背囊</li>
+                        <li>充足饮用水</li>
+                        <li>雨具（如有需要）</li>
+                        <li>笔记本及笔</li>
+                    </ul>
+                </div>
+                <div class="notice-box warning">
+                    <div class="notice-title">❌ 严禁携带</div>
+                    <p>贵重物品、电子游戏、零食</p>
+                </div>
+                <div class="notice-box">
+                    <div class="notice-title">👕 服装</div>
+                    <p>穿著整齐校服，佩戴学生证</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 活动后 -->
+        <div class="tab-content" id="post">
+            <div class="section">
+                <h2>📊 活动后跟进</h2>
+                
+                <h3 style="color: var(--dark); margin-bottom: 15px;">当日工作</h3>
+                <ul class="task-list">
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>确认所有学生安全到家</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>填写活动日志</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>如有突发事件，提交报告</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">✅</span>
+                        <div>归还借用物资</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>📮 后续工作</h2>
+                <ul class="task-list">
+                    <li>
+                        <span class="task-icon">📝</span>
+                        <div>学生学习成果收集</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">📝</span>
+                        <div>活动相片整理及分享</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">📝</span>
+                        <div>问卷分析</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">📝</span>
+                        <div>活动报告撰写</div>
+                    </li>
+                    <li>
+                        <span class="task-icon">📝</span>
+                        <div>下年度建议</div>
+                    </li>
+                </ul>
+            </div>
+            
+            <div class="section">
+                <h2>📷 相片分享</h2>
+                <p style="color: #666; margin-bottom: 15px;">活动相片将稍后整理分享</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>
+        function switchTab(tabId) {
+            // Hide all contents
+            document.querySelectorAll('.tab-content').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Deactivate all tabs
+            document.querySelectorAll('.tab').forEach(el => {
+                el.classList.remove('active');
+            });
+            
+            // Show selected content
+            document.getElementById(tabId).classList.add('active');
+            
+            // Activate selected tab
+            event.target.classList.add('active');
+        }
+    </script>
 </body>
 </html>

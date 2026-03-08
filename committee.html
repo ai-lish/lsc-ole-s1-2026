@@ -1,0 +1,538 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>筹委版 - 全方位学习日 2026</title>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4A90E2;
+            --secondary: #F39C12;
+            --success: #2ECC71;
+            --danger: #E74C3C;
+            --dark: #2C3E50;
+            --light: #ECF0F1;
+        }
+        
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+            min-height: 100vh;
+            color: var(--dark);
+        }
+        
+        .header {
+            background: linear-gradient(135deg, var(--secondary) 0%, #e67e22 100%);
+            color: white;
+            padding: 25px 20px;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        }
+        
+        .header h1 {
+            font-size: 1.5rem;
+            margin-bottom: 5px;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
+        }
+        
+        .nav-links a {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
+        }
+        
+        .container {
+            max-width: 900px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        .section {
+            background: white;
+            border-radius: 15px;
+            padding: 25px;
+            margin-bottom: 20px;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
+        }
+        
+        .section h2 {
+            color: var(--primary);
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-item h4 {
+            color: #666;
+            font-size: 0.85rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        /* Timeline */
+        .timeline {
+            position: relative;
+            padding-left: 30px;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 8px;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: var(--primary);
+        }
+        
+        .timeline-item {
+            position: relative;
+            padding-bottom: 20px;
+        }
+        
+        .timeline-item::before {
+            content: '';
+            position: absolute;
+            left: -26px;
+            top: 3px;
+            width: 14px;
+            height: 14px;
+            border-radius: 50%;
+            background: var(--primary);
+            border: 3px solid white;
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .timeline-content {
+            background: var(--light);
+            padding: 12px 15px;
+            border-radius: 10px;
+        }
+        
+        /* Task List */
+        .task-list {
+            list-style: none;
+        }
+        
+        .task-list li {
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+            padding: 15px;
+            margin-bottom: 10px;
+            background: var(--light);
+            border-radius: 10px;
+            border-left: 4px solid var(--success);
+        }
+        
+        .task-list li.important {
+            border-left-color: var(--danger);
+        }
+        
+        .task-icon {
+            font-size: 1.3rem;
+        }
+        
+        .task-title {
+            font-weight: bold;
+            margin-bottom: 3px;
+        }
+        
+        .task-detail {
+            font-size: 0.9rem;
+            color: #666;
+        }
+        
+        /* Emergency */
+        .emergency-box {
+            background: linear-gradient(135deg, #fce4e4 0%, #fadbd8 100%);
+            border: 2px solid var(--danger);
+            border-radius: 15px;
+            padding: 20px;
+        }
+        
+        .emergency-title {
+            color: var(--danger);
+            font-weight: bold;
+            font-size: 1.1rem;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        /* Photo Gallery */
+        .photo-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .photo-item {
+            position: relative;
+            cursor: pointer;
+            border-radius: 10px;
+            overflow: hidden;
+            aspect-ratio: 4/3;
+        }
+        
+        .photo-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.3s;
+        }
+        
+        .photo-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .photo-label {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0,0,0,0.6);
+            color: white;
+            padding: 8px;
+            font-size: 0.8rem;
+            text-align: center;
+        }
+        
+        /* Modal */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0,0,0,0.9);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+        
+        .modal.active {
+            display: flex;
+        }
+        
+        .modal-content {
+            max-width: 90%;
+            max-height: 90%;
+            border-radius: 15px;
+            overflow: auto;
+        }
+        
+        .modal-content img {
+            max-width: 100%;
+            max-height: 80vh;
+            display: block;
+        }
+        
+        .modal-close {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            background: white;
+            border: none;
+            border-radius: 50%;
+            width: 40px;
+            height: 40px;
+            font-size: 1.5rem;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        
+        .modal-caption {
+            color: white;
+            text-align: center;
+            padding: 15px;
+            font-size: 1.1rem;
+        }
+        
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.3rem;
+            }
+            
+            .nav-links {
+                gap: 5px;
+            }
+            
+            .nav-links a {
+                padding: 6px 12px;
+                font-size: 0.8rem;
+            }
+            
+            .info-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <div class="header">
+        <h1>🎯 筹委版</h1>
+        <p>全方位学习日 2026 - 灵风中学</p>
+        
+        <div class="nav-links">
+            <a href="teacher-home.html">← 返回选择</a>
+            <a href="index.html">🏠 首页</a>
+        </div>
+    </div>
+    
+    <div class="container">
+        <!-- 活动规划 -->
+        <div class="section">
+            <h2>📋 活动规划</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>活动日期</h4>
+                    <p>2026年3月 (待定)</p>
+                </div>
+                <div class="info-item">
+                    <h4>活动地点</h4>
+                    <p>狮子会自然教育中心</p>
+                </div>
+                <div class="info-item">
+                    <h4>参加学生</h4>
+                    <p>中一全级</p>
+                </div>
+                <div class="info-item">
+                    <h4>学生人数</h4>
+                    <p>约150人</p>
+                </div>
+                <div class="info-item">
+                    <h4>老师人数</h4>
+                    <p>约15人</p>
+                </div>
+                <div class="info-item">
+                    <h4>交通安排</h4>
+                    <p>3架旅游巴</p>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 分工安排 -->
+        <div class="section">
+            <h2>👥 分工安排</h2>
+            <ul class="task-list">
+                <li class="important">
+                    <span class="task-icon">🎯</span>
+                    <div>
+                        <div class="task-title">统筹老师</div>
+                        <div class="task-detail">整体协调、紧急应变、对外联络</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-icon">📋</span>
+                    <div>
+                        <div class="task-title">副统筹</div>
+                        <div class="task-detail">协助统筹、资料整理</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-icon">👩‍🏫</span>
+                    <div>
+                        <div class="task-title">科任老师</div>
+                        <div class="task-detail">课堂 briefing、学生点名、活动带领</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-icon">🎒</span>
+                    <div>
+                        <div class="task-title">带队老师</div>
+                        <div class="task-detail">每组8-10人，负责学生安全</div>
+                    </div>
+                </li>
+                <li>
+                    <span class="task-icon">🏥</span>
+                    <div>
+                        <div class="task-title">支援老师</div>
+                        <div class="task-detail">紧急支援、伤病处理</div>
+                    </div>
+                </li>
+            </ul>
+        </div>
+        
+        <!-- 时间线 -->
+        <div class="section">
+            <h2>📅 筹备时间线</h2>
+            <div class="timeline">
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-02-15</div>
+                    <div class="timeline-content">
+                        <strong>项目启动</strong><br>
+                        确认活动日期、地点、预算
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-02-20</div>
+                    <div class="timeline-content">
+                        <strong>分工安排</strong><br>
+                        确认各老师职责
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-02-25</div>
+                    <div class="timeline-content">
+                        <strong>家长通知</strong><br>
+                        发出家长通告及同意书
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-03-01</div>
+                    <div class="timeline-content">
+                        <strong>最后确认</strong><br>
+                        收集参加人数、特殊需要学生资料
+                    </div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-date">2026-03-07</div>
+                    <div class="timeline-content">
+                        <strong>行前会议</strong><br>
+                        全体老师 briefing
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 紧急联络 -->
+        <div class="section">
+            <h2>🚨 紧急联络</h2>
+            <div class="emergency-box">
+                <div class="emergency-title">🚨 紧急联络资讯</div>
+                <p><strong>统筹老师：</strong>XXXX-XXXX</p>
+                <p><strong>副统筹：</strong>XXXX-XXXX</p>
+                <p><strong>校务处：</strong>XXXX-XXXX</p>
+                <p><strong>紧急热线：</strong>XXXX-XXXX</p>
+            </div>
+        </div>
+        
+        <!-- 相片集 -->
+        <div class="section">
+            <h2>📷 相片集</h2>
+            <p style="color: #666; margin-bottom: 15px;">点击查看大图</p>
+            <div class="photo-grid">
+                <div class="photo-item" onclick="openModal('images/science-insect1.jpg', '科学馆 - 昆虫标本1')">
+                    <img src="images/science-insect1.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+                <div class="photo-item" onclick="openModal('images/science-insect2.jpg', '科学馆 - 昆虫标本2')">
+                    <img src="images/science-insect2.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+                <div class="photo-item" onclick="openModal('images/science-insect3.jpg', '科学馆 - 昆虫标本3')">
+                    <img src="images/science-insect3.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+                <div class="photo-item" onclick="openModal('images/science-insect4.jpg', '科学馆 - 昆虫标本4')">
+                    <img src="images/science-insect4.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+                <div class="photo-item" onclick="openModal('images/science-insect5.jpg', '科学馆 - 昆虫标本5')">
+                    <img src="images/science-insect5.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+                <div class="photo-item" onclick="openModal('images/science-insect6.jpg', '科学馆 - 昆虫标本6')">
+                    <img src="images/science-insect6.jpg" alt="科学馆">
+                    <div class="photo-label">科学馆</div>
+                </div>
+            </div>
+        </div>
+        
+        <!-- 资源下载 -->
+        <div class="section">
+            <h2>📥 资源</h2>
+            <p style="color: #666; margin-bottom: 15px;">相关文件连结</p>
+            <div class="info-grid">
+                <div class="info-item" style="border-left-color: var(--secondary);">
+                    <h4>活动地图</h4>
+                    <p><a href="images/map.jpg" target="_blank" style="color: var(--primary);">查看大图 →</a></p>
+                </div>
+                <div class="info-item" style="border-left-color: var(--success);">
+                    <h4>统筹工作指引</h4>
+                    <p><a href="全方位學習日_統籌工作指引---7ddb3284-6f7e-4ca6-90a4-f8088d21fadf.docx" download style="color: var(--primary);">下载 DOCX →</a></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    
+    <!-- Modal -->
+    <div class="modal" id="photoModal" onclick="closeModal()">
+        <button class="modal-close" onclick="closeModal()">×</button>
+        <div class="modal-content" onclick="event.stopPropagation()">
+            <img id="modalImage" src="" alt="">
+            <div class="modal-caption" id="modalCaption"></div>
+        </div>
+    </div>
+    
+    <script>
+        function openModal(src, caption) {
+            document.getElementById('modalImage').src = src;
+            document.getElementById('modalCaption').textContent = caption;
+            document.getElementById('photoModal').classList.add('active');
+        }
+        
+        function closeModal() {
+            document.getElementById('photoModal').classList.remove('active');
+        }
+        
+        document.addEventListener('keydown', function(e) {
+            if (e.key === 'Escape') closeModal();
+        });
+    </script>
+</body>
+</html>

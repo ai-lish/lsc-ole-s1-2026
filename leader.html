@@ -4,14 +4,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>带队版 - 全方位学习日 2026</title>
-    <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+TC:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #27AE60;
-            --secondary: #2ECC71;
-            --accent: #F39C12;
+            --primary: #2ECC71;
+            --secondary: #27AE60;
             --danger: #E74C3C;
             --dark: #2C3E50;
             --light: #ECF0F1;
@@ -20,392 +17,200 @@
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
-            font-family: 'Noto Sans TC', 'Segoe UI', sans-serif;
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
             min-height: 100vh;
             color: var(--dark);
             padding-bottom: 40px;
         }
         
-        /* Header */
         .header {
             background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
             color: white;
-            padding: 20px;
+            padding: 25px 20px;
             text-align: center;
             position: sticky;
             top: 0;
             z-index: 100;
-            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
         }
         
         .header h1 {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-bottom: 5px;
         }
         
-        .header .subtitle {
-            opacity: 0.9;
-            font-size: 0.9rem;
-        }
-        
-        .mode-toggle {
-            position: absolute;
-            top: 15px;
-            right: 15px;
+        .nav-links {
             display: flex;
-            gap: 5px;
-        }
-        
-        .mode-btn {
-            padding: 6px 12px;
-            border: 2px solid rgba(255,255,255,0.5);
-            background: rgba(255,255,255,0.1);
-            color: white;
-            border-radius: 15px;
-            cursor: pointer;
-            font-size: 0.75rem;
-            text-decoration: none;
-            transition: all 0.3s;
-        }
-        
-        .mode-btn:hover, .mode-btn.active {
-            background: white;
-            color: var(--primary);
-            border-color: white;
-        }
-        
-        /* Container */
-        .container {
-            max-width: 600px;
-            margin: 20px auto;
-            padding: 0 15px;
-        }
-        
-        /* Clock Card */
-        .clock-card {
-            background: white;
-            border-radius: 20px;
-            padding: 30px;
-            text-align: center;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.2);
-        }
-        
-        .clock-time {
-            font-size: 3rem;
-            font-weight: 900;
-            color: var(--primary);
-            font-family: 'Segoe UI', monospace;
-        }
-        
-        .clock-date {
-            font-size: 1.1rem;
-            color: #666;
-            margin-top: 5px;
-        }
-        
-        /* Status */
-        .status-badge {
-            display: inline-block;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
-            font-weight: 700;
-            margin-top: 15px;
-        }
-        
-        .status-badge.on-duty {
-            background: rgba(39, 174, 96, 0.2);
-            color: var(--primary);
-        }
-        
-        .status-badge.off-duty {
-            background: rgba(231, 76, 60, 0.2);
-            color: var(--danger);
-        }
-        
-        /* Check-in Button */
-        .checkin-btn {
-            width: 100%;
-            padding: 25px;
-            font-size: 1.3rem;
-            font-weight: 700;
-            border: none;
-            border-radius: 15px;
-            cursor: pointer;
-            margin: 15px 0;
-            transition: all 0.3s;
-            display: flex;
-            align-items: center;
             justify-content: center;
-            gap: 15px;
+            gap: 10px;
+            margin-top: 15px;
+            flex-wrap: wrap;
         }
         
-        .checkin-btn.check-in {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--secondary) 100%);
+        .nav-links a {
+            padding: 8px 16px;
+            background: rgba(255,255,255,0.2);
             color: white;
-            box-shadow: 0 5px 20px rgba(39, 174, 96, 0.4);
+            text-decoration: none;
+            border-radius: 20px;
+            font-size: 0.9rem;
         }
         
-        .checkin-btn.check-in:hover {
-            transform: translateY(-3px);
-            box-shadow: 0 8px 25px rgba(39, 174, 96, 0.5);
+        .nav-links a:hover {
+            background: rgba(255,255,255,0.3);
         }
         
-        .checkin-btn.check-out {
-            background: linear-gradient(135deg, #95a5a6 0%, #7f8c8d 100%);
-            color: white;
+        .container {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 20px;
         }
         
-        .checkin-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none;
-        }
-        
-        /* Timeline */
-        .timeline-card {
+        .section {
             background: white;
             border-radius: 15px;
-            padding: 20px;
+            padding: 25px;
             margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.08);
         }
         
-        .timeline-title {
-            font-size: 1.1rem;
-            font-weight: 700;
+        .section h2 {
             color: var(--primary);
-            margin-bottom: 15px;
+            margin-bottom: 20px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid var(--primary);
             display: flex;
             align-items: center;
             gap: 10px;
         }
         
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 15px;
+        }
+        
+        .info-item {
+            background: var(--light);
+            padding: 15px;
+            border-radius: 10px;
+            border-left: 4px solid var(--primary);
+        }
+        
+        .info-item h4 {
+            color: #666;
+            font-size: 0.8rem;
+            margin-bottom: 5px;
+        }
+        
+        .info-item p {
+            font-size: 1rem;
+            font-weight: bold;
+            color: var(--dark);
+        }
+        
+        /* Timeline */
         .timeline {
             position: relative;
-            padding-left: 25px;
+            padding-left: 30px;
         }
         
         .timeline::before {
             content: '';
             position: absolute;
-            left: 6px;
+            left: 8px;
             top: 0;
             bottom: 0;
             width: 3px;
             background: var(--primary);
-            border-radius: 3px;
         }
         
         .timeline-item {
             position: relative;
-            padding-bottom: 15px;
+            padding-bottom: 20px;
         }
         
         .timeline-item::before {
             content: '';
             position: absolute;
-            left: -22px;
+            left: -26px;
             top: 3px;
-            width: 12px;
-            height: 12px;
+            width: 14px;
+            height: 14px;
             border-radius: 50%;
             background: var(--primary);
-            border: 2px solid white;
-        }
-        
-        .timeline-item.completed::before {
-            background: var(--secondary);
-        }
-        
-        .timeline-item.active::before {
-            background: var(--accent);
-            box-shadow: 0 0 10px var(--accent);
+            border: 3px solid white;
         }
         
         .timeline-time {
-            font-weight: 700;
+            font-weight: bold;
             color: var(--primary);
-            font-size: 0.9rem;
+            margin-bottom: 5px;
         }
         
-        .timeline-text {
-            color: #666;
-            font-size: 0.9rem;
-            margin-top: 3px;
+        .timeline-content {
+            background: var(--light);
+            padding: 12px 15px;
+            border-radius: 10px;
         }
         
-        /* Quick Actions */
-        .action-grid {
-            display: grid;
-            grid-template-columns: repeat(2, 1fr);
-            gap: 15px;
-            margin-top: 15px;
+        /* Important Box */
+        .notice-box {
+            background: linear-gradient(135deg, #fff3cd 0%, #ffeeba 100%);
+            border-left: 5px solid #F39C12;
+            padding: 15px 20px;
+            border-radius: 0 10px 10px 0;
+            margin: 15px 0;
         }
         
-        .action-btn {
-            padding: 20px;
-            background: white;
-            border: 2px solid transparent;
-            border-radius: 15px;
-            text-align: center;
-            text-decoration: none;
-            color: var(--dark);
-            transition: all 0.3s;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .notice-box.warning {
+            background: linear-gradient(135deg, #fce4e4 0%, #fadbd8 100%);
+            border-left-color: var(--danger);
         }
         
-        .action-btn:hover {
-            transform: translateY(-3px);
-            border-color: var(--primary);
-        }
-        
-        .action-icon {
-            font-size: 2rem;
+        .notice-title {
+            font-weight: bold;
             margin-bottom: 8px;
-        }
-        
-        .action-label {
-            font-weight: 700;
-            font-size: 0.95rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
         }
         
         /* Emergency Button */
         .emergency-btn {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
             width: 100%;
-            padding: 20px;
+            padding: 18px;
             background: linear-gradient(135deg, var(--danger) 0%, #c0392b 100%);
             color: white;
             border: none;
             border-radius: 15px;
             font-size: 1.1rem;
-            font-weight: 700;
+            font-weight: bold;
             cursor: pointer;
+            text-decoration: none;
             margin-top: 20px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            gap: 10px;
-            box-shadow: 0 5px 20px rgba(231, 76, 60, 0.4);
         }
         
         .emergency-btn:hover {
-            transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(231, 76, 60, 0.5);
+            background: linear-gradient(135deg, #c0392b 0%, #a93226 100%);
         }
         
-        /* My Group */
-        .group-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-        
-        .group-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .student-list {
-            list-style: none;
-        }
-        
-        .student-item {
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 10px;
-            border-bottom: 1px solid #eee;
-        }
-        
-        .student-item:last-child {
-            border-bottom: none;
-        }
-        
-        .student-name {
-            font-weight: 500;
-        }
-        
-        .student-status {
-            font-size: 0.8rem;
-            padding: 3px 10px;
-            border-radius: 10px;
-        }
-        
-        .student-status.ok {
-            background: rgba(46, 204, 113, 0.2);
-            color: var(--secondary);
-        }
-        
-        .student-status.warning {
-            background: rgba(243, 156, 18, 0.2);
-            color: var(--accent);
-        }
-        
-        /* Check-in Records */
-        .record-card {
-            background: white;
-            border-radius: 15px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
-        }
-        
-        .record-title {
-            font-size: 1.1rem;
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 15px;
-        }
-        
-        .record-item {
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            padding: 10px;
-            background: #f8f9fa;
-            border-radius: 8px;
-            margin-bottom: 8px;
-        }
-        
-        .record-time {
-            font-weight: 700;
-            color: var(--primary);
-            font-size: 0.9rem;
-            min-width: 60px;
-        }
-        
-        .record-action {
-            color: #666;
-            font-size: 0.9rem;
-        }
-        
-        /* Footer */
-        .footer {
-            text-align: center;
-            padding: 20px;
-            color: rgba(255,255,255,0.8);
-            font-size: 0.85rem;
-        }
-        
-        /* Mobile */
-        @media (max-width: 768px) {
-            .container {
-                margin: 10px auto;
+        @media (max-width: 600px) {
+            .header h1 {
+                font-size: 1.3rem;
             }
             
-            .clock-time {
-                font-size: 2.5rem;
+            .nav-links {
+                gap: 5px;
             }
             
-            .action-grid {
-                grid-template-columns: 1fr;
+            .info-grid {
+                grid-template-columns: 1fr 1fr;
             }
         }
     </style>
@@ -414,211 +219,138 @@
     <!-- Header -->
     <div class="header">
         <h1>🎒 带队版</h1>
-        <p class="subtitle">全方位学习日 2026</p>
+        <p>全方位学习日 2026 - 灵风中学</p>
         
-        <div class="mode-toggle">
-            <a href="index.html" class="mode-btn">👨‍🎓</a>
-            <a href="teacher.html" class="mode-btn">👩‍🏫</a>
-            <a href="leader.html" class="mode-btn active">🎒</a>
+        <div class="nav-links">
+            <a href="teacher-home.html">← 返回选择</a>
+            <a href="index.html">🏠 首页</a>
         </div>
     </div>
     
     <div class="container">
-        <!-- Clock -->
-        <div class="clock-card">
-            <div class="clock-time" id="currentTime">--:--</div>
-            <div class="clock-date" id="currentDate">----/--/--</div>
-            <div class="status-badge on-duty" id="dutyStatus">待上班打卡</div>
-        </div>
-        
-        <!-- Check-in Button -->
-        <div class="clock-card">
-            <button class="checkin-btn check-in" id="checkInBtn" onclick="handleCheckIn()">
-                ⏰ 上班打卡
-            </button>
-            
-            <div style="margin-top: 10px; font-size: 0.85rem; color: #888;">
-                * 请在活动开始前打卡
+        <!-- 基本资料 -->
+        <div class="section">
+            <h2>📅 基本资料</h2>
+            <div class="info-grid">
+                <div class="info-item">
+                    <h4>老师返工时间</h4>
+                    <p>8:15</p>
+                </div>
+                <div class="info-item">
+                    <h4>学生返校时间</h4>
+                    <p>8:45</p>
+                </div>
+                <div class="info-item">
+                    <h4>出发时间</h4>
+                    <p>9:00</p>
+                </div>
+                <div class="info-item">
+                    <h4>到达时间</h4>
+                    <p>9:30-9:45</p>
+                </div>
+                <div class="info-item">
+                    <h4>回程集合</h4>
+                    <p>11:30</p>
+                </div>
+                <div class="info-item">
+                    <h4>开车时间</h4>
+                    <p>11:45</p>
+                </div>
             </div>
         </div>
         
-        <!-- My Group -->
-        <div class="group-card">
-            <div class="group-title">👥 我的组别 (第 1 组)</div>
-            <ul class="student-list">
-                <li class="student-item">
-                    <span class="student-name">陈同学</span>
-                    <span class="student-status ok">✅ 已点名</span>
-                </li>
-                <li class="student-item">
-                    <span class="student-name">李同学</span>
-                    <span class="student-status ok">✅ 已点名</span>
-                </li>
-                <li class="student-item">
-                    <span class="student-name">张同学</span>
-                    <span class="student-status warning">⏳ 待点名</span>
-                </li>
-                <li class="student-item">
-                    <span class="student-name">王同学</span>
-                    <span class="student-status ok">✅ 已点名</span>
-                </li>
-            </ul>
-            <button style="width: 100%; padding: 12px; margin-top: 15px; background: var(--primary); color: white; border: none; border-radius: 8px; font-weight: 700; cursor: pointer;">
-                📝 点名
-            </button>
-        </div>
-        
-        <!-- Activity Timeline -->
-        <div class="timeline-card">
-            <div class="timeline-title">📅 今日流程</div>
+        <!-- 时间表 -->
+        <div class="section">
+            <h2>⏱️ 时间表</h2>
             <div class="timeline">
-                <div class="timeline-item completed">
-                    <div class="timeline-time">08:30</div>
-                    <div class="timeline-text">回校集合</div>
-                </div>
-                <div class="timeline-item active">
-                    <div class="timeline-time">09:00</div>
-                    <div class="timeline-text">出发</div>
+                <div class="timeline-item">
+                    <div class="timeline-time">08:15</div>
+                    <div class="timeline-content">老师返校报到</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">09:45</div>
-                    <div class="timeline-text">博物馆参观</div>
+                    <div class="timeline-time">08:45</div>
+                    <div class="timeline-content">学生返校集合</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:00</div>
+                    <div class="timeline-content">出发</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:30-09:45</div>
+                    <div class="timeline-content">到达狮子会自然教育中心</div>
+                </div>
+                <div class="timeline-item">
+                    <div class="timeline-time">09:45-11:15</div>
+                    <div class="timeline-content">活动进行 (约20分钟/站点)</div>
                 </div>
                 <div class="timeline-item">
                     <div class="timeline-time">11:30</div>
-                    <div class="timeline-text">集合出发</div>
+                    <div class="timeline-content">回程集合</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">12:00</div>
-                    <div class="timeline-text">午膳</div>
+                    <div class="timeline-time">11:45</div>
+                    <div class="timeline-content">开车返校</div>
                 </div>
                 <div class="timeline-item">
-                    <div class="timeline-time">15:30</div>
-                    <div class="timeline-text">返校</div>
-                </div>
-                <div class="timeline-item">
-                    <div class="timeline-time">16:00</div>
-                    <div class="timeline-text">解散</div>
+                    <div class="timeline-time">12:30</div>
+                    <div class="timeline-content">抵达学校</div>
                 </div>
             </div>
         </div>
         
-        <!-- Quick Actions -->
-        <div class="action-grid">
-            <a href="teacher.html" class="action-btn">
-                <div class="action-icon">📋</div>
-                <div class="action-label">老师版</div>
-            </a>
-            <a href="tel:XXXXX" class="action-btn">
-                <div class="action-icon">📞</div>
-                <div class="action-label">联络筹委</div>
-            </a>
-        </div>
-        
-        <!-- Check-in Records -->
-        <div class="record-card">
-            <div class="record-title">📝 打卡记录</div>
-            <div id="checkInRecords">
-                <div class="record-item">
-                    <span class="record-time">--:--</span>
-                    <span class="record-action">等待打卡...</span>
-                </div>
+        <!-- 地点资讯 -->
+        <div class="section">
+            <h2>📍 地点资讯</h2>
+            <div class="info-item" style="margin-bottom: 15px;">
+                <h4>活动地点</h4>
+                <p>狮子会自然教育中心</p>
+                <p style="font-size: 0.9rem; color: #666; margin-top: 5px;">西贡巴士总站对面</p>
+            </div>
+            <div class="info-item">
+                <h4>地图</h4>
+                <p><a href="images/map.jpg" target="_blank" style="color: var(--primary);">查看大图 →</a></p>
             </div>
         </div>
         
-        <!-- Emergency -->
-        <button class="emergency-btn" onclick="callEmergency()">
-            🚨 紧急求助
-        </button>
-    </div>
-    
-    <div class="footer">
-        <p>© 2026 灵风中学 全方位学习日</p>
-    </div>
-    
-    <script>
-        // Clock
-        function updateClock() {
-            const now = new Date();
-            const time = now.toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit' });
-            const date = now.toLocaleDateString('zh-HK', { year: 'numeric', month: '2-digit', day: '2-digit' });
-            document.getElementById('currentTime').textContent = time;
-            document.getElementById('currentDate').textContent = date;
-        }
-        setInterval(updateClock, 1000);
-        updateClock();
-        
-        // Check-in State
-        let checkedIn = false;
-        let checkedOut = false;
-        
-        function handleCheckIn() {
-            const btn = document.getElementById('checkInBtn');
-            const status = document.getElementById('dutyStatus');
-            const records = document.getElementById('checkInRecords');
-            const now = new Date();
-            const time = now.toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit' });
+        <!-- 注意事项 -->
+        <div class="section">
+            <h2>⚠️ 注意事项</h2>
             
-            if (!checkedIn) {
-                // Check in
-                checkedIn = true;
-                btn.textContent = '🔄 签到中...';
-                btn.disabled = true;
-                
-                setTimeout(() => {
-                    btn.textContent = '✅ 已上班';
-                    btn.className = 'checkin-btn check-out';
-                    btn.disabled = false;
-                    btn.onclick = handleCheckOut;
-                    
-                    status.textContent = '工作中';
-                    status.className = 'status-badge on-duty';
-                    
-                    records.innerHTML = `
-                        <div class="record-item">
-                            <span class="record-time">${time}</span>
-                            <span class="record-action">✅ 上班打卡</span>
-                        </div>
-                    ` + records.innerHTML;
-                }, 1000);
-            }
-        }
-        
-        function handleCheckOut() {
-            const btn = document.getElementById('checkInBtn');
-            const status = document.getElementById('dutyStatus');
-            const records = document.getElementById('checkInRecords');
-            const now = new Date();
-            const time = now.toLocaleTimeString('zh-HK', { hour: '2-digit', minute: '2-digit' });
+            <div class="notice-box">
+                <div class="notice-title">📦 需要带备</div>
+                <ul style="margin-left: 20px; line-height: 1.8;">
+                    <li>轻便背囊</li>
+                    <li>充足饮用水</li>
+                    <li>雨具（如有需要）</li>
+                    <li>笔记本及笔</li>
+                    <li>个人药物（如有需要）</li>
+                </ul>
+            </div>
             
-            if (!checkedOut) {
-                checkedOut = true;
-                btn.textContent = '🔄 签退中...';
-                btn.disabled = true;
-                
-                setTimeout(() => {
-                    btn.textContent = '✅ 已下班';
-                    btn.disabled = true;
-                    
-                    status.textContent = '已下班';
-                    status.className = 'status-badge off-duty';
-                    
-                    records.innerHTML = `
-                        <div class="record-item">
-                            <span class="record-time">${time}</span>
-                            <span class="record-action">✅ 下班打卡</span>
-                        </div>
-                    ` + records.innerHTML;
-                }, 1000);
-            }
-        }
+            <div class="notice-box warning">
+                <div class="notice-title">❌ 严禁携带</div>
+                <p>贵重物品、电子游戏、零食</p>
+            </div>
+            
+            <div class="notice-box">
+                <div class="notice-title">👕 服装</div>
+                <p>穿著整齐校服，佩戴学生证</p>
+            </div>
+        </div>
         
-        // Emergency
-        function callEmergency() {
-            if (confirm('确认拨打紧急联络热线？')) {
-                window.location.href = 'tel:XXXX-XXXX';
-            }
-        }
-    </script>
+        <!-- 紧急联络 -->
+        <div class="section">
+            <h2>🚨 紧急联络</h2>
+            <div class="notice-box warning">
+                <p><strong>统筹老师：</strong>XXXX-XXXX</p>
+                <p><strong>校务处：</strong>XXXX-XXXX</p>
+                <p><strong>紧急热线：</strong>XXXX-XXXX</p>
+            </div>
+            
+            <a href="tel:XXXXXXXXXX" class="emergency-btn">
+                📞 拨打紧急联络
+            </a>
+        </div>
+    </div>
 </body>
 </html>
