@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>🎯 坐標配對卡牌</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body {
+            font-family: 'Noto Sans TC', sans-serif;
+            background: linear-gradient(135deg, #1a1a2e, #16213e, #0f3460);
+            min-height: 100vh;
+            padding: 20px;
+            color: white;
+        }
+        h1 {
+            text-align: center;
+            font-size: 1.8rem;
+            margin-bottom: 8px;
+            color: #00d4ff;
+        }
+        .subtitle {
+            text-align: center;
+            color: #888;
+            margin-bottom: 20px;
+            font-size: 0.9rem;
+        }
+        .controls {
+            text-align: center;
+            margin-bottom: 20px;
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+        .controls button, .controls select {
+            padding: 8px 20px;
+            border: none;
+            border-radius: 20px;
+            cursor: pointer;
+            font-size: 0.9rem;
+            font-weight: 600;
+        }
+        .btn-start { background: #00d4ff; color: #1a1a2e; }
+        .btn-reset { background: #ff6b6b; color: white; }
+        select { background: #2a2a4a; color: white; }
+        .score-board {
+            text-align: center;
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+        }
+        .score-board span { color: #ffd700; font-weight: 700; }
+        .game-board {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 12px;
+            max-width: 900px;
+            margin: 0 auto 30px;
+        }
+        .card {
+            perspective: 1000px;
+            cursor: pointer;
+            height: 180px;
+        }
+        .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.5s;
+            transform-style: preserve-3d;
+        }
+        .card.flipped .card-inner { transform: rotateY(180deg); }
+        .card-front, .card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            border-radius: 12px;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            padding: 10px;
+        }
+        .card-front {
+            background: linear-gradient(135deg, #2a2a4a, #1a1a3a);
+            border: 2px solid #3a3a6a;
+        }
+        .card-back {
+            background: linear-gradient(135deg, #1a3a2a, #0a2a1a);
+            border: 2px solid #2a5a3a;
+            transform: rotateY(180deg);
+        }
+        .card-label {
+            font-size: 0.7rem;
+            color: #888;
+            margin-bottom: 6px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+        .card-content {
+            font-size: 1.1rem;
+            font-weight: 700;
+            text-align: center;
+            color: #00d4ff;
+            word-break: break-all;
+        }
+        .card-graph {
+            font-size: 0.75rem;
+            color: #aaa;
+            text-align: center;
+            line-height: 1.3;
+        }
+        .card.matched .card-inner { transform: rotateY(180deg); }
+        .card.matched .card-front, .card.matched .card-back {
+            border-color: #00ff88;
+            box-shadow: 0 0 20px rgba(0,255,136,0.3);
+        }
+        .card.wrong .card-inner { animation: shake 0.4s; }
+        @keyframes shake {
+            0%,100% { transform: rotateY(180deg) translateX(0); }
+            25% { transform: rotateY(180deg) translateX(-8px); }
+            75% { transform: rotateY(180deg) translateX(8px); }
+        }
+        .message {
+            text-align: center;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffd700;
+            margin-bottom: 15px;
+            min-height: 30px;
+        }
+        .timer { text-align: center; color: #888; margin-bottom: 15px; font-size: 0.9rem; }
+        .legend {
+            max-width: 900px;
+            margin: 0 auto;
+            background: rgba(255,255,255,0.05);
+            border-radius: 12px;
+            padding: 15px 20px;
+            font-size: 0.85rem;
+            color: #aaa;
+        }
+        .legend h3 { color: #00d4ff; margin-bottom: 8px; font-size: 0.95rem; }
+        .legend-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 6px;
+        }
+        .legend-item { display: flex; gap: 8px; }
+        .legend-item strong { color: #ffd700; }
+        @media print {
+            body { background: white; }
+            .card { height: 120px; }
+            .card-front { background: #f0f0f0; border: 2px solid #333; }
+            .card-back { background: #f0f0f0; border: 2px solid #333; }
+            .card-content { color: #333; }
+            .card-graph { color: #333; }
+            .controls, .message, .timer { display: none; }
+            .card.flipped .card-inner { transform: none; }
+            .card.flipped .card-back { backface-visibility: visible; }
+        }
+    </style>
+</head>
+<body>
+    <h1>🎯 坐標配對卡牌</h1>
+    <p class="subtitle">中一數學 · Ch10 坐標簡介</p>
+
+    <div class="controls">
+        <select id="difficulty">
+            <option value="easy">🌱 基礎（6對）</option>
+            <option value="medium" selected>🌟 中級（8對）</option>
+            <option value="hard">🔥 進階（10對）</option>
+        </select>
+        <button class="btn-start" onclick="startGame()">🔄 開始遊戲</button>
+        <button class="btn-reset" onclick="resetGame()">🏠 重置</button>
+        <button class="btn-start" onclick="window.print()">🖨️ 列印</button>
+    </div>
+
+    <div class="score-board">
+        配對次數：<span id="moves">0</span>　|　成功：<span id="matches">0</span>　|　用時：<span id="timer">0:00</span>
+    </div>
+    <div class="message" id="message"></div>
+
+    <div class="game-board" id="board"></div>
+
+    <div class="legend">
+        <h3>📋 卡牌配對參考答案</h3>
+        <div class="legend-grid" id="legend"></div>
+    </div>
+
+<script>
+// 卡牌數據：Algebra面 → Graph面 配對
+const cardData = {
+    easy: [
+        // 代數（坐標） → 圖像（描述圖上的點）
+        { a: "(3, 4)",       aLabel: "坐標", b: "圖像：P在第一象限，x=3, y=4",    bLabel: "圖像", pair: 1 },
+        { a: "(-2, 1)",      aLabel: "坐標", b: "圖像：Q在第二象限，x=-2, y=1",   bLabel: "圖像", pair: 2 },
+        { a: "(-1, -3)",     aLabel: "坐標", b: "圖像：R在第三象限，x=-1, y=-3",  bLabel: "圖像", pair: 3 },
+        { a: "(2, -3)",      aLabel: "坐標", b: "圖像：S在第四象限，x=2, y=-3",   bLabel: "圖像", pair: 4 },
+        { a: "(0, 4)",       aLabel: "坐標", b: "圖像：T在y軸上，y=4",            bLabel: "圖像", pair: 5 },
+        { a: "(-3, 0)",      aLabel: "坐標", b: "圖像：U在x軸上，x=-3",           bLabel: "圖像", pair: 6 },
+    ],
+    medium: [
+        // 坐標配對
+        { a: "(3, 4)",       aLabel: "坐標", b: "P在第一象限",    bLabel: "圖像", pair: 1 },
+        { a: "(-2, 1)",      aLabel: "坐標", b: "Q在第二象限",    bLabel: "圖像", pair: 2 },
+        { a: "(-1, -3)",     aLabel: "坐標", b: "R在第三象限",    bLabel: "圖像", pair: 3 },
+        { a: "(2, -3)",      aLabel: "坐標", b: "S在第四象限",    bLabel: "圖像", pair: 4 },
+        { a: "(0, 4)",       aLabel: "坐標", b: "T在y軸上",       bLabel: "圖像", pair: 5 },
+        { a: "(-3, 0)",      aLabel: "坐標", b: "U在x軸上",       bLabel: "圖像", pair: 6 },
+        // 方程配對
+        { a: "x + 3 = 7",    aLabel: "方程", b: "解：x = 4\n（數線上：→|←4）", bLabel: "圖像", pair: 7 },
+        { a: "2y = 10",       aLabel: "方程", b: "解：y = 5\n（數線上：→|←5）", bLabel: "圖像", pair: 8 },
+    ],
+    hard: [
+        // 坐標
+        { a: "(3, 4)",       aLabel: "坐標", b: "P在第一象限",    bLabel: "圖像", pair: 1 },
+        { a: "(-2, 1)",      aLabel: "坐標", b: "Q在第二象限",    bLabel: "圖像", pair: 2 },
+        { a: "(-1, -3)",     aLabel: "坐標", b: "R在第三象限",    bLabel: "圖像", pair: 3 },
+        { a: "(2, -3)",      aLabel: "坐標", b: "S在第四象限",    bLabel: "圖像", pair: 4 },
+        { a: "(0, 4)",       aLabel: "坐標", b: "T在y軸上",       bLabel: "圖像", pair: 5 },
+        { a: "(-3, 0)",      aLabel: "坐標", b: "U在x軸上",       bLabel: "圖像", pair: 6 },
+        // 方程
+        { a: "x + 3 = 7",    aLabel: "方程", b: "解：x = 4",      bLabel: "圖像", pair: 7 },
+        { a: "2y = 10",       aLabel: "方程", b: "解：y = 5",     bLabel: "圖像", pair: 8 },
+        // 直線方程（Ch10 進階）
+        { a: "y = x",         aLabel: "直線", b: "斜率1，通過原點", bLabel: "圖像", pair: 9 },
+        { a: "y = 2x + 1",   aLabel: "直線", b: "斜率2，y截距1",  bLabel: "圖像", pair: 10 },
+    ]
+};
+
+let cards = [];
+let flippedCards = [];
+let matchedPairs = 0;
+let moves = 0;
+let timerInterval = null;
+let seconds = 0;
+let lockBoard = false;
+
+function startGame() {
+    const level = document.getElementById('difficulty').value;
+    cards = shuffle([...cardData[level]]);
+    matchedPairs = 0;
+    moves = 0;
+    seconds = 0;
+    flippedCards = [];
+    lockBoard = false;
+    clearInterval(timerInterval);
+    timerInterval = setInterval(updateTimer, 1000);
+    renderBoard();
+    renderLegend();
+    updateScore();
+    document.getElementById('message').textContent = '';
+}
+
+function resetGame() {
+    clearInterval(timerInterval);
+    matchedPairs = 0; moves = 0; seconds = 0; flippedCards = [];
+    document.getElementById('board').innerHTML = '';
+    document.getElementById('moves').textContent = '0';
+    document.getElementById('matches').textContent = '0';
+    document.getElementById('timer').textContent = '0:00';
+    document.getElementById('message').textContent = '';
+}
+
+function shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+        const j = Math.floor(Math.random() * (i + 1));
+        [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+}
+
+function renderBoard() {
+    const board = document.getElementById('board');
+    board.innerHTML = '';
+    // 兩倍卡牌：一半代數面（藍），一半圖像面（綠）
+    cards.forEach((card, idx) => {
+        // 代數卡（藍）
+        const cardA = createCardElement(card, 'a', idx * 2);
+        board.appendChild(cardA);
+        // 圖像卡（綠）
+        const cardB = createCardElement(card, 'b', idx * 2 + 1);
+        board.appendChild(cardB);
+    });
+}
+
+function createCardElement(card, side, idx) {
+    const div = document.createElement('div');
+    div.className = 'card';
+    div.dataset.pair = card.pair;
+    div.dataset.side = side;
+    div.dataset.idx = idx;
+    div.onclick = () => flipCard(div);
+
+    const inner = document.createElement('div');
+    inner.className = 'card-inner';
+
+    const front = document.createElement('div');
+    front.className = 'card-front';
+    front.innerHTML = `<div class="card-label">⚪ 點擊翻開</div><div class="card-content">？</div>`;
+
+    const back = document.createElement('div');
+    back.className = 'card-back';
+    if (side === 'a') {
+        back.innerHTML = `<div class="card-label">📐 ${card.aLabel}</div><div class="card-content">${card.a}</div>`;
+    } else {
+        back.innerHTML = `<div class="card-label">🖼️ ${card.bLabel}</div><div class="card-graph">${card.b.replace(/\n/g, '<br>')}</div>`;
+    }
+
+    inner.appendChild(front);
+    inner.appendChild(back);
+    div.appendChild(inner);
+    return div;
+}
+
+function flipCard(card) {
+    if (lockBoard) return;
+    if (card.classList.contains('flipped')) return;
+    if (card.classList.contains('matched')) return;
+    if (flippedCards.length >= 2) return;
+
+    card.classList.add('flipped');
+    flippedCards.push(card);
+
+    if (flippedCards.length === 2) {
+        moves++;
+        updateScore();
+        checkMatch();
+    }
+}
+
+function checkMatch() {
+    const [c1, c2] = flippedCards;
+    const samePair = c1.dataset.pair === c2.dataset.pair;
+    const differentSide = c1.dataset.side !== c2.dataset.side;
+
+    if (samePair && differentSide) {
+        // 成功配對
+        c1.classList.add('matched');
+        c2.classList.add('matched');
+        flippedCards = [];
+        matchedPairs++;
+        updateScore();
+        const totalPairs = cards.length;
+        if (matchedPairs === totalPairs) {
+            clearInterval(timerInterval);
+            document.getElementById('message').textContent = `🎉 全部配對成功！用了 ${moves} 次，時間 ${document.getElementById('timer').textContent}`;
+        }
+    } else {
+        // 配對失敗
+        lockBoard = true;
+        c1.classList.add('wrong');
+        c2.classList.add('wrong');
+        setTimeout(() => {
+            c1.classList.remove('flipped', 'wrong');
+            c2.classList.remove('flipped', 'wrong');
+            flippedCards = [];
+            lockBoard = false;
+        }, 800);
+    }
+}
+
+function updateScore() {
+    document.getElementById('moves').textContent = moves;
+    document.getElementById('matches').textContent = matchedPairs;
+}
+
+function updateTimer() {
+    seconds++;
+    const m = Math.floor(seconds / 60);
+    const s = seconds % 60;
+    document.getElementById('timer').textContent = `${m}:${s.toString().padStart(2,'0')}`;
+}
+
+function renderLegend() {
+    const legend = document.getElementById('legend');
+    legend.innerHTML = '';
+    cards.forEach(card => {
+        const item = document.createElement('div');
+        item.className = 'legend-item';
+        item.innerHTML = `<strong>${card.a}</strong> ↔ ${card.b.replace(/\n/g,' ')}`;
+        legend.appendChild(item);
+    });
+}
+
+// 預設開始
+document.addEventListener('DOMContentLoaded', startGame);
+</script>
+</body>
+</html>
