@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="900" height="600" viewBox="0 0 900 600">
+  <rect width="100%" height="100%" fill="#fff"/>
+  <!-- Left triangle ABC -->
+  <polygon points="150,450 300,150 450,450" fill="#f7fbff" stroke="#222" stroke-width="3"/>
+  <text x="150" y="470" font-size="18">A</text>
+  <text x="300" y="140" font-size="18">B</text>
+  <text x="450" y="470" font-size="18">C</text>
+  <!-- Right triangle DEF -->
+  <polygon points="550,450 700,150 850,450" fill="#f7fbff" stroke="#222" stroke-width="3"/>
+  <text x="550" y="470" font-size="18">D</text>
+  <text x="700" y="140" font-size="18">E</text>
+  <text x="850" y="470" font-size="18">F</text>
+  <!-- tick marks for AB=DE and BC=EF -->
+  <line x1="150" y1="450" x2="300" y2="150" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+  <line x1="550" y1="450" x2="700" y2="150" stroke="#222" stroke-width="6" stroke-linecap="round"/>
+  <!-- indicate equal with small ticks near midpoints -->
+  <line x1="220" y1="310" x2="235" y2="295" stroke="#000" stroke-width="4"/>
+  <line x1="630" y1="310" x2="645" y2="295" stroke="#000" stroke-width="4"/>
+  <line x1="330" y1="450" x2="345" y2="430" stroke="#000" stroke-width="4"/>
+  <line x1="740" y1="450" x2="755" y2="430" stroke="#000" stroke-width="4"/>
+  <!-- arc for included angle at B and E -->
+  <path d="M275 190 A40 40 0 0 1 310 220" fill="none" stroke="#e65555" stroke-width="3"/>
+  <path d="M675 190 A40 40 0 0 1 710 220" fill="none" stroke="#e65555" stroke-width="3"/>
+  <text x="295" y="210" font-size="16" fill="#e65555">∠B</text>
+  <text x="695" y="210" font-size="16" fill="#e65555">∠E</text>
+  <!-- title -->
+  <text x="450" y="40" font-size="22" text-anchor="middle">全等三角形 — SAS（兩邊及其夾角）</text>
+</svg>
