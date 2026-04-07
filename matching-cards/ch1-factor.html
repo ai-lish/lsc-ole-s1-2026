@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch1 基礎計算 — 因數分解配對卡牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans TC',sans-serif;background:#f0f4f8;padding:20px}
+  h1{text-align:center;color:#1a3a6e;margin-bottom:6px}
+  p.sub{text-align:center;color:#666;margin-bottom:20px;font-size:.9rem}
+  .controls{text-align:center;margin-bottom:20px}
+  .controls button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;font-weight:600;background:#1a3a6e;color:white}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+  .card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .card-row h3{grid-column:1/-1;color:#1a3a6e;font-size:.95rem;border-bottom:2px solid #1a3a6e;padding-bottom:5px;margin-bottom:4px}
+  .algebra-card,.graph-card{border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
+  .algebra-card{background:#e8f0fe;border:2px solid #5a8fd4}
+  .graph-card{background:#f0faf4;border:2px solid #4aaa6a}
+  .card-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .card-content{font-size:1.1rem;font-weight:700;color:#1a3a6e}
+  .card-graph svg{width:100%;height:auto;max-height:150px}
+  @media print{body{background:white}.controls{display:none}.card-row{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>🔢 Ch1 基礎計算 — 因數分解配對卡牌</h1>
+<p class="sub">質因數分解 · HCF · LCM · 整除性</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 72=2³×3² -->
+  <div class="card-row">
+    <h3>72 的不同排列（因數分解視覺化）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（質因數）</div>
+      <div class="card-content">72 = 2³ × 3²</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 排列圖</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- 8×9 rectangle -->
+          <rect x="60" y="30" width="200" height="90" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2"/>
+          <!-- grid 8 cols, 9 rows -->
+          <g fill="#5a8fd4" opacity=".5">
+            <rect x="60" y="30" width="25" height="10"/>
+            <rect x="85" y="30" width="25" height="10"/>
+            <rect x="110" y="30" width="25" height="10"/>
+            <rect x="135" y="30" width="25" height="10"/>
+            <rect x="160" y="30" width="25" height="10"/>
+            <rect x="185" y="30" width="25" height="10"/>
+            <rect x="210" y="30" width="25" height="10"/>
+            <rect x="235" y="30" width="25" height="10"/>
+            <!-- row 2 -->
+            <rect x="60" y="40" width="25" height="10"/>
+            <rect x="85" y="40" width="25" height="10"/>
+            <rect x="110" y="40" width="25" height="10"/>
+            <rect x="135" y="40" width="25" height="10"/>
+            <rect x="160" y="40" width="25" height="10"/>
+            <rect x="185" y="40" width="25" height="10"/>
+            <rect x="210" y="40" width="25" height="10"/>
+            <rect x="235" y="40" width="25" height="10"/>
+          </g>
+          <!-- dimensions -->
+          <text x="160" y="22" font-size="13" text-anchor="middle" fill="#1a3a6e">8 列</text>
+          <text x="42" y="75" font-size="13" text-anchor="middle" fill="#1a3a6e" transform="rotate(-90 42 75)">9 行</text>
+          <text x="160" y="145" font-size="12" text-anchor="middle" fill="#888">8 × 9 = 72　其他：6×12, 4×18, 3×24, 2×36, 1×72</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- HCF 12,18 -->
+  <div class="card-row">
+    <h3>最大公因數 HCF（12, 18）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（運算）</div>
+      <div class="card-content">HCF(12, 18) = 6</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- rectangle 12×18 -->
+          <rect x="30" y="30" width="180" height="90" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2"/>
+          <!-- 6×6 grid -->
+          <g stroke="#4aaa6a" stroke-width="1.5">
+            <line x1="30" y1="75" x2="210" y2="75"/>
+            <line x1="120" y1="30" x2="120" y2="120"/>
+          </g>
+          <text x="75" y="22" font-size="12" text-anchor="middle" fill="#1a3a6e">6</text>
+          <text x="165" y="22" font-size="12" text-anchor="middle" fill="#1a3a6e">6</text>
+          <text x="20" y="78" font-size="12" text-anchor="middle" fill="#1a3a6e" transform="rotate(-90 20 78)">6</text>
+          <text x="20" y="105" font-size="12" text-anchor="middle" fill="#1a3a6e" transform="rotate(-90 20 105)">3</text>
+          <text x="75" y="112" font-size="12" text-anchor="middle" fill="#1a3a6e">6</text>
+          <text x="165" y="112" font-size="12" text-anchor="middle" fill="#1a3a6e">6</text>
+          <text x="75" y="140" font-size="12" text-anchor="middle" fill="#1a3a6e">6</text>
+          <text x="165" y="140" font-size="12" text-anchor="middle" fill="#e65555">6</text>
+          <text x="120" y="155" font-size="13" text-anchor="middle" fill="#4aaa6a" font-weight="bold">最大正方形：6×6</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- LCM 4,6 -->
+  <div class="card-row">
+    <h3>最小公倍數 LCM（4, 6）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（運算）</div>
+      <div class="card-content">LCM(4, 6) = 12</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- number line 0-12 -->
+          <line x1="30" y1="90" x2="290" y2="90" stroke="#333" stroke-width="2"/>
+          <g stroke="#333" stroke-width="2">
+            <line x1="30" y1="83" x2="30" y2="97"/><text x="30" y="107" font-size="12" text-anchor="middle">0</text>
+            <line x1="100" y1="83" x2="100" y2="97"/><text x="100" y="107" font-size="12" text-anchor="middle">4</text>
+            <line x1="155" y1="83" x2="155" y2="97"/><text x="155" y="107" font-size="12" text-anchor="middle">6</text>
+            <line x1="230" y1="83" x2="230" y2="97"/><text x="230" y="107" font-size="12" text-anchor="middle">12</text>
+            <line x1="290" y1="83" x2="290" y2="97"/><text x="290" y="107" font-size="12" text-anchor="middle">24</text>
+          </g>
+          <!-- multiples of 4 -->
+          <circle cx="100" cy="55" r="8" fill="#5a8fd4"/>
+          <circle cx="230" cy="55" r="8" fill="#5a8fd4"/>
+          <text x="100" y="48" font-size="11" text-anchor="middle" fill="#5a8fd4">4</text>
+          <text x="230" y="48" font-size="11" text-anchor="middle" fill="#5a8fd4">12</text>
+          <!-- multiples of 6 -->
+          <circle cx="155" cy="35" r="8" fill="#4aaa6a"/>
+          <circle cx="230" cy="35" r="8" fill="#4aaa6a"/>
+          <text x="155" y="28" font-size="11" text-anchor="middle" fill="#4aaa6a">6</text>
+          <text x="230" y="28" font-size="11" text-anchor="middle" fill="#4aaa6a">12</text>
+          <!-- line to result -->
+          <circle cx="230" cy="90" r="10" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="230" y="95" font-size="12" text-anchor="middle" fill="#1a3a6e" font-weight="bold">12</text>
+          <text x="230" y="148" font-size="13" text-anchor="middle" fill="#4aaa6a">首次共同出現 = LCM</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 整除性 -->
+  <div class="card-row">
+    <h3>整除性判別（4, 6, 8, 9）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（判別法）</div>
+      <div class="card-content">72 可被 4, 6, 8, 9 整除</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- center number -->
+          <circle cx="150" cy="80" r="40" fill="#ffd700" stroke="#1a3a6e" stroke-width="3"/>
+          <text x="150" y="75" font-size="22" text-anchor="middle" fill="#1a3a6e" font-weight="bold">72</text>
+          <!-- divisibility arrows -->
+          <!-- 4: last 2 digits -->
+          <line x1="110" y1="45" x2="70" y2="25" stroke="#5a8fd4" stroke-width="2"/>
+          <text x="68" y="20" font-size="13" fill="#5a3a6e" font-weight="bold">÷4</text>
+          <text x="40" y="38" font-size="10" fill="#888">後兩位72</text>
+          <!-- 6: ÷2 and ÷3 -->
+          <line x1="150" y1="40" x2="150" y2="15" stroke="#e65555" stroke-width="2"/>
+          <text x="155" y="12" font-size="13" fill="#e65555" font-weight="bold">÷6</text>
+          <text x="125" y="12" font-size="10" fill="#888">÷2+÷3</text>
+          <!-- 8: last 3 digits -->
+          <line x1="190" y1="45" x2="230" y2="25" stroke="#4aaa6a" stroke-width="2"/>
+          <text x="232" y="20" font-size="13" fill="#4aaa6a" font-weight="bold">÷8</text>
+          <text x="232" y="38" font-size="10" fill="#888">後三位072</text>
+          <!-- 9: sum of digits -->
+          <line x1="190" y1="80" x2="240" y2="80" stroke="#ffd700" stroke-width="2"/>
+          <text x="252" y="76" font-size="13" fill="#c8960c" font-weight="bold">÷9</text>
+          <text x="255" y="92" font-size="10" fill="#888">7+2=9</text>
+          <text x="150" y="148" font-size="12" text-anchor="middle" fill="#888">全部可整除 ✓</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch13 數值估算 — 有效數字配對卡牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans TC',sans-serif;background:#f0f4f8;padding:20px}
+  h1{text-align:center;color:#1a3a6e;margin-bottom:6px}
+  p.sub{text-align:center;color:#666;margin-bottom:20px;font-size:.9rem}
+  .controls{text-align:center;margin-bottom:20px}
+  .controls button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;font-weight:600;background:#1a3a6e;color:white}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+  .card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .card-row h3{grid-column:1/-1;color:#1a3a6e;font-size:.95rem;border-bottom:2px solid #1a3a6e;padding-bottom:5px;margin-bottom:4px}
+  .algebra-card,.graph-card{border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
+  .algebra-card{background:#e8f0fe;border:2px solid #5a8fd4}
+  .graph-card{background:#f0faf4;border:2px solid #4aaa6a}
+  .card-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .card-content{font-size:1.1rem;font-weight:700;color:#1a3a6e}
+  .card-graph svg{width:100%;height:auto;max-height:150px}
+  @media print{body{background:white}.controls{display:none}.card-row{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>🔢 Ch13 數值估算 — 有效數字配對卡牌</h1>
+<p class="sub">有效數字 · 捨入 · 上捨 / 下捨</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 有效數字 -->
+  <div class="card-row">
+    <h3>有效數字：3.142 → 3.14（2位小數）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（運算）</div>
+      <div class="card-content">3.142 ≈ 3.14（3sf）</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <text x="150" y="20" font-size="14" text-anchor="middle" fill="#1a3a6e" font-weight="bold">有效數字示意</text>
+          <!-- original -->
+          <text x="70" y="55" font-size="22" text-anchor="middle" fill="#e65555" font-weight="bold">3.142</text>
+          <text x="70" y="72" font-size="11" text-anchor="middle" fill="#888">原值</text>
+          <!-- arrow -->
+          <line x1="115" y1="55" x2="145" y2="55" stroke="#5a8fd4" stroke-width="3"/>
+          <polygon points="145,50 157,55 145,60" fill="#5a8fd4"/>
+          <text x="130" y="48" font-size="11" fill="#5a8fd4">四捨五入</text>
+          <!-- rounded -->
+          <text x="195" y="55" font-size="22" text-anchor="middle" fill="#4aaa6a" font-weight="bold">3.14</text>
+          <text x="195" y="72" font-size="11" text-anchor="middle" fill="#888">保留3位有效數字</text>
+          <!-- underline marks -->
+          <line x1="130" y1="80" x2="130" y2="90" stroke="#e65555" stroke-width="3"/>
+          <line x1="155" y1="80" x2="155" y2="90" stroke="#4aaa6a" stroke-width="3"/>
+          <line x1="178" y1="80" x2="178" y2="90" stroke="#5a8fd4" stroke-width="3"/>
+          <text x="143" y="110" font-size="11" text-anchor="middle" fill="#888">↑ 第4位是2（捨去）</text>
+          <text x="150" y="130" font-size="12" text-anchor="middle" fill="#1a3a6e">3.142 有 4 位有效數字</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 上捨下捨 -->
+  <div class="card-row">
+    <h3>上捨入 vs 下捨入：估算策略</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（策略）</div>
+      <div class="card-content">上捨：37×52 ≈ 40×60<br>下捨：37×52 ≈ 30×50</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- actual -->
+          <text x="150" y="20" font-size="12" text-anchor="middle" fill="#1a3a6e">實際：37 × 52 = 1924</text>
+          <!-- upper bound -->
+          <rect x="20" y="35" width="125" height="50" rx="8" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="82" y="55" font-size="13" text-anchor="middle" fill="#1a3a6e" font-weight="bold">上捨入</text>
+          <text x="82" y="72" font-size="12" text-anchor="middle" fill="#1a3a6e">40 × 60 = 2400</text>
+          <text x="82" y="88" font-size="10" text-anchor="middle" fill="#4aaa6a">比實際大 ↑</text>
+          <!-- lower bound -->
+          <rect x="155" y="35" width="125" height="50" rx="8" fill="#e8f0fe" stroke="#5a8fd4" stroke-width="2"/>
+          <text x="217" y="55" font-size="13" text-anchor="middle" fill="#1a3a6e" font-weight="bold">下捨入</text>
+          <text x="217" y="72" font-size="12" text-anchor="middle" fill="#1a3a6e">30 × 50 = 1500</text>
+          <text x="217" y="88" font-size="10" text-anchor="middle" fill="#e65555">比實際小 ↓</text>
+          <!-- result -->
+          <text x="150" y="125" font-size="12" text-anchor="middle" fill="#888">1924 在 1500 與 2400 之間</text>
+          <text x="150" y="145" font-size="12" text-anchor="middle" fill="#1a3a6e" font-weight="bold">估算結果：≈ 2000（取中間）</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

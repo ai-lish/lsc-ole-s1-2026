@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch9 百分法（一）— 折扣與盈虧配對卡牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans TC',sans-serif;background:#f0f4f8;padding:20px}
+  h1{text-align:center;color:#1a3a6e;margin-bottom:6px}
+  p.sub{text-align:center;color:#666;margin-bottom:20px;font-size:.9rem}
+  .controls{text-align:center;margin-bottom:20px}
+  .controls button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;font-weight:600;background:#1a3a6e;color:white}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+  .card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .card-row h3{grid-column:1/-1;color:#1a3a6e;font-size:.95rem;border-bottom:2px solid #1a3a6e;padding-bottom:5px;margin-bottom:4px}
+  .algebra-card,.graph-card{border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
+  .algebra-card{background:#e8f0fe;border:2px solid #5a8fd4}
+  .graph-card{background:#f0faf4;border:2px solid #4aaa6a}
+  .card-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .card-content{font-size:1.1rem;font-weight:700;color:#1a3a6e}
+  .card-graph svg{width:100%;height:auto;max-height:150px}
+  @media print{body{background:white}.controls{display:none}.card-row{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>💰 Ch9 百分法（一）— 折扣與盈虧配對卡牌</h1>
+<p class="sub">折扣計算 · 盈虧問題 · 百分變化</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 折扣 -->
+  <div class="card-row">
+    <h3>折扣：標價 $200，8折優惠</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（算式）</div>
+      <div class="card-content">$200 × 80% = $160</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 漫畫圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- original price -->
+          <text x="70" y="30" font-size="13" text-anchor="middle" fill="#888">標價</text>
+          <rect x="20" y="38" width="100" height="40" rx="8" fill="#f7fbff" stroke="#888" stroke-width="2"/>
+          <text x="70" y="62" font-size="18" text-anchor="middle" fill="#888" text-decoration="line-through">$200</text>
+          <!-- arrow -->
+          <line x1="125" y1="58" x2="160" y2="58" stroke="#5a8fd4" stroke-width="3"/>
+          <polygon points="160,53 172,58 160,63" fill="#5a8fd4"/>
+          <text x="148" y="50" font-size="11" fill="#5a8fd4">8折</text>
+          <!-- sale price -->
+          <text x="230" y="30" font-size="13" text-anchor="middle" fill="#4aaa6a">售價</text>
+          <rect x="170" y="38" width="120" height="40" rx="8" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="230" y="62" font-size="20" text-anchor="middle" fill="#1a3a6e" font-weight="bold">$160</text>
+          <!-- savings -->
+          <rect x="60" y="100" width="180" height="35" rx="6" fill="#e8f0fe" stroke="#5a8fd4" stroke-width="1.5"/>
+          <text x="150" y="120" font-size="13" text-anchor="middle" fill="#5a8fd4">慳 $40（節省20%）</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 盈虧 -->
+  <div class="card-row">
+    <h3>盈虧：成本 $3000，售 $4500</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（計算）</div>
+      <div class="card-content">盈利 = $4500 − $3000 = $1500<br>盈利率 = 1500/3000 × 100% = 50%</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 漫畫圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- cost -->
+          <text x="75" y="28" font-size="12" text-anchor="middle" fill="#888">成本</text>
+          <rect x="15" y="35" width="120" height="35" rx="6" fill="#f7fbff" stroke="#888" stroke-width="2"/>
+          <text x="75" y="57" font-size="16" text-anchor="middle" fill="#888">$3000</text>
+          <!-- arrow -->
+          <line x1="138" y1="52" x2="170" y2="52" stroke="#e65555" stroke-width="3"/>
+          <polygon points="170,47 182,52 170,57" fill="#e65555"/>
+          <!-- sale -->
+          <text x="230" y="28" font-size="12" text-anchor="middle" fill="#4aaa6a">售價</text>
+          <rect x="160" y="35" width="130" height="35" rx="6" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="225" y="57" font-size="16" text-anchor="middle" fill="#1a3a6e" font-weight="bold">$4500</text>
+          <!-- profit -->
+          <rect x="30" y="90" width="110" height="35" rx="6" fill="#e8f8f0" stroke="#4aaa6a" stroke-width="2"/>
+          <text x="85" y="111" font-size="13" text-anchor="middle" fill="#4aaa6a" font-weight="bold">盈利 $1500</text>
+          <rect x="155" y="90" width="120" height="35" rx="6" fill="#e8f8f0" stroke="#4aaa6a" stroke-width="2"/>
+          <text x="215" y="111" font-size="13" text-anchor="middle" fill="#4aaa6a" font-weight="bold">盈利率 50%</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 百分增加 -->
+  <div class="card-row">
+    <h3>百分增加：$80 → $100　增加25%</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">(100−80)/80 × 100% = 25%</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- bar original -->
+          <rect x="40" y="80" width="100" height="30" fill="#5a8fd4" rx="4"/>
+          <text x="90" y="100" font-size="13" text-anchor="middle" fill="white" font-weight="bold">$80</text>
+          <!-- bar new -->
+          <rect x="40" y="40" width="125" height="30" fill="#4aaa6a" rx="4"/>
+          <text x="102" y="60" font-size="13" text-anchor="middle" fill="white" font-weight="bold">$100</text>
+          <!-- increase arrow -->
+          <line x1="15" y1="80" x2="15" y2="45" stroke="#e65555" stroke-width="3"/>
+          <polygon points="10,45 15,33 20,45" fill="#e65555"/>
+          <text x="8" y="65" font-size="12" text-anchor="middle" fill="#e65555" font-weight="bold">+$20</text>
+          <!-- labels -->
+          <text x="90" y="130" font-size="12" text-anchor="middle" fill="#888">舊值 $80</text>
+          <text x="102" y="145" font-size="12" text-anchor="middle" fill="#4aaa6a" font-weight="bold">新值 $100</text>
+          <text x="15" y="28" font-size="11" text-anchor="middle" fill="#e65555">↑25%</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 百分減少 -->
+  <div class="card-row">
+    <h3>百分減少：體重 80kg → 64kg</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">(80−64)/80 × 100% = 20% 減少</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- before bar -->
+          <rect x="40" y="40" width="100" height="30" fill="#e65555" rx="4"/>
+          <text x="90" y="60" font-size="13" text-anchor="middle" fill="white" font-weight="bold">80kg</text>
+          <!-- after bar -->
+          <rect x="40" y="80" width="80" height="30" fill="#5a8fd4" rx="4"/>
+          <text x="80" y="100" font-size="13" text-anchor="middle" fill="white" font-weight="bold">64kg</text>
+          <!-- down arrow -->
+          <line x1="15" y1="55" x2="15" y2="95" stroke="#4aaa6a" stroke-width="3"/>
+          <polygon points="10,95 15,107 20,95" fill="#4aaa6a"/>
+          <text x="8" y="80" font-size="12" text-anchor="middle" fill="#4aaa6a" font-weight="bold">−16kg</text>
+          <!-- labels -->
+          <text x="90" y="28" font-size="12" text-anchor="middle" fill="#e65555">之前</text>
+          <text x="80" y="130" font-size="12" text-anchor="middle" fill="#5a8fd4">之後</text>
+          <text x="15" y="128" font-size="11" text-anchor="middle" fill="#4aaa6a">↓20%</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

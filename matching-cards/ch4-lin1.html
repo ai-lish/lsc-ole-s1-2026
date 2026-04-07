@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch4 & Ch7 一元一次方程 — 數線配對卡牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans TC',sans-serif;background:#f0f4f8;padding:20px}
+  h1{text-align:center;color:#1a3a6e;margin-bottom:6px}
+  p.sub{text-align:center;color:#666;margin-bottom:20px;font-size:.9rem}
+  .controls{text-align:center;margin-bottom:20px}
+  .controls button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;font-weight:600;background:#1a3a6e;color:white}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+  .card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .card-row h3{grid-column:1/-1;color:#1a3a6e;font-size:.95rem;border-bottom:2px solid #1a3a6e;padding-bottom:5px;margin-bottom:4px}
+  .algebra-card,.graph-card{border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
+  .algebra-card{background:#e8f0fe;border:2px solid #5a8fd4}
+  .graph-card{background:#f0faf4;border:2px solid #4aaa6a}
+  .card-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .card-content{font-size:1.1rem;font-weight:700;color:#1a3a6e}
+  .card-graph svg{width:100%;height:auto;max-height:150px}
+  @media print{body{background:white}.controls{display:none}.card-row{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>🧮 Ch4 & Ch7 一元一次方程 — 數線配對卡牌</h1>
+<p class="sub">x + 5 = 12　|　3(x − 2) = 12　|　5x + 3 = 2x + 9</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- x+5=12 -->
+  <div class="card-row">
+    <h3>x + 5 = 12　解：x = 7</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（方程）</div>
+      <div class="card-content">x + 5 = 12</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 數線圖</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="85" x2="290" y2="85" stroke="#333" stroke-width="3"/>
+          <g stroke="#333" stroke-width="2">
+            <line x1="60" y1="78" x2="60" y2="92"/><text x="60" y="105" font-size="12" text-anchor="middle">0</text>
+            <line x1="110" y1="78" x2="110" y2="92"/><text x="110" y="105" font-size="12" text-anchor="middle">5</text>
+            <line x1="160" y1="78" x2="160" y2="92"/><text x="160" y="105" font-size="12" text-anchor="middle">10</text>
+            <line x1="210" y1="78" x2="210" y2="92"/><text x="210" y="105" font-size="12" text-anchor="middle">15</text>
+          </g>
+          <!-- arrow from x to 12 -->
+          <line x1="80" y1="55" x2="160" y2="55" stroke="#5a8fd4" stroke-width="3"/>
+          <polygon points="160,50 172,55 160,60" fill="#5a8fd4"/>
+          <text x="120" y="48" font-size="12" fill="#5a8fd4">+5</text>
+          <!-- x marker -->
+          <text x="80" y="45" font-size="14" fill="#1a3a6e" font-weight="bold">x</text>
+          <circle cx="80" cy="85" r="7" fill="#e65555"/>
+          <text x="80" y="75" font-size="14" text-anchor="middle" fill="#e65555" font-weight="bold">x</text>
+          <!-- 12 marker -->
+          <circle cx="160" cy="85" r="7" fill="#4aaa6a"/>
+          <text x="160" y="75" font-size="14" text-anchor="middle" fill="#4aaa6a" font-weight="bold">12</text>
+          <!-- solution label -->
+          <text x="120" y="140" font-size="14" text-anchor="middle" fill="#1a3a6e" font-weight="bold">x = 7</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 3(x-2)=12 -->
+  <div class="card-row">
+    <h3>3(x − 2) = 12　解：x = 6（Ch7進階）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（方程）</div>
+      <div class="card-content">3(x − 2) = 12</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 數線圖</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="85" x2="290" y2="85" stroke="#333" stroke-width="3"/>
+          <g stroke="#333" stroke-width="2">
+            <line x1="60" y1="78" x2="60" y2="92"/><text x="60" y="105" font-size="12" text-anchor="middle">0</text>
+            <line x1="110" y1="78" x2="110" y2="92"/><text x="110" y="105" font-size="12" text-anchor="middle">2</text>
+            <line x1="160" y1="78" x2="160" y2="92"/><text x="160" y="105" font-size="12" text-anchor="middle">4</text>
+            <line x1="210" y1="78" x2="210" y2="92"/><text x="210" y="105" font-size="12" text-anchor="middle">6</text>
+          </g>
+          <!-- 3 groups shown -->
+          <line x1="110" y1="60" x2="160" y2="60" stroke="#5a8fd4" stroke-width="3"/>
+          <line x1="160" y1="45" x2="210" y2="45" stroke="#5a8fd4" stroke-width="3"/>
+          <line x1="210" y1="30" x2="260" y2="30" stroke="#5a8fd4" stroke-width="3"/>
+          <polygon points="260,25 270,30 260,35" fill="#5a8fd4"/>
+          <text x="185" y="55" font-size="11" fill="#5a8fd4">每組+2</text>
+          <text x="185" y="40" font-size="11" fill="#888">×3</text>
+          <!-- x marker -->
+          <circle cx="110" cy="85" r="7" fill="#e65555"/>
+          <text x="110" y="75" font-size="14" text-anchor="middle" fill="#e65555" font-weight="bold">x−2</text>
+          <!-- result -->
+          <circle cx="210" cy="85" r="7" fill="#4aaa6a"/>
+          <text x="210" y="75" font-size="14" text-anchor="middle" fill="#4aaa6a" font-weight="bold">12</text>
+          <text x="140" y="140" font-size="14" text-anchor="middle" fill="#1a3a6e" font-weight="bold">x = 6</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 5x+3=2x+9 -->
+  <div class="card-row">
+    <h3>5x + 3 = 2x + 9　移項求解</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（方程）</div>
+      <div class="card-content">5x + 3 = 2x + 9</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Step 1 -->
+          <text x="10" y="30" font-size="11" fill="#888">Step 1: 移項</text>
+          <text x="150" y="30" font-size="12" text-anchor="middle" fill="#1a3a6e">5x − 2x = 9 − 3</text>
+          <text x="150" y="50" font-size="12" text-anchor="middle" fill="#e65555">↓</text>
+          <text x="150" y="68" font-size="13" text-anchor="middle" fill="#1a3a6e" font-weight="bold">3x = 6</text>
+          <!-- Step 2 -->
+          <text x="10" y="90" font-size="11" fill="#888">Step 2: 除以系數</text>
+          <text x="150" y="100" font-size="13" text-anchor="middle" fill="#1a3a6e" font-weight="bold">x = 6 ÷ 3</text>
+          <text x="150" y="118" font-size="12" text-anchor="middle" fill="#e65555">↓</text>
+          <!-- Result -->
+          <text x="10" y="136" font-size="11" fill="#888">結果：</text>
+          <rect x="80" y="130" width="140" height="28" rx="8" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="150" y="150" font-size="16" text-anchor="middle" fill="#1a3a6e" font-weight="bold">x = 2</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 應用題 -->
+  <div class="card-row">
+    <h3>應用題：我有$x，已知$x + $8 = $50</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（方程）</div>
+      <div class="card-content">x + 8 = 50　→　x = 42</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解（漫畫）</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- me -->
+          <circle cx="60" cy="55" r="22" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="60" y="60" font-size="20" text-anchor="middle">🧑</text>
+          <!-- money bag x -->
+          <rect x="40" y="80" width="40" height="30" rx="5" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="60" y="100" font-size="14" text-anchor="middle" fill="#1a3a6e" font-weight="bold">$x</text>
+          <!-- +8 arrow -->
+          <line x1="82" y1="95" x2="115" y2="95" stroke="#5a8fd4" stroke-width="3"/>
+          <polygon points="115,90 125,95 115,100" fill="#5a8fd4"/>
+          <!-- +8 bag -->
+          <rect x="127" y="80" width="40" height="30" rx="5" fill="#f7fbff" stroke="#5a8fd4" stroke-width="2"/>
+          <text x="147" y="100" font-size="14" text-anchor="middle" fill="#5a8fd4" font-weight="bold">+$8</text>
+          <!-- =50 -->
+          <text x="210" y="98" font-size="20" text-anchor="middle" fill="#1a3a6e" font-weight="bold">=</text>
+          <rect x="225" y="80" width="55" height="30" rx="5" fill="#ffd700" stroke="#1a3a6e" stroke-width="2"/>
+          <text x="252" y="100" font-size="14" text-anchor="middle" fill="#1a3a6e" font-weight="bold">$50</text>
+          <!-- solution -->
+          <text x="150" y="140" font-size="13" text-anchor="middle" fill="#4aaa6a" font-weight="bold">我有 $42</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

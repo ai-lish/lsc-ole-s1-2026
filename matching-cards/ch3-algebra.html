@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch3 代數式 — 公式圖解配對卡牌</title>
+<style>
+  *{box-sizing:border-box;margin:0;padding:0}
+  body{font-family:'Noto Sans TC',sans-serif;background:#f0f4f8;padding:20px}
+  h1{text-align:center;color:#1a3a6e;margin-bottom:6px}
+  p.sub{text-align:center;color:#666;margin-bottom:20px;font-size:.9rem}
+  .controls{text-align:center;margin-bottom:20px}
+  .controls button{padding:8px 20px;border:none;border-radius:20px;cursor:pointer;font-weight:600;background:#1a3a6e;color:white}
+  .grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:16px;max-width:1100px;margin:0 auto}
+  .card-row{display:grid;grid-template-columns:1fr 1fr;gap:12px;background:white;border-radius:14px;padding:14px;box-shadow:0 2px 10px rgba(0,0,0,.08)}
+  .card-row h3{grid-column:1/-1;color:#1a3a6e;font-size:.95rem;border-bottom:2px solid #1a3a6e;padding-bottom:5px;margin-bottom:4px}
+  .algebra-card,.graph-card{border-radius:10px;padding:14px;display:flex;flex-direction:column;align-items:center;justify-content:center;min-height:160px;text-align:center}
+  .algebra-card{background:#e8f0fe;border:2px solid #5a8fd4}
+  .graph-card{background:#f0faf4;border:2px solid #4aaa6a}
+  .card-label{font-size:.7rem;color:#888;text-transform:uppercase;letter-spacing:1px;margin-bottom:6px}
+  .card-content{font-size:1.1rem;font-weight:700;color:#1a3a6e}
+  .card-graph svg{width:100%;height:auto;max-height:150px}
+  @media print{body{background:white}.controls{display:none}.card-row{break-inside:avoid}}
+</style>
+</head>
+<body>
+<h1>📐 Ch3 代數式 — 公式圖解配對卡牌</h1>
+<p class="sub">周界公式 · 面積公式 · 代入法</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 長方形周界 -->
+  <div class="card-row">
+    <h3>長方形周界 P = 2l + 2w</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">P = 2l + 2w</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="50" y="40" width="200" height="80" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <text x="150" y="30" font-size="14" text-anchor="middle" fill="#1a3a6e">長方形</text>
+          <text x="150" y="55" font-size="13" text-anchor="middle" fill="#e65555" font-weight="bold">長 l</text>
+          <text x="30" y="80" font-size="13" text-anchor="middle" fill="#4aaa6a" font-weight="bold" transform="rotate(-90 30 80)">闊 w</text>
+          <line x1="50" y1="40" x2="50" y2="50" stroke="#e65555" stroke-width="2"/>
+          <line x1="50" y1="40" x2="60" y2="40" stroke="#e65555" stroke-width="2"/>
+          <line x1="200" y1="40" x2="200" y2="50" stroke="#4aaa6a" stroke-width="2"/>
+          <line x1="190" y1="40" x2="200" y2="40" stroke="#4aaa6a" stroke-width="2"/>
+          <text x="150" y="148" font-size="12" text-anchor="middle" fill="#888">P = 2×l + 2×w</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 正方形面積 -->
+  <div class="card-row">
+    <h3>正方形面積 A = s²</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">A = s²</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="60" y="35" width="160" height="100" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <text x="140" y="26" font-size="14" text-anchor="middle" fill="#1a3a6e">正方形</text>
+          <text x="140" y="52" font-size="13" text-anchor="middle" fill="#e65555" font-weight="bold">邊長 s</text>
+          <text x="30" y="85" font-size="13" text-anchor="middle" fill="#e65555" font-weight="bold" transform="rotate(-90 30 85)">s</text>
+          <!-- grid inside -->
+          <g stroke="#5a8fd4" stroke-width="1" stroke-dasharray="4,3">
+            <line x1="60" y1="75" x2="220" y2="75"/>
+            <line x1="60" y1="115" x2="220" y2="115"/>
+            <line x1="120" y1="35" x2="120" y2="135"/>
+            <line x1="180" y1="35" x2="180" y2="135"/>
+          </g>
+          <text x="140" y="148" font-size="12" text-anchor="middle" fill="#888">A = s × s = s²</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 代入法 -->
+  <div class="card-row">
+    <h3>代入法：如果 l=5, w=3，求 P</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（代入）</div>
+      <div class="card-content">P = 2×5 + 2×3 = 16</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <rect x="50" y="40" width="200" height="80" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <text x="150" y="30" font-size="12" text-anchor="middle" fill="#1a3a6e">l=5, w=3</text>
+          <text x="150" y="55" font-size="14" text-anchor="middle" fill="#e65555" font-weight="bold">l = 5</text>
+          <text x="30" y="80" font-size="14" text-anchor="middle" fill="#4aaa6a" font-weight="bold" transform="rotate(-90 30 80)">w = 3</text>
+          <!-- 2l + 2w = 10+6=16 shown as segments -->
+          <line x1="50" y1="140" x2="120" y2="140" stroke="#e65555" stroke-width="4"/>
+          <line x1="120" y1="140" x2="190" y2="140" stroke="#4aaa6a" stroke-width="4"/>
+          <line x1="190" y1="140" x2="250" y2="140" stroke="#e65555" stroke-width="4"/>
+          <text x="85" y="155" font-size="11" text-anchor="middle" fill="#e65555">2×5=10</text>
+          <text x="155" y="155" font-size="11" text-anchor="middle" fill="#4aaa6a">2×3=6</text>
+          <text x="220" y="155" font-size="11" text-anchor="middle" fill="#1a3a6e">P=16</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三角形數列 -->
+  <div class="card-row">
+    <h3>三角形數列 1, 3, 6, 10, 15 ...</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（數列）</div>
+      <div class="card-content">Tₙ = n(n+1)/2</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖解</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 300 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Row 1: 1 -->
+          <circle cx="150" cy="20" r="8" fill="#5a8fd4"/>
+          <!-- Row 2: 2,3 -->
+          <circle cx="135" cy="40" r="8" fill="#5a8fd4"/>
+          <circle cx="165" cy="40" r="8" fill="#5a8fd4"/>
+          <!-- Row 3: 4,5,6 -->
+          <circle cx="120" cy="60" r="8" fill="#5a8fd4"/>
+          <circle cx="150" cy="60" r="8" fill="#5a8fd4"/>
+          <circle cx="180" cy="60" r="8" fill="#5a8fd4"/>
+          <!-- Row 4: 7-10 -->
+          <circle cx="105" cy="80" r="7" fill="#5a8fd4" opacity=".7"/>
+          <circle cx="130" cy="80" r="7" fill="#5a8fd4" opacity=".7"/>
+          <circle cx="155" cy="80" r="7" fill="#5a8fd4" opacity=".7"/>
+          <circle cx="180" cy="80" r="7" fill="#5a8fd4" opacity=".7"/>
+          <circle cx="205" cy="80" r="7" fill="#5a8fd4" opacity=".7"/>
+          <!-- labels -->
+          <text x="150" y="100" font-size="13" text-anchor="middle" fill="#1a3a6e">1+2+3+...+n</text>
+          <text x="150" y="120" font-size="13" text-anchor="middle" fill="#e65555" font-weight="bold">Tₙ = n(n+1)/2</text>
+          <text x="150" y="140" font-size="11" text-anchor="middle" fill="#888">1, 3, 6, 10, 15 ...</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
