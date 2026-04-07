@@ -1,0 +1,171 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch11 平行線與角 — 配對卡牌</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: #f0f4f8; padding: 20px; }
+  h1 { text-align: center; color: #1a3a6e; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem; }
+  .controls { text-align: center; margin-bottom: 20px; }
+  .controls button { padding: 8px 20px; border: none; border-radius: 20px; cursor: pointer; font-weight: 600; background: #1a3a6e; color: white; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: white; border-radius: 14px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .card-row h3 { grid-column: 1/-1; color: #1a3a6e; font-size: 0.95rem; border-bottom: 2px solid #1a3a6e; padding-bottom: 5px; margin-bottom: 4px; }
+  .algebra-card, .graph-card { border-radius: 10px; padding: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px; text-align: center; }
+  .algebra-card { background: #e8f0fe; border: 2px solid #5a8fd4; }
+  .graph-card { background: #f0faf4; border: 2px solid #4aaa6a; }
+  .card-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .card-content { font-size: 1.1rem; font-weight: 700; color: #1a3a6e; }
+  .card-graph svg { width: 100%; height: auto; max-height: 150px; }
+  @media print { body { background: white; } .controls { display: none; } .card-row { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<h1>📐 Ch11 平行線與角 — 配對卡牌</h1>
+<p class="sub">同位角 · 內錯角 · 同旁內角 · 對頂角 · 三角形內角和</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 同位角 -->
+  <div class="card-row">
+    <h3>同位角（Corresponding Angles）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 名詞</div>
+      <div class="card-content">同位角</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Two parallel lines -->
+          <line x1="20" y1="50" x2="300" y2="50" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="20" y1="130" x2="300" y2="130" stroke="#1a3a6e" stroke-width="3"/>
+          <!-- Transversal -->
+          <line x1="100" y1="20" x2="220" y2="160" stroke="#4aaa6a" stroke-width="2.5"/>
+          <!-- Corresponding angles (top-right of intersections) -->
+          <path d="M148 52 A18 18 0 0 1 162 65" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <path d="M188 128 A18 18 0 0 1 202 115" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <text x="162" y="48" font-size="13" fill="#e65555">a</text>
+          <text x="200" y="140" font-size="13" fill="#e65555">a</text>
+          <text x="160" y="14" font-size="12" text-anchor="middle" fill="#1a3a6e">平行線 L₁ ∥ L₂</text>
+          <text x="160" y="158" font-size="11" text-anchor="middle" fill="#4aaa6a">截線 t</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 內錯角 -->
+  <div class="card-row">
+    <h3>內錯角（Alternate Interior Angles）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 名詞</div>
+      <div class="card-content">內錯角</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="50" x2="300" y2="50" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="20" y1="130" x2="300" y2="130" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="100" y1="20" x2="220" y2="160" stroke="#4aaa6a" stroke-width="2.5"/>
+          <!-- Alternate interior angles (inside, opposite sides) -->
+          <path d="M148 50 A18 18 0 0 0 130 68" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <path d="M188 130 A18 18 0 0 1 206 112" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <text x="122" y="68" font-size="13" fill="#e65555">b</text>
+          <text x="196" y="112" font-size="13" fill="#e65555">b</text>
+          <text x="160" y="14" font-size="12" text-anchor="middle" fill="#1a3a6e">平行線 L₁ ∥ L₂</text>
+          <text x="160" y="158" font-size="11" text-anchor="middle" fill="#4aaa6a">截線 t</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 同旁內角 -->
+  <div class="card-row">
+    <h3>同旁內角（Same-side Interior）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 名詞</div>
+      <div class="card-content">同旁內角（互補）</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <line x1="20" y1="50" x2="300" y2="50" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="20" y1="130" x2="300" y2="130" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="100" y1="20" x2="220" y2="160" stroke="#4aaa6a" stroke-width="2.5"/>
+          <!-- Same-side interior (both inside, same side) -->
+          <path d="M130 68 A18 18 0 0 1 148 50" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <path d="M188 130 A18 18 0 0 0 206 112" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <text x="130" y="68" font-size="13" fill="#e65555">c</text>
+          <text x="206" y="112" font-size="13" fill="#e65555">d</text>
+          <text x="168" y="95" font-size="11" fill="#888">c+d=180°</text>
+          <text x="160" y="14" font-size="12" text-anchor="middle" fill="#1a3a6e">平行線 L₁ ∥ L₂</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 對頂角 -->
+  <div class="card-row">
+    <h3>對頂角（Vertical Opposite Angles）</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 名詞</div>
+      <div class="card-content">對頂角</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <!-- Two intersecting lines -->
+          <line x1="40" y1="30" x2="280" y2="130" stroke="#1a3a6e" stroke-width="3"/>
+          <line x1="40" y1="130" x2="280" y2="30" stroke="#1a3a6e" stroke-width="3"/>
+          <!-- Vertical angles top -->
+          <path d="M165 50 A18 18 0 0 1 183 50" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <path d="M165 110 A18 18 0 0 1 183 110" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <text x="174" y="46" font-size="13" fill="#e65555">e</text>
+          <text x="174" y="120" font-size="13" fill="#e65555">e</text>
+          <text x="160" y="14" font-size="12" text-anchor="middle" fill="#1a3a6e">兩直線相交</text>
+          <text x="160" y="158" font-size="11" text-anchor="middle" fill="#888">對頂角相等</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 三角形內角和 -->
+  <div class="card-row">
+    <h3>三角形內角和 = 180°</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（性質）</div>
+      <div class="card-content">α + β + γ = 180°</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 160" xmlns="http://www.w3.org/2000/svg">
+          <polygon points="160,25 50,140 270,140" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <text x="160" y="18" font-size="13" fill="#1a3a6e">A</text>
+          <text x="40" y="148" font-size="13" fill="#1a3a6e">B</text>
+          <text x="275" y="148" font-size="13" fill="#1a3a6e">C</text>
+          <!-- Alpha at A -->
+          <path d="M172 36 A22 22 0 0 1 186 52" fill="none" stroke="#e65555" stroke-width="2.5"/>
+          <text x="178" y="38" font-size="13" fill="#e65555">α</text>
+          <!-- Beta at B -->
+          <path d="M70 112 A22 22 0 0 1 86 100" fill="none" stroke="#4aaa6a" stroke-width="2.5"/>
+          <text x="62" y="108" font-size="13" fill="#4aaa6a">β</text>
+          <!-- Gamma at C -->
+          <path d="M250 100 A22 22 0 0 1 234 112" fill="none" stroke="#5a8fd4" stroke-width="2.5"/>
+          <text x="250" y="108" font-size="13" fill="#5a8fd4">γ</text>
+          <!-- Sum label -->
+          <text x="160" y="158" font-size="12" text-anchor="middle" fill="#1a3a6e">α + β + γ = 180°</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>

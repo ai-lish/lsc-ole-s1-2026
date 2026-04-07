@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="zh-HK">
+<head>
+<meta charset="UTF-8">
+<title>Ch5 面積與體積 — 配對卡牌</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Noto Sans TC', sans-serif; background: #f0f4f8; padding: 20px; }
+  h1 { text-align: center; color: #1a3a6e; margin-bottom: 6px; }
+  p.sub { text-align: center; color: #666; margin-bottom: 20px; font-size: 0.9rem; }
+  .controls { text-align: center; margin-bottom: 20px; }
+  .controls button { padding: 8px 20px; border: none; border-radius: 20px; cursor: pointer; font-weight: 600; background: #1a3a6e; color: white; }
+  .grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(340px, 1fr)); gap: 16px; max-width: 1100px; margin: 0 auto; }
+  .card-row { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; background: white; border-radius: 14px; padding: 14px; box-shadow: 0 2px 10px rgba(0,0,0,0.08); }
+  .card-row h3 { grid-column: 1/-1; color: #1a3a6e; font-size: 0.95rem; border-bottom: 2px solid #1a3a6e; padding-bottom: 5px; margin-bottom: 4px; }
+  .algebra-card, .graph-card { border-radius: 10px; padding: 14px; display: flex; flex-direction: column; align-items: center; justify-content: center; min-height: 160px; text-align: center; }
+  .algebra-card { background: #e8f0fe; border: 2px solid #5a8fd4; }
+  .graph-card { background: #f0faf4; border: 2px solid #4aaa6a; }
+  .card-label { font-size: 0.7rem; color: #888; text-transform: uppercase; letter-spacing: 1px; margin-bottom: 6px; }
+  .card-content { font-size: 1.1rem; font-weight: 700; color: #1a3a6e; }
+  .card-graph svg { width: 100%; height: auto; max-height: 150px; }
+  @media print { body { background: white; } .controls { display: none; } .card-row { break-inside: avoid; } }
+</style>
+</head>
+<body>
+<h1>📐 Ch5 面積與體積 — 配對卡牌</h1>
+<p class="sub">梯形面積 · 角柱體積 · 圓面積</p>
+<div class="controls"><button onclick="window.print()">🖨️ 列印全部卡牌</button></div>
+
+<div class="grid">
+
+  <!-- 梯形面積 -->
+  <div class="card-row">
+    <h3>梯形面積 A = ½(a + b)h</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">A = ½(a + b)h</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- Trapezoid -->
+          <polygon points="60,140 260,140 210,50 110,50" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <!-- Top base a label -->
+          <line x1="110" y1="40" x2="210" y2="40" stroke="#1a3a6e" stroke-width="1.5"/>
+          <text x="160" y="36" font-size="14" text-anchor="middle" fill="#1a3a6e">a</text>
+          <!-- Bottom base b label -->
+          <line x1="60" y1="150" x2="260" y2="150" stroke="#1a3a6e" stroke-width="1.5"/>
+          <text x="160" y="168" font-size="14" text-anchor="middle" fill="#1a3a6e">b</text>
+          <!-- Height h -->
+          <line x1="110" y1="50" x2="110" y2="140" stroke="#e65555" stroke-width="2"/>
+          <line x1="105" y1="55" x2="115" y2="55" stroke="#e65555" stroke-width="2"/>
+          <line x1="105" y1="135" x2="115" y2="135" stroke="#e65555" stroke-width="2"/>
+          <text x="100" y="100" font-size="14" text-anchor="middle" fill="#e65555" transform="rotate(-90 100 100)">h</text>
+          <!-- Right angle markers -->
+          <polyline points="106,125 106,135 116,135" fill="none" stroke="#e65555" stroke-width="1.5"/>
+          <!-- Formula label -->
+          <text x="160" y="12" font-size="13" text-anchor="middle" fill="#1a3a6e">梯形面積公式</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 角柱體積 -->
+  <div class="card-row">
+    <h3>直立角柱體積 V = 底面積 × 高</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">V = B × h</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <!-- 3D prism using lines -->
+          <!-- Bottom face -->
+          <polygon points="80,150 200,150 240,110 120,110" fill="#f0f8f0" stroke="#1a3a6e" stroke-width="2"/>
+          <!-- Top face -->
+          <polygon points="80,80 200,80 240,40 120,40" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2"/>
+          <!-- Vertical edges -->
+          <line x1="80" y1="80" x2="80" y2="150" stroke="#1a3a6e" stroke-width="2"/>
+          <line x1="200" y1="80" x2="200" y2="150" stroke="#1a3a6e" stroke-width="2"/>
+          <line x1="120" y1="40" x2="120" y2="110" stroke="#1a3a6e" stroke-width="2"/>
+          <line x1="240" y1="40" x2="240" y2="110" stroke="#1a3a6e" stroke-width="2"/>
+          <!-- Height label h -->
+          <line x1="200" y1="80" x2="200" y2="150" stroke="#e65555" stroke-width="2" stroke-dasharray="4,3"/>
+          <text x="210" y="118" font-size="14" fill="#e65555">h</text>
+          <!-- Base area label B -->
+          <text x="155" y="162" font-size="14" text-anchor="middle" fill="#1a3a6e">底面積 B</text>
+          <!-- B arrow to base -->
+          <line x1="155" y1="150" x2="140" y2="135" stroke="#1a3a6e" stroke-width="1.5"/>
+          <text x="70" y="40" font-size="13" fill="#1a3a6e">角柱（直立）</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+  <!-- 圓面積 -->
+  <div class="card-row">
+    <h3>圓面積 A = πr²</h3>
+    <div class="algebra-card">
+      <div class="card-label">📐 代數（公式）</div>
+      <div class="card-content">A = πr²</div>
+    </div>
+    <div class="graph-card">
+      <div class="card-label">🖼️ 圖像</div>
+      <div class="card-graph">
+        <svg viewBox="0 0 320 180" xmlns="http://www.w3.org/2000/svg">
+          <circle cx="160" cy="90" r="70" fill="#f7fbff" stroke="#1a3a6e" stroke-width="2.5"/>
+          <!-- Radius line -->
+          <line x1="160" y1="90" x2="230" y2="90" stroke="#e65555" stroke-width="2.5"/>
+          <!-- Right angle marker at center -->
+          <text x="162" y="85" font-size="14" fill="#e65555">r</text>
+          <!-- Center dot -->
+          <circle cx="160" cy="90" r="3" fill="#1a3a6e"/>
+          <!-- Center label -->
+          <text x="160" y="90" font-size="12" text-anchor="middle" fill="#1a3a6e">O</text>
+          <!-- Formula -->
+          <text x="160" y="14" font-size="14" text-anchor="middle" fill="#1a3a6e">圓面積公式</text>
+          <!-- Pi label -->
+          <text x="30" y="170" font-size="12" fill="#888">π ≈ 3.14159</text>
+        </svg>
+      </div>
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
